@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_btn_mesage_act_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    tools:context=".adapter.MessageCenterListAdapter" >
+
+    <include layout="@layout/diver" />
+
+    <com.xunfenqi.view.widget.ExpandableTextView
+        android:id="@+id/tv_message_act_msg_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        expandableTextView:animAlphaStart="1"
+        expandableTextView:maxCollapsedLines="1" >
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_message_act_item_dowm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/tv_message_act_msg_type"
+                style="@style/content_text_gray"
+                android:layout_marginTop="@dimen/base15dp"
+                android:text="充值成功" />
+
+            <ImageView
+                android:id="@+id/iv_message_act_msg_hongdian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base10dp"
+                android:layout_toRightOf="@id/tv_message_act_msg_type"
+                android:background="@drawable/xiaoxihongd" />
+
+            <TextView
+                android:id="@+id/tv_message_act_msg_time"
+                style="@style/content_text_gray_13sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base20dp"
+                android:layout_marginTop="@dimen/base15dp"
+                android:text="2015-09-10 13:45:23" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/expandable_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base10dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base40dp"
+            android:layout_marginTop="@dimen/base2dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#666666"
+            android:textSize="@dimen/base13dp" />
+    </com.xunfenqi.view.widget.ExpandableTextView>
+
+    <include layout="@layout/diver" />
+
+</LinearLayout>

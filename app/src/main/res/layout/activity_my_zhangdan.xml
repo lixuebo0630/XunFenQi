@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base195dp"
+        android:background="@color/white">
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/base14dp"
+            android:id="@+id/iv_btn_myzhangdan_act_cjwt"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base15dp"
+            android:src="@drawable/my_zhangdan_cjwt" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/base15dp"
+            android:background="@drawable/my_zhangdan_top_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/base40dp"
+            android:text="分期剩余应还(元)"
+            android:textColor="@color/content_text_gray2"
+            android:textSize="@dimen/base15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/base60dp"
+            android:text="2000.99"
+            android:textColor="@color/content_base"
+            android:textSize="@dimen/base24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base23dp"
+            android:layout_marginTop="@dimen/base102dp"
+            android:gravity="center">
+
+
+            <TextView
+
+                style="@style/content_tv_base"
+                android:text="最后还款日期"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base13dp" />
+
+            <TextView
+                android:layout_width="@dimen/base23dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base10dp"
+                android:background="@drawable/my_zhangdan_riqi_bg"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="10"
+                android:textColor="@color/content_base"
+                android:textSize="@dimen/base13dp" />
+
+
+            <TextView
+                android:singleLine="true"
+                style="@style/content_tv_base"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:text="月"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base13dp" />
+
+
+            <TextView
+                android:singleLine="true"
+                android:layout_width="@dimen/base23dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:background="@drawable/my_zhangdan_riqi_bg"
+                android:gravity="center"
+                android:text="10"
+                android:textColor="@color/content_base"
+                android:textSize="@dimen/base13dp" />
+
+
+            <TextView
+                style="@style/content_tv_base"
+                android:singleLine="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:text="日"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base13dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base133dp">
+
+            <TextView
+                android:singleLine="true"
+                android:layout_width="wrap_content"
+                android:text="已经入账单共"
+                android:textColor="@color/content_text_gray2"
+                android:textSize="@dimen/base13dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:text="2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/base13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="笔,"
+                android:singleLine="true"
+                android:textColor="@color/content_text_gray2"
+                android:textSize="@dimen/base13dp"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginLeft="@dimen/base5dp"
+                android:text="2000.99"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/base13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="元"
+                android:singleLine="true"
+                android:textColor="@color/content_text_gray2"
+                android:textSize="@dimen/base13dp"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <include layout="@layout/diver"></include>
+
+    <com.weavey.loading.lib.LoadingLayout
+        android:id="@+id/loading_myinvite_act"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base309dp">
+
+
+        <com.xunfenqi.view.AbPullToRefreshView
+            android:id="@+id/ptrv_myinvite_act"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base309dp">
+
+            <ListView
+                android:id="@+id/lv_myinvite_act"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base309dp"></ListView>
+
+
+        </com.xunfenqi.view.AbPullToRefreshView>
+    </com.weavey.loading.lib.LoadingLayout>
+
+    <Button
+        android:id="@+id/btn_myinvite_act_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base38dp"
+        android:layout_marginLeft="@dimen/base31dp"
+        android:layout_marginRight="@dimen/base31dp"
+        android:layout_marginTop="@dimen/base9dp"
+        android:background="@drawable/shape_bg_my_frag_recharge"
+        android:text="立即还款"
+        android:textColor="@color/white"
+        android:textSize="@dimen/base15dp" />
+
+</LinearLayout>

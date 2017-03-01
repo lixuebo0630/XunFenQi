@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">XunFenQi</string>
+
+
+    <!-- sDialog starting -->
+    <string name="default_progressbar">Default Progressbar:</string>
+    <string name="dialog_default_title">Here\'s a message!</string>
+    <string name="dialog_ok">确认</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="LOADING">加载中...</string>
+    <!-- End -->
+
+
+    <!-- Gesture code starting -->
+    <string name="setup_gesture_code">设置手势密码</string>
+    <string name="setup_gesture_pattern">绘制解锁图案</string>
+    <string name="setup_gesture_pattern_again">再次绘制解锁图案</string>
+    <string name="forget_gesture_code">忘记密码/切换账户</string>
+    <string name="use_other_account_login">使用其他账号登录</string>
+    <string name="set_gesture_pattern">绘制解锁图案</string>
+    <string name="set_gesture_pattern_reason">您必须设置手势密码,用于保护您的隐私信息</string>
+    <string name="reset_gesture_code">重新设置手势密码</string>
+    <!-- End -->
+
+</resources>

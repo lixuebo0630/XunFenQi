@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base15dp"
+        android:orientation="vertical" >
+
+        <include layout="@layout/diver" />
+
+        <TextView
+            android:id="@+id/tv_modify_dealpwd_act_username"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:textColor="#AA000000" />
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_modify_dealpwd_act_old_dealpwd"
+            style="@style/content_editText"
+            android:background="#ffffff"
+            android:hint="原交易密码"
+            android:inputType="textPassword"
+            android:singleLine="true" >
+        </com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base30dp" >
+
+            <TextView
+                android:id="@+id/tv_btn_modify_dealpwd_act_forget_deal_pwd"
+                style="@style/content_text_gray"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:clickable="true"
+                
+                android:gravity="center_vertical"
+                android:text="忘记交易密码?"
+                android:textColor="#AFAFAF"
+                android:textSize="@dimen/base13dp" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_modify_dealpwd_act_new_dealpwd"
+            style="@style/content_editText"
+            android:background="#ffffff"
+            android:ems="10"
+            android:hint="新交易密码"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_modify_dealpwd_act_confirm_new_dealpwd"
+            style="@style/content_editText"
+            android:background="#ffffff"
+            android:hint="确认新交易密码"
+            android:inputType="textPassword"
+            android:singleLine="true" >
+        </com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver" />
+
+        <Button
+            android:id="@+id/btn_modify_dealpwd_act_confim"
+            style="@style/content_button"
+            android:layout_marginTop="@dimen/base30dp"
+            android:text="提交"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>

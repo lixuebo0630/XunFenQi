@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base120dp"
+    android:background="#22949494">
+
+
+    <LinearLayout
+        android:paddingRight="@dimen/base15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/base15dp">
+
+            <TextView
+                android:id="@+id/tv_myred_act_list_item_bt"
+                style="@style/content_tv_base"
+                android:layout_marginTop="@dimen/base20dp"
+                android:text="邀请好友获得的5元红包"
+                android:textColor="#7b7b7b"
+                android:textSize="@dimen/base13dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base11dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/shape_gray_co" />
+
+                <TextView
+                    android:id="@+id/tv_myred_act_list_item_beizhu"
+                    style="@style/content_tv_base"
+                    android:layout_marginLeft="@dimen/base5dp"
+                    android:text="邀请好友注册病申请借款成功赠送5元红包"
+                    android:textColor="#949494"
+                    android:textSize="@dimen/base11dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/shape_gray_co" />
+
+                <TextView
+                    android:id="@+id/tv_myred_act_list_item_ffrq"
+                    style="@style/content_tv_base"
+                    android:layout_marginLeft="@dimen/base5dp"
+                    android:text="发放日期 2016-09-09"
+                    android:textColor="#949494"
+                    android:textSize="@dimen/base11dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_myred_act_list_item_lqrq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/shape_gray_co" />
+
+                <TextView
+                    android:id="@+id/tv_myred_act_list_item_lqrq"
+                    style="@style/content_tv_base"
+                    android:layout_marginLeft="@dimen/base5dp"
+                    android:text="发放日期 2016-09-09"
+                    android:textColor="#949494"
+                    android:textSize="@dimen/base11dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+
+            <TextView
+
+                android:id="@+id/tv_myred_act_list_item_jine"
+                style="@style/content_tv_base"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base33dp"
+                android:text="¥ 122.00"
+                android:textColor="#ff4b04"
+                android:textSize="@dimen/base25dp"
+
+                />
+
+            <Button
+                android:id="@+id/bt_myred_act_list_item_operate"
+                android:layout_width="@dimen/base75dp"
+                android:layout_height="@dimen/base25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base25dp"
+                android:background="@drawable/shape_bg_my_frag_recharge"
+                android:text="领取"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base12dp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_myred_act_list_item_state"
+        android:layout_width="@dimen/base133dp"
+        android:layout_height="@dimen/base55dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/base8dp"
+        android:layout_marginTop="@dimen/base35dp"
+        android:background="#33433444" />
+
+</FrameLayout>

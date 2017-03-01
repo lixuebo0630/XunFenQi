@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/content_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_modify_nine_lock_act_username"
+        style="@style/content_editText"
+        android:layout_height="@dimen/base42dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/content_text" >
+    </TextView>
+
+    <include layout="@layout/diver" />
+
+    <com.xunfenqi.view.EditTextWithDelete
+        android:id="@+id/et_modify_nine_lock_act_pwd"
+        style="@style/content_editText"
+        android:background="#ffffff"
+        android:hint="登录密码"
+        android:inputType="textPassword"
+        android:singleLine="true" >
+    </com.xunfenqi.view.EditTextWithDelete>
+
+    <include layout="@layout/diver" />
+
+    <Button
+        android:id="@+id/btn_modify_phonenum_setup1_act_next"
+        style="@style/content_button"
+        android:layout_marginTop="@dimen/base25dp"
+        android:text="验证"
+        android:textColor="@color/white" />
+
+</LinearLayout>

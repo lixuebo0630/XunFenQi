@@ -1,0 +1,63 @@
+package com.xunfenqi.model.domain;
+
+/**
+ * 
+ * @ClassName: VerifyUserTelInfo
+ * @Description:交易密码
+ * @author Xuebo Li
+ * @date 2015-8-14 下午3:42:44
+ * 
+ */
+public class UserEditPayPwInfo {
+
+	private String messageType;
+	private String respCode;
+	private String respCodeDesc;
+	private String signValue;
+	private String userId;
+	public String getMessageType() {
+		return messageType;
+	}
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
+	}
+	public String getRespCode() {
+		return respCode;
+	}
+	public void setRespCode(String respCode) {
+		this.respCode = respCode;
+	}
+	public String getRespCodeDesc() {
+		return respCodeDesc;
+	}
+	public void setRespCodeDesc(String respCodeDesc) {
+		this.respCodeDesc = respCodeDesc;
+	}
+	public String getSignValue() {
+		return signValue;
+	}
+	public void setSignValue(String signValue) {
+		this.signValue = signValue;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public UserEditPayPwInfo(String messageType, String respCode,
+			String respCodeDesc, String signValue, String userId) {
+		super();
+		this.messageType = messageType;
+		this.respCode = respCode;
+		this.respCodeDesc = respCodeDesc;
+		this.signValue = signValue;
+		this.userId = userId;
+	}
+	public UserEditPayPwInfo() {
+		super();
+	}
+	
+	
+
+}

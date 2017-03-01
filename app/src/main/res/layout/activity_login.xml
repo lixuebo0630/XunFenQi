@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base47dp"
+        android:orientation="horizontal" >
+
+
+
+
+
+        <TextView
+            android:text="还没有讯分期帐号?"
+            android:layout_width="wrap_content"
+            android:textColor="#fff"
+            android:layout_height="wrap_content" />
+<TextView
+            android:id="@+id/btn_login_act_to_regist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:clickable="true"
+            android:paddingBottom="@dimen/base10dp"
+            android:paddingTop="@dimen/base10dp"
+            android:text="立即注册"
+            android:textColor="@color/white"
+            android:textSize="@dimen/base15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_login_zhanwei"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base141dp" >
+
+            <ImageView
+                android:id="@+id/iv_btn_login_act_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base32dp"
+                android:clickable="true"
+                android:contentDescription="@null"
+                android:padding="@dimen/base10dp"
+                android:src="@drawable/login_close" />
+        </RelativeLayout>
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/login_et_username"
+            style="@style/content_editText"
+            android:hint="手机号/用户名"
+            android:inputType="text"
+            android:paddingLeft="@dimen/base20dp"
+            android:paddingRight="@dimen/base20dp"
+            android:singleLine="true"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:textSize="14sp" >
+        </com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+        <RelativeLayout
+            android:id="@+id/layout02"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp" >
+
+            <ImageButton
+                android:id="@+id/ib_btn_login_show_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base20dp"
+                android:background="@null"
+                android:paddingBottom="@dimen/base15dp"
+                android:paddingTop="@dimen/base15dp"
+                android:src="@drawable/login_show_pwd_n" />
+
+            <com.xunfenqi.view.EditTextWithDelete
+                android:id="@+id/login_et_password"
+                style="@style/content_editText"
+                android:layout_toLeftOf="@id/ib_btn_login_show_pwd"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base10dp"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:textSize="14sp" >
+            </com.xunfenqi.view.EditTextWithDelete>
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <Button
+            android:id="@+id/login_bt_login"
+            style="@style/content_button_white"
+            android:layout_marginTop="@dimen/base19dp"
+            android:text="登录" />
+
+
+        <TextView
+            android:id="@+id/btn_login_act_forgetpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="@dimen/base10dp"
+            android:paddingTop="@dimen/base10dp"
+            android:text="忘记密码?  "
+            android:textColor="#fff"
+            android:textSize="@dimen/base13dp" />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

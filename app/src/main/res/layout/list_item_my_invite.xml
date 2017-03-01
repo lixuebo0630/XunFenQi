@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base46dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:weightSum="9">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:id="@+id/tv_myinvite_item_wdhy"
+        android:gravity="center"
+        android:text="张三"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/base14dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:id="@+id/tv_myinvite_item_zcrq"
+        android:text="2016-06-06"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/base14dp" />
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:padding="2dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="百度推广"
+        android:id="@+id/tv_myinvite_item_zcqd"
+        android:layout_centerInParent="true"
+        android:textColor="@color/content_base"
+        android:background="#fff5ed"
+        android:textSize="@dimen/base14dp" />
+    </RelativeLayout>
+
+</LinearLayout>

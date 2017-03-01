@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base200dp"
+    android:background="@drawable/shape_cus_dia"
+    android:gravity="center_vertical"
+    
+    android:padding="@dimen/base15dp"
+    >
+
+    <TextView 
+        android:id="@+id/tv_myred_act_cus_dia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</ScrollView>

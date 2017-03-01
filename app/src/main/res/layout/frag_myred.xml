@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical" >
+
+    <com.xunfenqi.view.AbPullToRefreshView
+        android:id="@+id/myred_detail_fragment_mPullRefreshView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" >
+        
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base38dp"
+        android:background="#E9E9E9"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp"
+        android:weightSum="18" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="发放日期"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="可领取日期"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="金额"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+		
+	    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="备注"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="状态"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+    </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_myred_frag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"  
+            android:paddingLeft="@dimen/base15dp"
+            android:paddingRight="@dimen/base15dp" 
+            android:scrollbars="none">
+        </ListView>
+
+        <include layout="@layout/diver" />
+    </com.xunfenqi.view.AbPullToRefreshView>
+
+</LinearLayout>

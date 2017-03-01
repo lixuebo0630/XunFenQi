@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base156dp"
+        android:background="@drawable/my_invite_top_bg">
+
+        <TextView
+            android:id="@+id/tv_myinvite_act_my_innum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/base25dp"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="@dimen/base25dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/base54dp"
+            android:text="我的邀请码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/base14dp" />
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="22dp">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/base36dp"
+                android:layout_centerInParent="true"
+                android:background="@color/white"></View>
+
+            <TextView
+                android:id="@+id/tv_myinvite_act_wdhy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base55dp"
+                android:text="-人"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/base50dp"
+                android:text="我的好友"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base12dp" />
+
+
+            <TextView
+                android:id="@+id/tv_myinvite_act_zqhb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base49dp"
+                android:text="-元"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base50dp"
+                android:text="赚取红包"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base12dp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/list_item_my_invite_header"></include>
+<include layout="@layout/diver"></include>
+    <com.weavey.loading.lib.LoadingLayout
+        android:id="@+id/loading_myinvite_act"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base239dp">
+
+
+        <com.xunfenqi.view.AbPullToRefreshView
+            android:id="@+id/ptrv_myinvite_act"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base239dp">
+
+            <ListView
+                android:id="@+id/lv_myinvite_act"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base239dp"></ListView>
+
+
+        </com.xunfenqi.view.AbPullToRefreshView>
+    </com.weavey.loading.lib.LoadingLayout>
+
+    <Button
+        android:id="@+id/btn_myinvite_act_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base38dp"
+        android:layout_marginLeft="@dimen/base31dp"
+        android:layout_marginRight="@dimen/base31dp"
+        android:layout_marginTop="@dimen/base19dp"
+        android:background="@drawable/shape_bg_my_frag_recharge"
+        android:text="立即邀请好友"
+        android:textColor="@color/white"
+        android:textSize="@dimen/base15dp" />
+
+</LinearLayout>

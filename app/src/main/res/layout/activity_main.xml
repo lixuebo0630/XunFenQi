@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical" >
+
+    <com.xunfenqi.view.NoScrollViewPager
+        android:id="@+id/v_main_activity_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0" >
+    </com.xunfenqi.view.NoScrollViewPager>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#22000000" />
+
+    <RadioGroup
+        android:id="@+id/rg_main_activity_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingTop="5dp" >
+
+        <RadioButton
+            android:id="@+id/rb_main_activity_home"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_bottom_selector_recommend"
+            android:text="首页" />
+
+
+
+        <RadioButton
+            android:id="@+id/rb_main_activity_account"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_bottom_selector_myrich"
+            android:text="邀请" />
+
+        <RadioButton
+            android:id="@+id/rb_main_activity_more"
+            style="@style/main_tab_bottom"
+            android:drawableTop="@drawable/main_bottom_selector_more"
+            android:text="账户" />
+    </RadioGroup>
+
+</LinearLayout>

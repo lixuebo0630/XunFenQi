@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/base15dp"
+        android:orientation="vertical" >
+
+        <include layout="@layout/diver" />
+
+        <TextView
+            android:id="@+id/tv_safe_setting_act_count_name"
+            style="@style/list_item_ios_safe_setting"
+            android:text="账户:    "
+            android:textColor="@color/content_base" />
+
+        <include layout="@layout/diver" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:background="#dcdcdc" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_rname_auth"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:text="实名认证" />
+
+            <TextView
+                android:id="@+id/tv__safe_set_act_rname_auth"
+                style="@style/list_item_ios_safe_setting_right_tv_text"
+                android:clickable="false"
+                android:enabled="false" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_bind_bank_card"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:text="银行卡" />
+
+            <TextView
+                android:id="@+id/tv__safe_set_act_bind_bank_card"
+                style="@style/list_item_ios_safe_setting_right_tv_text"
+                android:clickable="false"
+                android:enabled="false" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_deal_pwd"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:text="交易密码" />
+
+            <TextView
+                android:id="@+id/tv__safe_set_act_deal_pwd"
+                style="@style/list_item_ios_safe_setting_right_tv_text"
+                android:clickable="false"
+                android:enabled="false" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <include layout="@layout/diver" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:background="#dcdcdc" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_modify_login_pwd"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="修改登录密码" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_modify_ninelock_pwd"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="修改手势密码" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_modify_phone_number"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="修改手机号码" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_about_us"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="关于我们" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_check_ver"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:text="检查更新" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_safe_set_act_logout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base45dp"
+            android:layout_marginTop="@dimen/base12dp"
+            android:background="@drawable/list_item_selector"
+            android:clickable="true" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="退出当前用户"
+                android:textColor="@color/content_base"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

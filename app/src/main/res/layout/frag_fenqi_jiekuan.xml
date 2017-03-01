@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/content_background"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/diver" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/base44dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/base14dp"
+        android:paddingRight="@dimen/base14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="借款期限"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/base15dp" />
+
+        <TextView
+            android:id="@+id/tv_fenqi_jiekuan_frag_jkqx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/pop_down"
+            android:text="请选择"
+            android:textSize="@dimen/base15dp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver" />
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        android:paddingLeft="@dimen/base14dp"
+
+        android:paddingRight="@dimen/base14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="借款金额"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/base15dp" />
+
+        <EditText
+            android:layout_width="@dimen/base190dp"
+            android:inputType="number"
+            android:layout_height="match_parent"
+            android:id="@+id/et_fenqi_jiekuan_frag_jkje"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:maxLength="5"
+            android:background="@null"
+            android:hint="请输入3000-20000元的整数"
+            android:textSize="@dimen/base15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        android:paddingLeft="@dimen/base14dp"
+        android:background="@color/white"
+        android:paddingRight="@dimen/base14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="借款费用"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/base15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_fenqi_jiekuan_frag_jkfy"
+            android:singleLine="true"
+
+            android:layout_alignParentRight="true"
+            android:drawablePadding="5dp"
+            android:text="0元"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/base15dp" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver" />
+    <RelativeLayout
+        android:layout_marginTop="@dimen/base10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        android:paddingLeft="@dimen/base14dp"
+        android:background="@color/white"
+        android:paddingRight="@dimen/base14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实际到账"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/base15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="5dp"
+            android:id="@+id/tv_fenqi_jiekuan_frag_sjdz"
+            android:text="0元"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/base15dp" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver" />
+
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base92dp"
+        android:paddingLeft="@dimen/base14dp"
+
+        android:paddingRight="@dimen/base14dp">
+
+        <TextView
+            android:layout_marginTop="@dimen/base20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详细说明"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/base15dp" />
+
+        <EditText
+            android:layout_width="@dimen/base190dp"
+            android:layout_height="match_parent"
+            android:id="@+id/et_fenqi_jiekuan_frag_sjsm"
+            android:background="@null"
+            android:maxLines="3"
+            android:textSize="@dimen/base15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base53dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_fenqi_jiekuan_frag_verify_num"
+            style="@style/content_editText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#ffffff"
+            android:hint="请输入验证码" />
+
+        <TextView
+            android:id="@+id/tv_fenqi_jiekuan_frag_verify_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:clickable="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="获取验证码"
+            android:textColor="#386dac"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <include layout="@layout/diver" />
+
+
+    <Button
+        android:id="@+id/bt_fenqi_jiekuan_frag_ljsq"
+        style="@style/content_button"
+        android:layout_marginTop="@dimen/base20dp"
+        android:text="立即申请"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

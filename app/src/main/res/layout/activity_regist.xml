@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/base27dp"
+        android:paddingRight="@dimen/base27dp">
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_regist_act_phonenum"
+            style="@style/content_editText"
+            android:layout_marginTop="@dimen/base80dp"
+            android:background="@color/white"
+            android:hint="请输入手机号"
+            android:inputType="text"
+            android:paddingLeft="@dimen/base20dp"
+            android:paddingRight="@dimen/base20dp"
+            android:singleLine="true"
+            android:textColor="#cccccc"
+            android:textSize="14sp"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base53dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_regist_act_input_verify_number"
+                style="@style/content_editText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#ffffff"
+                android:hint="请输入验证码" />
+
+            <TextView
+                android:id="@+id/tv_regist_act_getVerifyNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:clickable="true"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="获取验证码"
+                android:textColor="@color/content_base"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+
+        <include layout="@layout/diver_short" />
+
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_regist_act_pwd"
+            style="@style/content_editText"
+            android:layout_toLeftOf="@id/ib_btn_login_show_pwd"
+            android:hint="请输入密码,6-12位字符或数字"
+            android:background="@color/white"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/base20dp"
+            android:paddingRight="@dimen/base10dp"
+            android:singleLine="true"
+            android:textColor="#cccccc"
+            android:textSize="14sp"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_regist_act_visitnum"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="推荐码"
+            android:inputType="text"
+            android:paddingLeft="@dimen/base20dp"
+            android:paddingRight="@dimen/base20dp"
+            android:singleLine="true"
+            android:textColor="#cccccc"
+            android:textSize="14sp"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_regist_act_ljqd"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="了解渠道"
+            android:inputType="text"
+            android:paddingLeft="@dimen/base20dp"
+            android:paddingRight="@dimen/base20dp"
+            android:singleLine="true"
+            android:textColor="#cccccc"
+            android:textSize="14sp"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+        <Button
+            android:id="@+id/bt_regist_act_regist"
+            style="@style/content_button"
+    android:textColor="@color/white"
+            android:layout_marginTop="@dimen/base19dp"
+            android:text="注册" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

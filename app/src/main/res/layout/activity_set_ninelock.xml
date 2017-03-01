@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ninelock_background" >
+
+    <LinearLayout
+        android:id="@+id/gesture_tip_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/base20dp" >
+
+        <ImageView
+            android:id="@+id/user_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/user_logo" />
+
+        <TextView
+            android:id="@+id/tv_set_nine_text_phone_number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/nine_lock_text_color" />
+
+        <TextView
+            android:id="@+id/tv_set_nine_text_tip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/nine_lock_text_color"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_marginTop="@dimen/base20dp"
+        android:id="@+id/gesture_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gesture_tip_layout"
+        android:layout_gravity="center_horizontal" >
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_reset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gesture_container"
+        android:layout_marginTop="@dimen/base20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/set_gesture_pattern_reason"
+        android:textColor="@color/nine_lock_text_color" />
+
+</RelativeLayout>

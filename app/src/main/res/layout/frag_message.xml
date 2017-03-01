@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xunfenqi.view.AbPullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ptrv_message_act"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background" >
+
+    <ListView
+        android:id="@+id/lv_message_activity_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/base15dp"
+        android:divider="#00000000"
+        android:dividerHeight="@dimen/base12dp"
+        android:orientation="vertical" >
+    </ListView>
+
+</com.xunfenqi.view.AbPullToRefreshView>

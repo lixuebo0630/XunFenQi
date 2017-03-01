@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base42dp">
+
+
+        <TextView
+            android:id="@+id/tv_jiekuan_detail_item_qs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base16dp"
+            android:background="@drawable/shape_blue_line_corner"
+            android:paddingBottom="1dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="1dp"
+            android:text="1/2期"
+            android:textColor="#1156a1"
+            android:textSize="@dimen/base12dp" />
+
+
+        <TextView
+            android:id="@+id/tv_jiekuan_detail_item_sxf"
+            style="@style/content_tv_base"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/base17dp"
+            android:text="3453(包含手续费36.25)"
+            android:textColor="@color/content_text" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base22dp">
+
+
+        <TextView
+
+            style="@style/content_text_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还款日:"
+            android:textSize="@dimen/base12dp" />
+
+
+        <TextView
+            android:id="@+id/tv_jiekuan_detail_item_hkr"
+            style="@style/content_tv_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="3453(包含手续费36.25)"
+            android:textColor="@color/content_text" />
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_jiekuan_detail_item_sfyq"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base22dp"
+            android:visibility="visible">
+
+
+            <TextView
+
+                style="@style/content_text_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="是否逾期:"
+                android:textSize="@dimen/base12dp" />
+
+
+            <TextView
+                android:id="@+id/tv_jiekuan_detail_item_sfyq"
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_my_frag_date"
+                android:padding="2dp"
+                android:text="是"
+                android:textColor="@color/white"
+                android:textSize="@dimen/base12dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_jiekuan_detail_item_yqts"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base28dp"
+            android:visibility="visible">
+
+
+            <TextView
+
+                style="@style/content_text_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="逾期天数:"
+                android:textSize="@dimen/base12dp" />
+
+
+            <TextView
+                android:id="@+id/tv_jiekuan_detail_item_yqts"
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="-"
+                android:textColor="@color/content_text" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_jiekuan_detail_item_wyhk"
+            style="@style/content_button"
+            android:layout_width="@dimen/base300dp"
+            android:layout_height="@dimen/base37dp"
+            android:layout_gravity="center_horizontal"
+            android:text="我要还款"
+            android:textColor="@color/white"
+
+            android:visibility="visible" />
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_jiekuan_detail_item_yhflag"
+            android:layout_width="@dimen/base81dp"
+            android:layout_height="@dimen/base38dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base20dp"
+
+            android:background="@color/content_base"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base20dp"></View>
+
+</LinearLayout>
+

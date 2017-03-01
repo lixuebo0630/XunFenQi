@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base250dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+ >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base65dp">
+
+        <TextView
+            android:id="@+id/zz_tv_myjiekuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:background="@drawable/shape_blue_corner"
+            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="1dp"
+            android:text="剩余"
+            android:textColor="@color/white"
+            android:textSize="@dimen/base13dp" />
+
+
+        <TextView
+            android:id="@+id/tv_myjiekuan_item_syyh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base8dp"
+            android:text="2000.99"
+            android:textColor="@color/content_base"
+            android:textSize="@dimen/base19dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/zz_tv_myjiekuan"
+            android:layout_alignBottom="@+id/zz_tv_myjiekuan"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_toEndOf="@+id/zz_tv_myjiekuan"
+            android:layout_toRightOf="@+id/zz_tv_myjiekuan"
+            android:text="分期剩余应还(元)"
+            android:textColor="@color/content_text_gray"
+            android:textSize="@dimen/base13dp" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/diver"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base14dp">
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base12dp"
+                android:text="分期总额:"
+                android:textColor="@color/content_text_gray" />
+
+            <TextView
+                android:id="@+id/tv_myjiekuan_item_fqze"
+                style="@style/content_tv_base"
+                android:textSize="@dimen/base12dp"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:text="2600(包含手续费342.34)"
+                android:textColor="@color/content_text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base6dp">
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base12dp"
+                android:text="借款时间:"
+                android:textColor="@color/content_text_gray" />
+
+            <TextView
+                android:id="@+id/tv_myjiekuan_item_jksj"
+                style="@style/content_tv_base"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:textSize="@dimen/base12dp"
+                android:text="-"
+                android:textColor="@color/content_text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base6dp">
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base12dp"
+                android:text="已还期数:"
+                android:textColor="@color/content_text_gray" />
+
+            <TextView
+                android:id="@+id/tv_myjiekuan_item_yhqs"
+                style="@style/content_tv_base"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:textSize="@dimen/base12dp"
+                android:text="-"
+                android:textColor="@color/content_text" />
+        </LinearLayout> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base6dp">
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base12dp"
+                android:text="借款类型:"
+                android:textColor="@color/content_text_gray" />
+
+            <TextView
+                android:id="@+id/tv_myjiekuan_item_jklx"
+                style="@style/content_tv_base"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:textSize="@dimen/base12dp"
+                android:text="-"
+                android:textColor="@color/content_text" />
+        </LinearLayout> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base6dp">
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base12dp"
+                android:text="订单号:"
+                android:textColor="@color/content_text_gray" />
+
+            <TextView
+                android:id="@+id/tv_myjiekuan_item_ddh"
+                style="@style/content_tv_base"
+                android:layout_marginLeft="@dimen/base20dp"
+                android:textSize="@dimen/base12dp"
+                android:text="-"
+                android:textColor="@color/content_text" />
+        </LinearLayout>
+
+        <Button
+            android:text="-"
+            android:focusable="false"
+            android:textSize="@dimen/base15dp"
+            android:layout_gravity="right"
+            android:textColor="#1156a1"
+            android:layout_marginTop="@dimen/base17dp"
+            android:id="@+id/bt_myjiekuan_opertation"
+            android:background="@drawable/shape_blue_line_btn"
+            android:layout_width="@dimen/base107dp"
+            android:layout_height="@dimen/base38dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

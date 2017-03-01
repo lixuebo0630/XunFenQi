@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xunfenqi.view.AbPullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ptrv_home_frag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.xunfenqi.fragment.main.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/sv_home_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base187dp"
+                android:background="@drawable/invite_top" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base83dp">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/base19dp"
+                        android:layout_marginTop="@dimen/base22dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/base15dp"
+                            android:layout_height="@dimen/base15dp"
+                            android:layout_marginLeft="@dimen/base15dp"
+                            android:layout_marginTop="@dimen/base4dp"
+                            android:src="@drawable/invite_frag_qiandao" />
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base3dp"
+                            android:layout_marginRight="@dimen/base5dp"
+                            android:text="签到"
+                            android:textColor="#797979"
+                            android:textSize="@dimen/base17dp" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="@dimen/base14dp"
+                            android:layout_marginTop="@dimen/base4dp"
+                            android:background="#646464"></View>
+
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base5dp"
+                            android:layout_marginRight="@dimen/base3dp"
+                            android:text="每日签到享好礼"
+                            android:textColor="#797979"
+                            android:textSize="@dimen/base17dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/base17dp"
+                        android:layout_marginTop="@dimen/base46dp">
+
+                        <TextView
+                            android:layout_width="@dimen/base5dp"
+                            android:layout_height="@dimen/base5dp"
+                            android:layout_marginLeft="@dimen/base18dp"
+                            android:layout_marginTop="@dimen/base6dp"
+                            android:background="@drawable/shape_gray_co" />
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base12dp"
+                            android:text="躺着实现赚钱梦"
+                            android:textColor="#646464"
+                            android:textSize="@dimen/base14dp" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+
+                    <Button
+                        android:id="@+id/bt_invite_frag_2qiandao"
+                        android:layout_width="@dimen/base110dp"
+                        android:layout_height="@dimen/base38dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/shape_base_line_btn"
+                        android:text="去签到"
+                        android:textColor="@color/content_base"
+                        android:textSize="@dimen/base14dp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base83dp">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/base19dp"
+                        android:layout_marginTop="@dimen/base22dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/base15dp"
+                            android:src="@drawable/invite_frag_fenxiang"
+                            android:layout_height="@dimen/base15dp"
+                            android:layout_marginLeft="@dimen/base15dp"
+                            android:layout_marginTop="@dimen/base4dp"
+                             />
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base3dp"
+                            android:layout_marginRight="@dimen/base5dp"
+                            android:text="分享"
+                            android:textColor="#797979"
+                            android:textSize="@dimen/base17dp" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="@dimen/base14dp"
+                            android:layout_marginTop="@dimen/base4dp"
+                            android:background="#646464"></View>
+
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base5dp"
+                            android:layout_marginRight="@dimen/base3dp"
+                            android:text="邀好友赚红包"
+                            android:textColor="#797979"
+                            android:textSize="@dimen/base17dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/base17dp"
+                        android:layout_marginTop="@dimen/base46dp">
+
+                        <TextView
+                            android:layout_width="@dimen/base5dp"
+                            android:layout_height="@dimen/base5dp"
+                            android:layout_marginLeft="@dimen/base18dp"
+                            android:layout_marginTop="@dimen/base6dp"
+                            android:background="@drawable/shape_gray_co" />
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/base12dp"
+                            android:text="召唤小伙伴一起赚钱"
+                            android:textColor="#646464"
+                            android:textSize="@dimen/base14dp" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+
+                    <Button
+                        android:layout_width="@dimen/base110dp"
+                        android:layout_height="@dimen/base38dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/shape_base_line_btn"
+                        android:text="去分享"
+                        android:textColor="@color/content_base"
+                        android:textSize="@dimen/base14dp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</com.xunfenqi.view.AbPullToRefreshView>

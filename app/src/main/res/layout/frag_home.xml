@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xunfenqi.view.AbPullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ptrv_home_frag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.xunfenqi.fragment.main.HomeFragment" >
+
+    <ScrollView
+        android:id="@+id/sv_home_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+                <include layout="@layout/layout_roll_view"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base32dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/iv_frag_home_paoma"
+                    android:layout_width="@dimen/base16dp"
+                    android:src="@drawable/home_paoma"
+                    android:layout_height="@dimen/base16dp"
+                    android:layout_marginLeft="@dimen/base8dp"
+                    >
+                </ImageView>
+
+                <com.xunfenqi.view.ScrollDisabledListView
+                    android:id="@+id/lv_frag_home_paoma"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/base29dp"
+                    android:background="@color/white"
+                    android:cacheColorHint="@color/white"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:fadeScrollbars="true"
+                    android:listSelector="@color/transparent"
+                    android:scrollbars="none" />
+
+                <TextView
+                    android:id="@+id/tv_home_frag_news_more"
+                    android:layout_width="@dimen/base35dp"
+                    android:textColor="@color/content_text_gray2"
+                    android:text="更多"
+                    android:gravity="center"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        <include layout="@layout/diver"></include>
+            <RelativeLayout
+                android:background="@drawable/home_frag_bg"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/base26dp"
+                android:layout_width="@dimen/base247dp"
+                android:layout_height="@dimen/base247dp">
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/base49dp"
+                    style="@style/content_tv_base"
+                    android:text="最高可借"
+                    android:textSize="@dimen/base13dp"
+                    android:textColor="#939393"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/base68dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/base30dp">
+                    <TextView
+                        style="@style/content_tv_base"
+                        android:text="23000"
+                        android:textSize="@dimen/base28dp"
+                      android:id="@+id/tv_home_frag_zgkj"
+                        android:textColor="@color/content_base"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_toRightOf="@+id/tv_home_frag_zgkj"
+                        android:layout_alignBottom="@id/tv_home_frag_zgkj"
+                        android:textColor="#939393"
+                        android:textSize="@dimen/base13dp"
+                        android:text="元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/base139dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:text="23000"
+                            android:textSize="@dimen/base17dp"
+                            android:id="@+id/tv_home_frag_xyed"
+                            android:textColor="@color/content_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_toRightOf="@+id/tv_home_frag_xyed"
+                            android:layout_alignBottom="@id/tv_home_frag_xyed"
+                            android:textColor="#939393"
+                            android:layout_marginBottom="@dimen/base3dp"
+                            android:textSize="@dimen/base11dp"
+                            android:text="元"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base12dp"
+                            android:text="信用额度"
+                            android:layout_below="@id/tv_home_frag_xyed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/base18dp"
+                        android:layout_marginRight="@dimen/base18dp"
+                        android:text="+"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/base22dp"
+                        android:textColor="#3f3f3f"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:text="23000"
+                            android:textSize="@dimen/base17dp"
+                            android:id="@+id/tv_home_frag_yjed"
+                            android:textColor="@color/content_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_toRightOf="@+id/tv_home_frag_yjed"
+                            android:layout_alignBottom="@id/tv_home_frag_yjed"
+                            android:textColor="#939393"
+                            android:layout_marginBottom="@dimen/base3dp"
+                            android:textSize="@dimen/base11dp"
+                            android:text="元"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base12dp"
+                            android:text="应急额度"
+                            android:layout_below="@id/tv_home_frag_yjed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:id="@+id/bt_home_frag_ljsq"
+                android:layout_marginBottom="@dimen/base35dp"
+                android:textSize="@dimen/base17dp"
+                android:background="@drawable/shape_bg_my_frag_recharge"
+                android:layout_marginTop="@dimen/base25dp"
+                android:text="立即申请"
+                android:layout_width="@dimen/base175dp"
+                android:layout_height="@dimen/base42dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</com.xunfenqi.view.AbPullToRefreshView>

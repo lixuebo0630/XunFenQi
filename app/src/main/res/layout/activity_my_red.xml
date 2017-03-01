@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.weavey.loading.lib.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/loading_myred_act"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+    <com.xunfenqi.view.AbPullToRefreshView
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp"
+        android:paddingTop="@dimen/base15dp"
+        android:id="@+id/ptrv_myred_act"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_myred_act"
+            android:scrollbars="none"
+            android:listSelector="@color/transparent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/base10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+
+
+
+    </com.xunfenqi.view.AbPullToRefreshView>
+
+</com.weavey.loading.lib.LoadingLayout>
