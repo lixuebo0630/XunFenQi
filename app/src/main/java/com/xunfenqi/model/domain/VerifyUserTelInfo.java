@@ -16,6 +16,15 @@ public class VerifyUserTelInfo {
 	private String userTel;
 	private String isExist;
 	private String signValue;
+	private String userId;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getMessageType() {
 		return messageType;

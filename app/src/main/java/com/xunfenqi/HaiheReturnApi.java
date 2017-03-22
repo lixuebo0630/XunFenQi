@@ -45,6 +45,7 @@ import com.xunfenqi.model.domain.UserEditPayPwInfo;
 import com.xunfenqi.model.domain.UserEditTelInfo;
 import com.xunfenqi.model.domain.UserEditZhmcInfo;
 import com.xunfenqi.model.domain.UserGetMyRedInfo;
+import com.xunfenqi.model.domain.UserIdentityAffirmInfo;
 import com.xunfenqi.model.domain.UserIncomeSatementInfo;
 import com.xunfenqi.model.domain.UserIntegralSignInInfo;
 import com.xunfenqi.model.domain.UserIntoEnchashment;
@@ -200,6 +201,38 @@ public class HaiheReturnApi {
 
     }
 
+    public static UserIdentityAffirmInfo userIdentityAffirm(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "用户认证返回的数据:" + content);
+
+        UserIdentityAffirmInfo userIdentityAffirmInfo = (UserIdentityAffirmInfo) AbJsonUtil.fromJson(
+                content, UserIdentityAffirmInfo.class);
+
+        if (userIdentityAffirmInfo != null) {
+
+
+            // 需要验证的数据
+            String verifyData = userIdentityAffirmInfo.getMessageType()
+                    + userIdentityAffirmInfo.getRespCode()
+                    + userIdentityAffirmInfo.getUserId() + userIdentityAffirmInfo.getZzcc();
+
+            boolean verifyResult = RSAUtil.verifyResult(verifyData, userIdentityAffirmInfo
+                    .getSignValue());
+
+            if (verifyResult) {
+                return userIdentityAffirmInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }
+
     /**
      * @param @param  content
      * @param @return
@@ -297,6 +330,36 @@ public class HaiheReturnApi {
                     + verifyUserTelInfo.getRespCode()
                     + verifyUserTelInfo.getUserTel()
                     + verifyUserTelInfo.getIsExist();
+
+            boolean verifyResult = RSAUtil.verifyResult(verifyData,
+                    verifyUserTelInfo.getSignValue());
+
+            if (verifyResult) {
+                return verifyUserTelInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }
+
+    public static VerifyUserTelInfo userEditConnectPeople(String content) {
+        AbLogUtil.d(TAG, "添加联系人信息返回的数据:" + content);
+
+        VerifyUserTelInfo verifyUserTelInfo = (VerifyUserTelInfo) AbJsonUtil
+                .fromJson(content, VerifyUserTelInfo.class);
+
+        if (verifyUserTelInfo != null) {
+            // 需要验签的数据
+            String verifyData = verifyUserTelInfo.getMessageType()
+                    + verifyUserTelInfo.getRespCode()
+                    + verifyUserTelInfo.getUserId();
 
             boolean verifyResult = RSAUtil.verifyResult(verifyData,
                     verifyUserTelInfo.getSignValue());
@@ -1648,6 +1711,28 @@ public class HaiheReturnApi {
         if (info != null) {
             String data = info.getmessageType() + info.getRespCode()
                     + info.getUserTel();
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    info.getSignValue());
+            if (verifyResult) {
+                return info;
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }// 找回密码2步
+    public static LoginInfo userEditCredit(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "认证信息:" + content);
+        LoginInfo info = (LoginInfo) AbJsonUtil.fromJson(content,
+                LoginInfo.class);
+        if (info != null) {
+            String data = info.getmessageType() + info.getRespCode()
+                    + info.getUserId()+info.getFqlx();
             boolean verifyResult = RSAUtil.verifyResult(data,
                     info.getSignValue());
             if (verifyResult) {

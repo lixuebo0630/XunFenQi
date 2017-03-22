@@ -373,7 +373,7 @@ public abstract class AbActivity extends FragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
+		//super.onBackPressed();
 		finish();
 	}
 

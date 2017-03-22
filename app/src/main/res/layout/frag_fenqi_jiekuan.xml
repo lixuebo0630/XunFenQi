@@ -41,7 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base44dp"
         android:paddingLeft="@dimen/base14dp"
-
         android:paddingRight="@dimen/base14dp">
 
         <TextView

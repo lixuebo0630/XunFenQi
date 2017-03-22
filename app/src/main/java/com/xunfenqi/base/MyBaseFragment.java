@@ -17,7 +17,6 @@ public class MyBaseFragment extends AbFragment {
      */
     protected void onVisible() {
         if(MyApplication.getInstance().isLogin()){
-
         lazyLoad();
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.xunfenqi">
 
     <!-- Buggly -->
@@ -9,15 +10,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 保存资源到SD卡 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- ShareSdk -->
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <!-- 蓝牙分享所需的权限 -->
@@ -27,10 +23,11 @@
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Light.NoTitleBar">
+        android:theme="@android:style/Theme.Light.NoTitleBar"
+        tools:replace="android:icon">
         <activity
             android:name=".activity.SplashActivity"
             android:label="@string/app_name"
@@ -43,6 +40,7 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LoginActivity"
@@ -78,6 +76,9 @@
             android:name=".activity.ModifyPhoneNumSetup1Activity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.RZActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ModifyPhoneNumSetup2Activity"
             android:screenOrientation="portrait" />
         <activity
@@ -108,7 +109,13 @@
             android:name=".activity.WoYaoJieKuanActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.BankCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ApplyJIeKuanSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LianXiRenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.JIeKuanDetailActivity"
@@ -116,10 +123,16 @@
         <activity
             android:name=".activity.MyZhangDanActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.XunTouTiaoActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".activity.WoDeZiLiaoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShenFenRZActivity"
+            android:screenOrientation="portrait" />
         <!-- ShareSdk -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -171,6 +184,29 @@
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:theme="@android:style/Theme.Translucent" />
+
+
+        <!---->
+        <!--<activity-->
+        <!--android:name="com.alipay.sdk.app.H5PayActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|navigation"-->
+        <!--android:exported="false"-->
+        <!--android:screenOrientation="behind"></activity>-->
+        <!--<activity-->
+        <!--android:name="com.alipay.sdk.auth.AuthActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|navigation"-->
+        <!--android:exported="false"-->
+        <!--android:screenOrientation="behind"></activity>-->
+
+        <!--<provider-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities="${com.xunfenqi}.fileProvider"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/provider_paths" />-->
+        <!--</provider>-->
     </application>
 
 </manifest>

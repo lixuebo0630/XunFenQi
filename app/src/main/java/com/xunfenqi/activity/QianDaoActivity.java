@@ -77,6 +77,7 @@ public class QianDaoActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 qianDaoSubmit();
+
             }
         });
     }
@@ -264,6 +265,8 @@ public class QianDaoActivity extends BaseActivity {
                                                         sDialog.dismiss();
                                                     }
                                                 }).show();
+
+
 
 
                             } else {

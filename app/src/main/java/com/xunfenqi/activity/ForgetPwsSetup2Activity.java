@@ -122,6 +122,8 @@ public class ForgetPwsSetup2Activity extends BaseActivity implements
 				LoginInfo info = HaiheReturnApi.userSetPassword(content);
 				if (info != null) {
 					if (info.getRespCode().equals("000")) {
+
+						AbToastUtil.showToastInThread(getApplicationContext(),"操作成功");
 						ActivityUtil.startActivity(
 								ForgetPwsSetup2Activity.this,
 								LoginActivity.class);

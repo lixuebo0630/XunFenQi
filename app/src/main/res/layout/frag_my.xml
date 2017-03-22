@@ -43,9 +43,9 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:orientation="vertical"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/my_bg">
+                        android:background="@drawable/my_bg"
+                        android:orientation="vertical">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -101,9 +101,6 @@
                         </RelativeLayout>
 
 
-
-
-
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/base210dp">
@@ -144,7 +141,7 @@
                                 />
 
                             <LinearLayout
-                                android:id="@+id/linearLayout"
+                                android:id="@+id/ll_myaccount_frag_hkrq"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/btn_my_frag_ljhk"
@@ -274,7 +271,7 @@
 
                         <Button
                             android:id="@+id/btn_myaccount_frag_bottom_tixian"
-                            android:layout_width="@dimen/base64dp"
+                            android:layout_width="@dimen/base84dp"
                             android:layout_height="@dimen/base33dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
@@ -313,7 +310,8 @@
                             android:background="@drawable/shape_bg_my_frag_recharge"
                             android:text="充值"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/base15dp" />
+                            android:textSize="@dimen/base15dp"
+                            android:visibility="gone" />
                     </RelativeLayout>
 
 
@@ -327,9 +325,9 @@
                         <ImageView
                             android:layout_width="@dimen/base16dp"
                             android:layout_height="@dimen/base16dp"
-                            android:src="@drawable/my_wdjk"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_wdjk" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -356,14 +354,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/base57dp"
                         android:background="@drawable/list_item_selector"
-                        android:clickable="true">
+                        android:clickable="true"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="@dimen/base16dp"
                             android:layout_height="@dimen/base16dp"
-                            android:src="@drawable/my_wdhk"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_wdhk" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -393,9 +392,11 @@
 
                         <ImageView
                             android:layout_width="@dimen/base16dp"
+
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:background="@drawable/my_bankcard" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -417,7 +418,7 @@
                     <include layout="@layout/diver_short" />
 
                     <RelativeLayout
-                        android:id="@+id/rl_btn_myaccount_frag_money_return_plan"
+                        android:id="@+id/rl_btn_myaccount_frag_wdzl"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/base57dp"
                         android:background="@drawable/list_item_selector"
@@ -427,7 +428,8 @@
                             android:layout_width="@dimen/base16dp"
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:background="@drawable/my_ziliao" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -457,11 +459,11 @@
                         android:clickable="true">
 
                         <ImageView
-                            android:src="@drawable/my_red_bag"
                             android:layout_width="@dimen/base16dp"
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_red_bag" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -491,10 +493,10 @@
 
                         <ImageView
                             android:layout_width="@dimen/base16dp"
-                            android:src="@drawable/my_wdyq"
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_wdyq" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -516,7 +518,7 @@
                     <include layout="@layout/diver_short" />
 
                     <RelativeLayout
-                        android:id="@+id/rl_btn_myaccount_frag_zhaiquan_transfer"
+                        android:id="@+id/rl_btn_myaccount_frag_kefudianhua"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/base57dp"
                         android:background="@drawable/list_item_selector"
@@ -524,16 +526,61 @@
 
                         <ImageView
                             android:layout_width="@dimen/base16dp"
-                            android:src="@drawable/my_kf"
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_kf" />
 
                         <TextView
                             style="@style/content_tv_base"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/base38dp"
-                            android:text="客服/帮助中心"
+                            android:text="客服电话"
+                            android:textColor="#3b3b3b"
+                            android:textSize="@dimen/base15dp" />
+
+                        <ImageView
+                            android:id="@+id/z__iv_san"
+                            android:layout_width="@dimen/base8dp"
+                            android:layout_height="@dimen/base16dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/base10dp"
+                            android:background="@drawable/list_item_sanjiao" />
+
+
+                        <TextView
+                            style="@style/content_text_gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/base15dp"
+                            android:layout_toLeftOf="@id/z__iv_san"
+                            android:text="022-58515216"
+                            android:textSize="@dimen/base13dp" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/diver_short" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_btn_myaccount_frag_helpcenter"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/base57dp"
+                        android:background="@drawable/list_item_selector"
+                        android:clickable="true">
+
+                        <ImageView
+                            android:layout_width="@dimen/base16dp"
+                            android:layout_height="@dimen/base16dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_help" />
+
+                        <TextView
+                            style="@style/content_tv_base"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/base38dp"
+                            android:text="帮助中心"
                             android:textColor="#3b3b3b"
                             android:textSize="@dimen/base15dp" />
 
@@ -561,7 +608,8 @@
                             android:layout_width="@dimen/base16dp"
                             android:layout_height="@dimen/base16dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base13dp" />
+                            android:layout_marginLeft="@dimen/base13dp"
+                            android:src="@drawable/my_setting" />
 
                         <TextView
                             style="@style/content_tv_base"
@@ -606,7 +654,8 @@
                     android:layout_marginLeft="@dimen/base3dp"
                     android:layout_marginRight="@dimen/base3dp"
                     android:layout_weight="1"
-                    android:text="登录" />
+                    android:text="登录"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/bt_myaccount_frag_unlogin_toregist"
@@ -615,7 +664,8 @@
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="@dimen/base3dp"
                     android:layout_weight="1"
-                    android:text="注册" />
+                    android:text="注册"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>

@@ -18,16 +18,17 @@
             android:text="账户:    "
             android:textColor="@color/content_base" />
 
-        <include layout="@layout/diver" />
+        <!--<include layout="@layout/diver" />-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_marginTop="@dimen/base15dp"
-            android:background="#dcdcdc" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0.1dp"-->
+            <!--android:layout_marginTop="@dimen/base15dp"-->
+            <!--android:background="#dcdcdc" />-->
 
         <RelativeLayout
             android:id="@+id/rl_btn_safe_set_act_rname_auth"
+            android:visibility="gone"
             style="@style/list_item_ios_safe_setting" >
 
             <TextView
@@ -44,6 +45,7 @@
         <include layout="@layout/diver_short" />
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rl_btn_safe_set_act_bind_bank_card"
             style="@style/list_item_ios_safe_setting" >
 
@@ -62,6 +64,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_btn_safe_set_act_deal_pwd"
+            android:visibility="gone"
             style="@style/list_item_ios_safe_setting" >
 
             <TextView
@@ -75,9 +78,9 @@
                 android:enabled="false" />
         </RelativeLayout>
 
-        <include layout="@layout/diver_short" />
+        <!--<include layout="@layout/diver_short" />-->
 
-        <include layout="@layout/diver" />
+        <!--<include layout="@layout/diver" />-->
 
         <View
             android:layout_width="match_parent"

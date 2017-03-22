@@ -98,7 +98,7 @@ public class HaiHeApi {
      * @param: @param inviteCode 邀请码(选填)
      * @param: @param listener
      */
-    public static void regist(String inputUsername, String inputPassword,
+    public static void regist(String inputUsername, String inputPassword, String ljqd,
                               String userTel, String inviteCode, AbSoapListener listener) {
         try {
 
@@ -114,6 +114,7 @@ public class HaiHeApi {
             json.put(JsonConstant.USERNAME, inputUsername);
             json.put(JsonConstant.USERTEL, userTel);
             json.put(JsonConstant.INVITECODE, inviteCode);
+            json.put("zcqd", ljqd);
 
             json.put(JsonConstant.LOGINPASSWORD,
                     Md5Util.md5Diagest(DES.encrypt(inputPassword)));
@@ -143,6 +144,39 @@ public class HaiHeApi {
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.USERID, userId);
             json.put(JsonConstant.MESSAGETYPE, "userCenter");
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void userIdentityAffirm(String userId, String identity, String zsxm, String ykt, String yhkh, String ssyh,
+
+
+                                          String xxmc, String rxsj, String xl, String address, AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "userIdentityAffirm" + userId + identity + yhkh
+                    + AbConstant.PHONETYPE;
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.USERID, userId);
+            json.put(JsonConstant.MESSAGETYPE, "userIdentityAffirm");
+            json.put("identity", identity);
+            json.put("zsxm", zsxm);
+            json.put("ykt", ykt);
+            json.put("yhkh", yhkh);
+            json.put("ssyh", ssyh);
+            json.put("xxmc", xxmc);
+            json.put("rxsj", rxsj);
+            json.put("xxmc", xxmc);
+            json.put("xl", xl);
+            json.put("address", address);
+            json.put("xxdz", "");
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
             NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
@@ -219,6 +253,37 @@ public class HaiHeApi {
             json.put(JsonConstant.MESSAGETYPE, "verifyUserTel");
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.USERTEL, inputNumber);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void userEditConnectPeople(String userId,
+                                             String lxrOneName, String lxrOneTel,
+                                             String lxrSecName, String lxrSecTel,
+                                             String sf1,String sf2,
+                                             AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "userEditConnectPeople" + userId
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.MESSAGETYPE, "userEditConnectPeople");
+            json.put(JsonConstant.USERID, userId);
+            json.put("lxrON", lxrOneName);
+            json.put("lxrSN", lxrSecName);
+            json.put("lxrOS", sf1);
+            json.put("lxrSS", sf2);
+            json.put("lxrOT", lxrOneTel);
+            json.put("lxrST", lxrSecTel);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
             NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
@@ -829,7 +894,7 @@ public class HaiHeApi {
                                            AbSoapListener listener) {
 
         try {
-            String data = AbConstant.VERSION + "userLoansPayBackDao" + userId+loanId+payBackSum
+            String data = AbConstant.VERSION + "userLoansPayBackDao" + userId + loanId + payBackSum
                     + AbConstant.PHONETYPE;
 
             JSONObject json = new JSONObject();
@@ -1045,8 +1110,8 @@ public class HaiHeApi {
                                         String newPassword, AbSoapListener listener) {
 
         try {
-            oldPassword = Md5Util.md5Diagest(DES.encrypt(oldPassword));
-            newPassword = Md5Util.md5Diagest(DES.encrypt(newPassword));
+            oldPassword = Md5Util.md5Diagest(oldPassword);
+            newPassword = Md5Util.md5Diagest(newPassword);
 
             String data = AbConstant.VERSION + "userEditPassword" + userId
                     + oldPassword + newPassword + AbConstant.PHONETYPE;
@@ -1354,7 +1419,7 @@ public class HaiHeApi {
     public static void userSetPassword(String userTel, String newPassword,
                                        AbSoapListener abSoapListener) {
         try {
-            newPassword = Md5Util.md5Diagest(DES.encrypt(newPassword));
+            newPassword = Md5Util.md5Diagest(newPassword);
             String data = AbConstant.VERSION + "userSetPassword" + userTel
                     + newPassword + AbConstant.PHONETYPE;
 
@@ -1363,6 +1428,34 @@ public class HaiHeApi {
             json.put(JsonConstant.MESSAGETYPE, "userSetPassword");
             json.put("userTel", userTel);
             json.put("newPassword", newPassword);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    abSoapListener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 找回密码2步
+    public static void userEditCredit(String userId, String fqlx, String yhm, String password,
+                                      AbSoapListener abSoapListener) {
+        try {
+            //  newPassword = Md5Util.md5Diagest(newPassword);
+            String data = AbConstant.VERSION + "userEditCredit" + userId
+                    + fqlx + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.MESSAGETYPE, "userEditCredit");
+
+            json.put(JsonConstant.USERID, userId);
+            json.put("fqlx", fqlx);
+            json.put("yhm", yhm);
+            json.put("mima", password);
+
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
@@ -2213,13 +2306,14 @@ public class HaiHeApi {
             e.printStackTrace();
         }
     }
- /**
+
+    /**
      * 查询产品列表
      *
      * @param listener
      */
     public static void userMonthLoansDetailDao(
-                                       String userId, AbSoapListener listener) {
+            String userId, AbSoapListener listener) {
         try {
             String data = AbConstant.VERSION + "userMonthLoansDetailDao" + userId
                     + AbConstant.PHONETYPE;

@@ -97,7 +97,8 @@ public class SplashActivity extends AbActivity {
 		super.onCreate(savedInstanceState);
 		initImageLoader(this);
 		initView();
-		getImagePath();
+		//TODO
+		//getImagePath();
 		mTimer = new Timer(true);
 		try {
 			mTimer.schedule(new TimerTask() {

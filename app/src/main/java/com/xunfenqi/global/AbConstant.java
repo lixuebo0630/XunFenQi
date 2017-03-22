@@ -9,14 +9,14 @@ package com.xunfenqi.global;
 public class AbConstant {
     // DeBug
     public static final boolean DEBUG = false;
-    public static final String URL = "http://60.205.156.131:8081/app_webservice_shopping/webservice/publicRequest?wsdl";
+    public static final String URL = "http://60.205.107.161:8080/app_webservice_shopping/webservice/publicRequest?wsdl";
 
     // SOAP命名空间
     public static final String NAMESPACE = "http://service.app.shopping.com/";
     public static final String REFRESH_MYACCOUNT_ACTION = "android.com.haihefinance.broadcastreceiver.action.MYACTION";
     // public static final String BASE_URL =
     // "http://192.168.12.198:8889/app_webservice";
-    public static final String BASE_URL = "http://223.202.60.29:80/app_webservice";
+    public static final String BASE_URL = "http://60.205.107.161:8080/app_webservice_shopping";
     public static final String code = "语音短信已发送，请注意接听来电";
     // SOAP调用的方法
     public static final String METHODNAME = "publicRequest";
@@ -25,7 +25,7 @@ public class AbConstant {
     // 客户端类型
     public static final String PHONETYPE = "001";
     // 异常:验证签名失败
-    public static final String VERIFY_FAIL = "";
+    public static final String VERIFY_FAIL = "error:验签失败";
     public static final String JSON_ERROR = "数据错误,请重试";
     // 页面大小
     public static final String PAGESIZE = "9";

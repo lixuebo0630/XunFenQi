@@ -9,6 +9,8 @@
 package com.xunfenqi.fragment.main;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,6 +27,8 @@ import com.weavey.loading.lib.LoadingLayout;
 import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
+import com.xunfenqi.activity.BankCardActivity;
+import com.xunfenqi.activity.H5Activity;
 import com.xunfenqi.activity.LoginActivity;
 import com.xunfenqi.activity.MessageActivity;
 import com.xunfenqi.activity.MyInviteActivity;
@@ -32,6 +37,8 @@ import com.xunfenqi.activity.MyRedActivity;
 import com.xunfenqi.activity.MyZhangDanActivity;
 import com.xunfenqi.activity.RegistActivity;
 import com.xunfenqi.activity.SafeSettingActivity;
+import com.xunfenqi.activity.WoDeZiLiaoActivity;
+import com.xunfenqi.activity.WoYaoJieKuanActivity;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.MyBaseFragment;
 import com.xunfenqi.global.AbConstant;
@@ -40,7 +47,9 @@ import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.ActivityUtil;
+import com.xunfenqi.utils.PermissionUtils;
 import com.xunfenqi.view.AbPullToRefreshView;
+import com.xunfenqi.view.dialog.SweetAlertDialog;
 import com.xunfenqi.view.widget.RunningTextView;
 
 import de.greenrobot.event.EventBus;
@@ -68,6 +77,10 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
     private LoadingLayout loadingView;
 
 
+    private String cardlast = "";
+    private String imgPath = "";
+
+
     private int mCurIndex = -1;
     /**
      * 标志位，标志已经初始化完成
@@ -77,6 +90,10 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
      * 是否已被加载过一次，第二次就不再去请求数据了
      */
     private boolean mHasLoadedOnce;
+    private LinearLayout ll_hkrq;
+    private String sfyjk = "";
+    private Button bt_ljhk;
+    private Intent intent;
 
 
     @Override
@@ -116,7 +133,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 doNetwork();
             }
         });
-
+        ll_hkrq = (LinearLayout) view.findViewById(R.id.ll_myaccount_frag_hkrq);
         rl_unlogin = (RelativeLayout) view
                 .findViewById(R.id.rl_myact_act_unlogin);
         ptrv = (AbPullToRefreshView) view.findViewById(R.id.ptrv_my_frag);
@@ -157,7 +174,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
         tv_byyh = (RunningTextView) view.findViewById(R.id.tv_my_frag_byyh);
         tv_kyye = (TextView) view.findViewById(R.id.tv_my_account_frag_kyye);
 
-        Button bt_ljhk = (Button) view.findViewById(R.id.btn_my_frag_ljhk);
+        bt_ljhk = (Button) view.findViewById(R.id.btn_my_frag_ljhk);
         Button bt_tixian = (Button) view.findViewById(R.id.btn_myaccount_frag_bottom_tixian);
         Button bt_recharge = (Button) view.findViewById(R.id.btn_myaccount_frag_bottom_recharge);
         rl_my_invite = (RelativeLayout) view.findViewById(R.id.rl_btn_myaccount_frag_invite_friends);
@@ -166,6 +183,10 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
 
         view.findViewById(R.id.rl_btn_myaccount_frag_my_red).setOnClickListener(this);
+        view.findViewById(R.id.rl_btn_myaccount_frag_bottom_money_detail).setOnClickListener(this);
+        view.findViewById(R.id.rl_btn_myaccount_frag_wdzl).setOnClickListener(this);
+        view.findViewById(R.id.rl_btn_myaccount_frag_helpcenter).setOnClickListener(this);
+        view.findViewById(R.id.rl_btn_myaccount_frag_kefudianhua).setOnClickListener(this);
         view.findViewById(R.id.rl_btn_myaccount_frag_bottom_wdjk).setOnClickListener(this);
         rl_safe_setting.setOnClickListener(this);
         iv_message.setOnClickListener(this);
@@ -241,6 +262,21 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                                 tv_lastdate_1.setText(info.getZhhkry());
                                 tv_lastdate_2.setText(info.getZhhkrr());
                                 loadingView.setStatus(LoadingLayout.Success);
+                                sfyjk = info.getSfyjk();
+
+
+                                cardlast = info.getYhkh();
+
+                                imgPath = info.getYhktb();
+                                if ("1".equals(sfyjk)) {//无借款
+                                    ll_hkrq.setVisibility(View.GONE);
+                                    bt_ljhk.setText("立即借款");
+
+                                } else {
+                                    bt_ljhk.setText("立即还款");
+                                    ll_hkrq.setVisibility(View.VISIBLE);
+                                }
+
                             } else {
 
                                 loadingView.setStatus(LoadingLayout.Error);
@@ -291,20 +327,84 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 ActivityUtil.startActivity(mActivity, MyRedActivity.class);
                 break;
             case R.id.btn_my_frag_ljhk://立即还款
+                if ("0".equals(sfyjk)) {//有借款
 
-                ActivityUtil.startActivity(mActivity, MyZhangDanActivity.class);
+                    ActivityUtil.startActivity(mActivity, MyZhangDanActivity.class);
+                } else {
+
+                    ActivityUtil.startActivity(mActivity, WoYaoJieKuanActivity.class);
+
+                }
                 break;
             case R.id.btn_myaccount_frag_bottom_tixian://提现
 
                 ActivityUtil.startActivity(mActivity, MessageActivity.class);
                 break;
+            case R.id.rl_btn_myaccount_frag_wdzl://我的资料
+
+                ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                break;
+            case R.id.rl_btn_myaccount_frag_kefudianhua://客服电话
+
+                PermissionUtils.checkPermission(mActivity, "android.permission.CALL_PHONE");
+
+
+                new SweetAlertDialog(mActivity,
+                        SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                        .setTitleText("拨打")
+                        .setContentText("022-58515216")
+                        .setCancelText("取消")
+                        .setConfirmText("确认")
+                        .showCancelButton(true)
+                        .setCancelClickListener(
+                                new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                })
+                        .setConfirmClickListener(
+                                new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                        Intent intent = new Intent();
+                                        // 系统默认的action，用来打开默认的电话界面
+                                        intent.setAction(Intent.ACTION_CALL);
+                                        // 需要拨打的号码
+                                        intent.setData(Uri.parse("tel:"
+                                                + "022-58515216"));
+                                        mActivity.startActivity(intent);
+                                    }
+                                }).show();
+
+
+                break;
+
             case R.id.btn_myaccount_frag_bottom_recharge://充值
 
                 ActivityUtil.startActivity(mActivity, MessageActivity.class);
                 break;
+
+            case R.id.rl_btn_myaccount_frag_bottom_money_detail://我的银行卡
+
+
+                intent = new Intent(mActivity, BankCardActivity.class);
+                intent.putExtra("cardlast", cardlast);
+                intent.putExtra("imgPath", imgPath);
+                mActivity.startActivity(intent);
+                break;
             case R.id.rl_btn_myaccount_frag_bottom_wdjk://我的借款
 
                 ActivityUtil.startActivity(mActivity, MyJieKuanActivity.class);
+                break;
+            case R.id.rl_btn_myaccount_frag_helpcenter://帮助中心
+
+                intent = new Intent(mActivity, H5Activity.class);
+                intent.putExtra("title", "帮助中心");
+                intent.putExtra("url", AbConstant.BASE_URL + "/app/qa.html");
+
+                mActivity.startActivity(intent);
                 break;
             default:
                 break;

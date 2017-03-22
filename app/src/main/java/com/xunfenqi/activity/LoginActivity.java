@@ -24,6 +24,7 @@ import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.AbActivity;
+import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.global.CallBackManager;
 import com.xunfenqi.global.EventPost;
 import com.xunfenqi.model.domain.LoginInfo;
@@ -244,6 +245,7 @@ public class LoginActivity extends AbActivity implements OnClickListener {
 							MyApplication.getInstance().setNineFlag(
 									MyApplication.LOGIN_SUCCESS);
 						}
+						EventBus.getDefault().post(AbConstant.REFRESH_MYACCOUNT_ACTION);
 						// 结束当前页面
 						finish();
 					} else {

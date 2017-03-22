@@ -1,147 +1,155 @@
 package com.xunfenqi.model.domain;
 
 /**
- * 
+ * @author Xuebo Li
  * @ClassName: LoginInfo
  * @Description: 登录信息实体类
- * @author Xuebo Li
  * @date 2015-8-14 下午3:37:40
- * 
  */
 
 public class LoginInfo {
 
-	private String messageType;
+    private String messageType;
 
-	private String respCode;
+    private String respCode;
 
-	private String respCodeDesc;
+    private String respCodeDesc;
 
-	private String signValue;
+    private String signValue;
 
-	private String trueName;
+    private String trueName;
 
-	private String userId;
+    private String userId;
 
-	private String userName;
+    private String userName;
 
-	private String dengLuMing;
+    private String dengLuMing;
 
-	private String imgPath;
+    private String imgPath;
 
-	public String getImgPath() {
-		return imgPath;
-	}
+    public String getFqlx() {
+        return fqlx;
+    }
 
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
-	}
+    public void setFqlx(String fqlx) {
+        this.fqlx = fqlx;
+    }
 
-	public String getMessageType() {
-		return messageType;
-	}
+    private String fqlx;
 
-	public void setMessageType(String messageType) {
-		this.messageType = messageType;
-	}
+    public String getImgPath() {
+        return imgPath;
+    }
 
-	public String getDengLuMing() {
-		return dengLuMing;
-	}
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
-	public void setDengLuMing(String dengLuMing) {
-		this.dengLuMing = dengLuMing;
-	}
+    public String getMessageType() {
+        return messageType;
+    }
 
-	private String userTel;
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
+    }
 
-	public String getmessageType() {
-		return messageType;
-	}
+    public String getDengLuMing() {
+        return dengLuMing;
+    }
 
-	public void setmessageType(String messageType) {
-		this.messageType = messageType;
-	}
+    public void setDengLuMing(String dengLuMing) {
+        this.dengLuMing = dengLuMing;
+    }
 
-	public String getRespCode() {
-		return respCode;
-	}
+    private String userTel;
 
-	public void setRespCode(String respCode) {
-		this.respCode = respCode;
-	}
+    public String getmessageType() {
+        return messageType;
+    }
 
-	public String getRespCodeDesc() {
-		return respCodeDesc;
-	}
+    public void setmessageType(String messageType) {
+        this.messageType = messageType;
+    }
 
-	public void setRespCodeDesc(String respCodeDesc) {
-		this.respCodeDesc = respCodeDesc;
-	}
+    public String getRespCode() {
+        return respCode;
+    }
 
-	public String getSignValue() {
-		return signValue;
-	}
+    public void setRespCode(String respCode) {
+        this.respCode = respCode;
+    }
 
-	public void setSignValue(String signValue) {
-		this.signValue = signValue;
-	}
+    public String getRespCodeDesc() {
+        return respCodeDesc;
+    }
 
-	public String getTrueName() {
-		return trueName;
-	}
+    public void setRespCodeDesc(String respCodeDesc) {
+        this.respCodeDesc = respCodeDesc;
+    }
 
-	public void setTrueName(String trueName) {
-		this.trueName = trueName;
-	}
+    public String getSignValue() {
+        return signValue;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public void setSignValue(String signValue) {
+        this.signValue = signValue;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getTrueName() {
+        return trueName;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public void setTrueName(String trueName) {
+        this.trueName = trueName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getUserTel() {
-		return userTel;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setUserTel(String userTel) {
-		this.userTel = userTel;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public LoginInfo(String messageType, String respCode, String respCodeDesc,
-			String signValue, String trueName, String userId, String userName) {
-		super();
-		this.messageType = messageType;
-		this.respCode = respCode;
-		this.respCodeDesc = respCodeDesc;
-		this.signValue = signValue;
-		this.trueName = trueName;
-		this.userId = userId;
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public LoginInfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public String getUserTel() {
+        return userTel;
+    }
 
-	@Override
-	public String toString() {
-		return "Login [messageType=" + messageType + ", respCode=" + respCode
-				+ ", respCodeDesc=" + respCodeDesc + ", signValue=" + signValue
-				+ ", trueName=" + trueName + ", userId=" + userId
-				+ ", userName=" + userName + "]";
-	}
+    public void setUserTel(String userTel) {
+        this.userTel = userTel;
+    }
+
+    public LoginInfo(String messageType, String respCode, String respCodeDesc,
+                     String signValue, String trueName, String userId, String userName) {
+        super();
+        this.messageType = messageType;
+        this.respCode = respCode;
+        this.respCodeDesc = respCodeDesc;
+        this.signValue = signValue;
+        this.trueName = trueName;
+        this.userId = userId;
+        this.userName = userName;
+    }
+
+    public LoginInfo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public String toString() {
+        return "Login [messageType=" + messageType + ", respCode=" + respCode
+                + ", respCodeDesc=" + respCodeDesc + ", signValue=" + signValue
+                + ", trueName=" + trueName + ", userId=" + userId
+                + ", userName=" + userName + "]";
+    }
 
 }
