@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/base15dp">
+
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="姓名"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_name"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="请输入姓名"
+                android:inputType="text"
+                android:maxLength="6"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="身份证号"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_id_num"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="请输入身份证号"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="银行卡号"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_bank_num"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="请输入银行卡号"
+                android:inputType="text"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="所属银行"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_bank_name"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="请输入所属银行"
+                android:inputType="text"
+                android:maxLength="17"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_sfrz_act_stu_flag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/content_background"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base44dp"
+                android:background="@color/white"
+
+                android:paddingLeft="@dimen/base14dp"
+                android:paddingRight="@dimen/base14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="一卡通"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/base15dp" />
+
+                <EditText
+                    android:id="@+id/et_my_sfrz_act_ykt"
+                    android:layout_width="@dimen/base190dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:hint="一卡通或学号"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="@dimen/base15dp" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/diver" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base44dp"
+                android:layout_marginTop="@dimen/base15dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/base14dp"
+                android:paddingRight="@dimen/base14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="学校名称"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/base15dp" />
+
+                <EditText
+                    android:id="@+id/et_my_sfrz_act_xxmc"
+                    android:layout_width="@dimen/base190dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:hint="本人所在的学校名称"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="@dimen/base15dp" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/diver" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base44dp"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/base14dp"
+                android:paddingRight="@dimen/base14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="入学时间"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/base15dp" />
+
+                <EditText
+                    android:id="@+id/et_my_sfrz_act_rxsj"
+                    android:layout_width="@dimen/base190dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@null"
+
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:hint="入学时间"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="@dimen/base15dp" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/diver" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base44dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/base14dp"
+                android:paddingRight="@dimen/base14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学历"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/base15dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_sfrz_act_xl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/pop_down"
+                    android:text="请选择"
+                    android:textSize="@dimen/base15dp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="详细地址"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_xxdz"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="详细地址"
+                android:inputType="text"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+
+        <Button
+            android:id="@+id/bt_sfrz_act_commit"
+            style="@style/content_button"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="提交"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</ScrollView>

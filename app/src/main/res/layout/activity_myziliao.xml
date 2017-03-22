@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/base15dp"
+    android:paddingRight="@dimen/base15dp">
+
+    <RelativeLayout
+
+        android:id="@+id/rl_btn_my_ziliao_act_sfrz"
+        android:layout_width="match_parent"
+        android:background="@drawable/myziliao_item"
+        android:layout_height="@dimen/base91dp"
+        android:layout_marginTop="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/z__iv_lxr"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:background="@drawable/my_ziliao1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@id/z__iv_lxr"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base14dp"
+                android:text="身份认证" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_my_ziliao_act_sfrz"
+                android:layout_marginTop="@dimen/base5dp"
+
+                android:background="@drawable/shape_gray"
+                android:textColor="@color/white"
+                android:paddingLeft="@dimen/base8dp"
+                android:paddingRight="@dimen/base8dp"
+                android:paddingTop="@dimen/base3dp"
+                android:paddingBottom="@dimen/base3dp"
+                android:text="未认证" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base91dp"
+        android:background="@drawable/myziliao_item"
+        android:id="@+id/rl_btn_my_ziliao_act_fqxx"
+        android:layout_marginTop="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/z__iv_fq"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:background="@drawable/my_ziliao4"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@id/z__iv_fq"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base14dp"
+                android:text="联系人信息" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_gray"
+                android:textColor="@color/white"
+                android:paddingTop="@dimen/base3dp"
+                android:id="@+id/tv_my_ziliao_act_lxrxxrz"
+                android:paddingBottom="@dimen/base3dp"
+                android:paddingLeft="@dimen/base8dp"
+                android:paddingRight="@dimen/base8dp"
+                android:text="未认证" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/myziliao_item"
+        android:id="@+id/rl_btn_my_ziliao_act_jdrz"
+        android:layout_height="@dimen/base91dp"
+        android:layout_marginTop="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/z__iv_jd"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:background="@drawable/jdrz"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@id/z__iv_jd"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base14dp"
+                android:text="京东认证" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_gray"
+                android:textColor="@color/white"
+                android:paddingTop="@dimen/base3dp"
+                android:paddingBottom="@dimen/base3dp"
+                android:id="@+id/tv_my_ziliao_act_jdrz"
+                android:paddingLeft="@dimen/base8dp"
+                android:paddingRight="@dimen/base8dp"
+                android:text="未认证" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/myziliao_item"
+        android:id="@+id/rl_btn_my_ziliao_act_xxwrz"
+        android:layout_height="@dimen/base91dp"
+        android:layout_marginTop="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/z__iv_xxw"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:background="@drawable/xxwrz"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@id/z__iv_xxw"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base14dp"
+                android:text="学信网认证" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_gray"
+                android:textColor="@color/white"
+                android:paddingTop="@dimen/base3dp"
+                android:id="@+id/tv_my_ziliao_act_xxwrz"
+                android:paddingBottom="@dimen/base3dp"
+                android:paddingLeft="@dimen/base8dp"
+                android:paddingRight="@dimen/base8dp"
+                android:text="未认证" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/myziliao_item"
+        android:id="@+id/rl_btn_my_ziliao_act_sjfwmrz"
+        android:layout_height="@dimen/base91dp"
+        android:layout_marginTop="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/z__iv_sjfwm"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:background="@drawable/lxrrz"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@id/z__iv_sjfwm"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/base14dp"
+                android:text="手机服务码认证" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_gray"
+                android:textColor="@color/white"
+                android:paddingTop="@dimen/base3dp"
+                android:id="@+id/tv_my_ziliao_act_sjfwmrz"
+                android:paddingBottom="@dimen/base3dp"
+                android:paddingLeft="@dimen/base8dp"
+                android:paddingRight="@dimen/base8dp"
+                android:text="未认证" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

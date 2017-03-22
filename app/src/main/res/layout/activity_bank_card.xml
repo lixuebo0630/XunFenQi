@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/diver" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base55dp"
+        android:layout_marginTop="@dimen/base15dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <!-- TODO: h,w -->
+
+        <ImageView
+            android:id="@+id/iv_act_imgbank"
+            android:layout_width="@dimen/base106dp"
+            android:layout_height="@dimen/base24dp"
+            android:layout_marginLeft="@dimen/base15dp" />
+
+        <TextView
+            android:id="@+id/tv_act_cardbank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bank_card_act_fzhmc"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base30dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/base15dp"
+            android:text="分支行名称" />
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:id="@+id/rl_btn_bank_card_act_fzhmc"
+            style="@style/list_item_ios_safe_setting" >
+
+            <TextView
+                android:id="@+id/tv_bank_card_act_fzhmc"
+                style="@style/list_item_ios_safe_setting_left_tv_text"
+                android:clickable="false"
+                android:enabled="false"
+                android:singleLine="true"
+                android:text="河北省-廊坊市-招商银行燕郊支行"
+                android:textColor="#9A9A9A"
+                android:textSize="@dimen/base14dp" />
+
+            <TextView style="@style/list_item_ios_safe_setting_right_tv_text" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base15dp"
+        android:background="#00000000"
+        android:visibility="gone"
+        android:singleLine="false"
+        android:text="如需变更银行卡请登录www.manpuman.com满扑满网站进行操作。"
+        android:textColor="@color/content_text_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/bt_bank_card_act_to_recharge"
+            android:layout_width="0dip"
+            android:layout_height="@dimen/base43dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_weight="1"
+            android:text="充值" />
+
+        <Button
+            android:id="@+id/bt_bank_card_act_to_enchashment"
+            android:layout_width="0dip"
+            android:layout_height="@dimen/base43dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_weight="1"
+            android:text="提现" />
+
+        <Button
+            android:id="@+id/bt_bank_card_act_to_invest"
+            android:layout_width="0dip"
+            android:layout_height="@dimen/base43dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_weight="1"
+            android:text="投资" />
+    </LinearLayout>
+
+</LinearLayout>
