@@ -75,7 +75,6 @@ public class JIeKuanDetailActivity extends BaseActivity {
     @Override
     public void initData() {
 
-
         // ListView数据
         list = new ArrayList<UserLoansDetailInfo.UserLoansDetail>();
         jIeKuanDetailAdapter = new JIeKuanDetailAdapter(this, list,

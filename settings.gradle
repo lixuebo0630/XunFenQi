@@ -1,1 +1,2 @@
 include ':app', ':loadinglib'
+include ':payDemoActivity_20'

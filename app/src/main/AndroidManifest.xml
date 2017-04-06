@@ -85,6 +85,15 @@
             android:name=".activity.SetDealPwdActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.EnchashmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EnchashmentRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EnchashmentSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.SetNineLockActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -184,29 +193,17 @@
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
 
-
-        <!---->
-        <!--<activity-->
-        <!--android:name="com.alipay.sdk.app.H5PayActivity"-->
-        <!--android:configChanges="orientation|keyboardHidden|navigation"-->
-        <!--android:exported="false"-->
-        <!--android:screenOrientation="behind"></activity>-->
-        <!--<activity-->
-        <!--android:name="com.alipay.sdk.auth.AuthActivity"-->
-        <!--android:configChanges="orientation|keyboardHidden|navigation"-->
-        <!--android:exported="false"-->
-        <!--android:screenOrientation="behind"></activity>-->
-
-        <!--<provider-->
-        <!--android:name="android.support.v4.content.FileProvider"-->
-        <!--android:authorities="${com.xunfenqi}.fileProvider"-->
-        <!--android:exported="false"-->
-        <!--android:grantUriPermissions="true">-->
-        <!--<meta-data-->
-        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--android:resource="@xml/provider_paths" />-->
-        <!--</provider>-->
     </application>
 
 </manifest>

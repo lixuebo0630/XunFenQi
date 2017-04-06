@@ -1027,6 +1027,32 @@ public class HaiheReturnApi {
         }
         return null;
 
+    }  public static UserLoansDetailInfo sendZfb(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "还款调用支付宝返回数据:" + content);
+        UserLoansDetailInfo userLoansDetailInfo = (UserLoansDetailInfo) AbJsonUtil.fromJson(
+                content, UserLoansDetailInfo.class);
+        if (userLoansDetailInfo != null) {
+
+            String data = userLoansDetailInfo.getMessageType()
+                    + userLoansDetailInfo.getRespCode() + userLoansDetailInfo.getUserId()
+                    + userLoansDetailInfo.getCczz();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    userLoansDetailInfo.getSignValue());
+
+            if (verifyResult) {
+                return userLoansDetailInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
     }
 
     /**

@@ -173,7 +173,6 @@ public class HaiHeApi {
             json.put("ssyh", ssyh);
             json.put("xxmc", xxmc);
             json.put("rxsj", rxsj);
-            json.put("xxmc", xxmc);
             json.put("xl", xl);
             json.put("address", address);
             json.put("xxdz", "");
@@ -267,7 +266,7 @@ public class HaiHeApi {
     public static void userEditConnectPeople(String userId,
                                              String lxrOneName, String lxrOneTel,
                                              String lxrSecName, String lxrSecTel,
-                                             String sf1,String sf2,
+                                             String sf1, String sf2,
                                              AbSoapListener listener) {
         try {
             String data = AbConstant.VERSION + "userEditConnectPeople" + userId
@@ -857,6 +856,32 @@ public class HaiHeApi {
 
     }
 
+    public static void userSendZfb(String userId, String hklsh, String sjlx
+            , AbSoapListener listener) {
+
+        try {
+            String data = AbConstant.VERSION + "userSendZfb" + userId + hklsh + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.MESSAGETYPE, "userSendZfb");
+            json.put(JsonConstant.USERID, userId);
+            json.put("hklsh", hklsh);
+            json.put("zfblsh", "");
+
+            json.put("sjlx", sjlx);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     /**
      * @return void
      * @throws
@@ -1067,6 +1092,33 @@ public class HaiHeApi {
 
     }
 
+
+    // 用户提现
+    public static void userEnchashmentSum(String loginUid, String txje1,
+
+                                          AbSoapListener abSoapListener) {
+        try {
+            String data = AbConstant.VERSION + "userEnchashmentSum" + loginUid
+                    + txje1 + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.MESSAGETYPE, "userEnchashmentSum");
+            json.put(JsonConstant.USERID, loginUid);
+            json.put(JsonConstant.TXJE, txje1);
+
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    abSoapListener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * @return void
      * @throws
@@ -1217,12 +1269,12 @@ public class HaiHeApi {
     public static void userIntoEnchashment(String loginUid,
                                            AbSoapListener abSoapListener) {
         try {
-            String data = AbConstant.VERSION + "userIntoEnchashmentTwo"
+            String data = AbConstant.VERSION + "userIntoEnchashment"
                     + loginUid + AbConstant.PHONETYPE;
 
             JSONObject json = new JSONObject();
             json.put(JsonConstant.VERSION, AbConstant.VERSION);
-            json.put(JsonConstant.MESSAGETYPE, "userIntoEnchashmentTwo");
+            json.put(JsonConstant.MESSAGETYPE, "userIntoEnchashment");
             json.put(JsonConstant.USERID, loginUid);
 
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
@@ -1243,20 +1295,20 @@ public class HaiHeApi {
                                              AbSoapListener abSoapListener) {
         try {
             payPws = Md5Util.md5Diagest(DES.encrypt(payPws));
-            String data = AbConstant.VERSION + "userEnchashmentSumTwo"
-                    + loginUid + txje1 + payPws + AbConstant.PHONETYPE;
+            String data = AbConstant.VERSION + "userEnchashmentSum"
+                    + loginUid + txje1 + AbConstant.PHONETYPE;
 
             JSONObject json = new JSONObject();
             json.put(JsonConstant.VERSION, AbConstant.VERSION);
-            json.put(JsonConstant.MESSAGETYPE, "userEnchashmentSumTwo");
+            json.put(JsonConstant.MESSAGETYPE, "userEnchashmentSum");
             json.put(JsonConstant.USERID, loginUid);
-            json.put(JsonConstant.PAYPWS, payPws);
+            //      json.put(JsonConstant.PAYPWS, payPws);
             json.put(JsonConstant.TXJE, txje1);
             json.put(JsonConstant.ZHMC, branchBankName);
-            json.put("proName", proName);
-            json.put("proCode", proCode);
-            json.put("cityName", cityName);
-            json.put("cityCode", cityCode);
+            json.put("kaihuProd", proName);
+            //json.put("proCode", proCode);
+            json.put("kaihuCity", cityName);
+            // json.put("cityCode", cityCode);
 
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));

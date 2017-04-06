@@ -14,6 +14,15 @@ public class UserIntoEnchashment {
 	private String signValue;
 	private String hqdj;
 	private String imgPath;
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public String getImgPath() {
 		return imgPath;

@@ -49,4 +49,5 @@ dependencies {
     //    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
     //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
     compile project(':loadinglib')
+    compile files('libs/alipaySdk-20170309.jar')
 }

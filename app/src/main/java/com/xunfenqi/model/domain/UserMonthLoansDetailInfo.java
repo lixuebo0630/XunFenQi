@@ -20,6 +20,8 @@ public class UserMonthLoansDetailInfo {
 	private String zje;// 总行数
 	private String hkrq;// 总页数
 	private String bs;// 当前页
+	private String hkrqr;
+	private String hkrqy;
 	private List<UserMonthLoansDetail> dataList;
 	private String signValue;
 
@@ -27,7 +29,20 @@ public class UserMonthLoansDetailInfo {
 		private String lsh;
 		private String je;
 		private String fqid;
+		private String jkid;
 		private String qs;
+
+		public String getHkrqr() {
+			return hkrqr;
+		}
+
+		public String getJkid() {
+			return jkid;
+		}
+
+		public void setJkid(String jkid) {
+			this.jkid = jkid;
+		}
 
 		public String getLsh() {
 			return lsh;
@@ -129,6 +144,23 @@ public class UserMonthLoansDetailInfo {
 
 	public String getSignValue() {
 		return signValue;
+	}
+
+
+	public String getHkrqr() {
+		return hkrqr;
+	}
+
+	public void setHkrqr(String hkrqr) {
+		this.hkrqr = hkrqr;
+	}
+
+	public String getHkrqy() {
+		return hkrqy;
+	}
+
+	public void setHkrqy(String hkrqy) {
+		this.hkrqy = hkrqy;
 	}
 
 	public void setSignValue(String signValue) {

@@ -388,7 +388,7 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
 
     private void submit() {
 
-        String jkqx = tv_jkqx.getText().toString().substring(0, 1);
+        String jkqx = tv_jkqx.getText().toString().split("个月")[0];
         String jkje = et_jkje.getText().toString().trim();
         String jksm = et_xxsm.getText().toString().trim();
         HaiHeApi.applyLoan("1", jkqx, "1", jkje, jksm, (bj - sxf - yj) + "", yj + "", sxf + "",

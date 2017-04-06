@@ -11,15 +11,13 @@
         android:background="@color/white">
 
 
-
-
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:padding="@dimen/base14dp"
             android:id="@+id/iv_btn_myzhangdan_act_cjwt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_margin="@dimen/base15dp"
+            android:padding="@dimen/base14dp"
             android:src="@drawable/my_zhangdan_cjwt" />
 
         <ImageView
@@ -33,16 +31,17 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/base40dp"
-            android:text="分期剩余应还(元)"
+            android:text="本月分期剩余应还(元)"
             android:textColor="@color/content_text_gray2"
             android:textSize="@dimen/base15dp" />
 
         <TextView
+            android:id="@+id/tv_myzhangdan_act_je_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/base60dp"
-            android:text="2000.99"
+            android:text="0.00"
             android:textColor="@color/content_base"
             android:textSize="@dimen/base24dp" />
 
@@ -61,42 +60,44 @@
                 android:textSize="@dimen/base13dp" />
 
             <TextView
+                android:id="@+id/tv_myzhangdan_act_yue"
                 android:layout_width="@dimen/base23dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/base10dp"
                 android:background="@drawable/my_zhangdan_riqi_bg"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="10"
+                android:text="-"
                 android:textColor="@color/content_base"
                 android:textSize="@dimen/base13dp" />
 
 
             <TextView
-                android:singleLine="true"
                 style="@style/content_tv_base"
                 android:layout_marginLeft="@dimen/base6dp"
+                android:singleLine="true"
                 android:text="月"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/base13dp" />
 
 
             <TextView
-                android:singleLine="true"
+                android:id="@+id/tv_myzhangdan_act_ri"
                 android:layout_width="@dimen/base23dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/base6dp"
                 android:background="@drawable/my_zhangdan_riqi_bg"
                 android:gravity="center"
-                android:text="10"
+                android:singleLine="true"
+                android:text="-"
                 android:textColor="@color/content_base"
                 android:textSize="@dimen/base13dp" />
 
 
             <TextView
                 style="@style/content_tv_base"
-                android:singleLine="true"
                 android:layout_marginLeft="@dimen/base6dp"
+                android:singleLine="true"
                 android:text="日"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/base13dp" />
@@ -107,52 +108,54 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base133dp">
+            android:layout_marginTop="@dimen/base133dp"
+            android:gravity="center">
 
             <TextView
-                android:singleLine="true"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="已经入账单共"
                 android:textColor="@color/content_text_gray2"
-                android:textSize="@dimen/base13dp"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/base13dp" />
+
             <TextView
+                android:id="@+id/tv_myzhangdan_act_bs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="2"
+                android:text="0"
                 android:textColor="@color/black"
-                android:textSize="@dimen/base13dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/base13dp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="笔,"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
+                android:text="笔,共"
                 android:textColor="@color/content_text_gray2"
-                android:textSize="@dimen/base13dp"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/base13dp" />
 
 
             <TextView
+                android:id="@+id/tv_myzhangdan_act_je_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/base5dp"
-                android:text="2000.99"
                 android:singleLine="true"
+                android:text="0.00"
                 android:textColor="@color/black"
-                android:textSize="@dimen/base13dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/base13dp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="元"
+                android:layout_height="wrap_content"
                 android:singleLine="true"
+                android:text="元"
                 android:textColor="@color/content_text_gray2"
-                android:textSize="@dimen/base13dp"
-                android:layout_height="wrap_content" />
-
+                android:textSize="@dimen/base13dp" />
 
 
         </LinearLayout>
@@ -164,7 +167,8 @@
     <com.weavey.loading.lib.LoadingLayout
         android:id="@+id/loading_myinvite_act"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base309dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/base10dp">
 
 
         <com.xunfenqi.view.AbPullToRefreshView
@@ -175,22 +179,22 @@
             <ListView
                 android:id="@+id/lv_myinvite_act"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base309dp"></ListView>
+                android:layout_height="match_parent"></ListView>
 
 
         </com.xunfenqi.view.AbPullToRefreshView>
     </com.weavey.loading.lib.LoadingLayout>
 
-    <Button
-        android:id="@+id/btn_myinvite_act_submit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base38dp"
-        android:layout_marginLeft="@dimen/base31dp"
-        android:layout_marginRight="@dimen/base31dp"
-        android:layout_marginTop="@dimen/base9dp"
-        android:background="@drawable/shape_bg_my_frag_recharge"
-        android:text="立即还款"
-        android:textColor="@color/white"
-        android:textSize="@dimen/base15dp" />
+    <!--<Button-->
+    <!--android:id="@+id/btn_myinvite_act_submit"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/base38dp"-->
+    <!--android:layout_marginLeft="@dimen/base31dp"-->
+    <!--android:layout_marginRight="@dimen/base31dp"-->
+    <!--android:layout_marginTop="@dimen/base9dp"-->
+    <!--android:background="@drawable/shape_bg_my_frag_recharge"-->
+    <!--android:text="立即还款"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="@dimen/base15dp" />-->
 
 </LinearLayout>

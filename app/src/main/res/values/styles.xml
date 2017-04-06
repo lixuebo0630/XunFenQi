@@ -167,7 +167,17 @@
 
 
 
-
+    <!-- popwindow 条目样式 -->
+    <style name="content_pop_item">
+        <item name="android:singleLine">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base52dp</item>
+        <item name="android:paddingLeft">@dimen/base15dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/content_text</item>
+        <item name="android:textSize">@dimen/base14dp</item>
+    </style>
 
     <style name="style_progressbar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/progressbar</item>

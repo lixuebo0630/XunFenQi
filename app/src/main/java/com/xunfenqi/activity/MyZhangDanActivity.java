@@ -1,7 +1,10 @@
 package com.xunfenqi.activity;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.weavey.loading.lib.LoadingLayout;
 import com.xunfenqi.HaiHeApi;
@@ -25,12 +28,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by lixuebo on 16/11/23.
  */
 
 public class MyZhangDanActivity extends BaseActivity {
 
+    @BindView(R.id.tv_myzhangdan_act_je_top)
+    TextView tvMyzhangdanActJeTop;
+    @BindView(R.id.tv_myzhangdan_act_yue)
+    TextView tvMyzhangdanActYue;
+    @BindView(R.id.tv_myzhangdan_act_ri)
+    TextView tvMyzhangdanActRi;
+    @BindView(R.id.tv_myzhangdan_act_bs)
+    TextView tvMyzhangdanActBs;
+    @BindView(R.id.tv_myzhangdan_act_je_bottom)
+    TextView tvMyzhangdanActJeBottom;
+    @BindView(R.id.loading_myinvite_act)
+    LoadingLayout loadingMyinviteAct;
     private AbPullToRefreshView ptrv;
 
     private int currentPage = 1;
@@ -63,11 +81,26 @@ public class MyZhangDanActivity extends BaseActivity {
         findViewById(R.id.iv_btn_myzhangdan_act_cjwt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtil.startActivity(MyZhangDanActivity.this,MessageActivity.class);
+                //   ActivityUtil.startActivity(MyZhangDanActivity.this,MessageActivity.class);
             }
         });
 
         lv = (ListView) findViewById(R.id.lv_myinvite_act);
+
+
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(userMonthLoansDetailList!= null){
+                    String jkid = userMonthLoansDetailList.get(position).getJkid();
+
+
+                    ActivityUtil.startActivityForStringData(MyZhangDanActivity.this, "jkid", JIeKuanDetailActivity.class, jkid);
+
+                }
+            }
+        });
     }
 
     @Override
@@ -101,16 +134,26 @@ public class MyZhangDanActivity extends BaseActivity {
         loadingLayout.setStatus(LoadingLayout.Loading);
         // AbDialogUtil.getWaitDialog(mActivity);
 
-        HaiHeApi.userMonthLoansDetailDao( MyApplication
+        HaiHeApi.userMonthLoansDetailDao(MyApplication
                 .getInstance().getLoginUid(), new AbSoapListener() {
             @Override
             public void onSuccess(int statusCode, String content) {
-                UserMonthLoansDetailInfo userMonthLoansDetailInfo = HaiheReturnApi
+                final UserMonthLoansDetailInfo userMonthLoansDetailInfo = HaiheReturnApi
                         .userMonthLoansDetailDao(content);
                 if (userMonthLoansDetailInfo != null) {
                     if ("000".equals(userMonthLoansDetailInfo.getRespCode())) {// 操作成功
                         // 判断总页数和当前页
+                        MyZhangDanActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvMyzhangdanActYue.setText(userMonthLoansDetailInfo.getHkrqy());
+                                tvMyzhangdanActRi.setText(userMonthLoansDetailInfo.getHkrqr());
+                                tvMyzhangdanActBs.setText(userMonthLoansDetailInfo.getBs());
+                                tvMyzhangdanActJeBottom.setText(userMonthLoansDetailInfo.getZje());
+                                tvMyzhangdanActJeTop.setText(userMonthLoansDetailInfo.getZje());
 
+                            }
+                        });
                         // 处理数据
                         processData(userMonthLoansDetailInfo);
 
@@ -140,7 +183,7 @@ public class MyZhangDanActivity extends BaseActivity {
 
     private void processData(UserMonthLoansDetailInfo userMonthLoansDetailInfo)
 
-{
+    {
         newList = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = null;
         userMonthLoansDetailList = userMonthLoansDetailInfo.getDataList();
@@ -152,6 +195,7 @@ public class MyZhangDanActivity extends BaseActivity {
                 map.put("item_je", userMonthLoansDetail.getJe());
                 map.put("item_lsh", userMonthLoansDetail.getLsh());
                 map.put("item_qs", userMonthLoansDetail.getQs());
+                map.put("item_jkid", userMonthLoansDetail.getJkid());
 
                 newList.add(map);
                 if (newList != null && newList.size() > 0) {
@@ -182,5 +226,12 @@ public class MyZhangDanActivity extends BaseActivity {
         tTitleBar.setLogo(R.drawable.titlebar_back);
         tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(58),
                 UIUtils.dip2px(14));
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

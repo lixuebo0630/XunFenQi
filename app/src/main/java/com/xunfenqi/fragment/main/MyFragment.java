@@ -28,6 +28,7 @@ import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.activity.BankCardActivity;
+import com.xunfenqi.activity.EnchashmentActivity;
 import com.xunfenqi.activity.H5Activity;
 import com.xunfenqi.activity.LoginActivity;
 import com.xunfenqi.activity.MessageActivity;
@@ -338,7 +339,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 break;
             case R.id.btn_myaccount_frag_bottom_tixian://提现
 
-                ActivityUtil.startActivity(mActivity, MessageActivity.class);
+                ActivityUtil.startActivity(mActivity, EnchashmentActivity.class);
                 break;
             case R.id.rl_btn_myaccount_frag_wdzl://我的资料
 
@@ -383,7 +384,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
             case R.id.btn_myaccount_frag_bottom_recharge://充值
 
-                ActivityUtil.startActivity(mActivity, MessageActivity.class);
+              //  ActivityUtil.startActivity(mActivity, MessageActivity.class);
                 break;
 
             case R.id.rl_btn_myaccount_frag_bottom_money_detail://我的银行卡

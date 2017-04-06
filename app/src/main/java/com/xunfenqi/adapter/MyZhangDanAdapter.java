@@ -90,9 +90,15 @@ public class MyZhangDanAdapter extends BaseAdapter {
         TextView tv_qs = AbViewHolder.get(convertView, mTo[2]);
 
 
-        tv_je.setText(mData.get(position).getJe());
-        tv_ddh.setText("订单号  " + mData.get(position).getLsh());
-        tv_qs.setText(mData.get(position).getQs());
+//        put("item_fqid", userMonthLoansDetail.getFqid());
+//        map.put("item_je", userMonthLoansDetail.getJe());
+//        map.put("item_lsh", userMonthLoansDetail.getLsh());
+//        map.put("item_qs", userMonthLoansDetail.getQs());
+
+
+        tv_je.setText((String)obj.get("item_je")+"元");
+        tv_ddh.setText("订单号  " + (String)obj.get("item_lsh"));
+        tv_qs.setText((String)obj.get("item_qs"));
 
         return convertView;
     }

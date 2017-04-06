@@ -1,36 +1,38 @@
 package com.xunfenqi.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alipay.sdk.app.EnvUtils;
+import com.alipay.sdk.app.PayTask;
 import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.application.MyApplication;
-import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.model.domain.UserLoansDetailInfo;
-import com.xunfenqi.model.domain.UserLoansPayBackDaoInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
+import com.xunfenqi.pay.PayResult;
 import com.xunfenqi.utils.AbDialogUtil;
+import com.xunfenqi.utils.AbLogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewHolder;
-import com.xunfenqi.utils.ButtonUtils;
-import com.xunfenqi.utils.Md5Util;
 
 import java.util.List;
-
-import de.greenrobot.event.EventBus;
+import java.util.Map;
 
 /**
  * 红包
@@ -50,6 +52,8 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
     // view的id
     private int[] mTo;
 
+    private static final int SDK_PAY_FLAG = 1;
+
     private Button tv_caozuo;
     private ImageView iv_state;
     private LinearLayout ll_lqrq;
@@ -63,6 +67,40 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
      * @param from     Map中的key
      * @param to       view的id
      */
+
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    @SuppressWarnings("unchecked")
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                    /**
+                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    String resultStatus = payResult.getResultStatus();
+                    // 判断resultStatus 为9000则代表支付成功
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+                        Toast.makeText(mContext, "支付失败", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                }
+
+
+                default:
+                    break;
+            }
+        }
+
+        ;
+    };
+
 
     public JIeKuanDetailAdapter(Activity context, List data, int resource,
                                 String[] from, int[] to) {
@@ -118,7 +156,7 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
             public void onClick(View v) {
 
 
-                doHuanKuan(userLoansDetail.getMxid(), userLoansDetail.getZe());
+                doHuanKuan(userLoansDetail.getLsh());
             }
         });
 
@@ -160,88 +198,59 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void doHuanKuan(final String mxid, final String ze) {
+    private void doHuanKuan(final String lsh) {
+       AbDialogUtil.getWaitDialog(mContext);
 
-        final View view = View.inflate(mContext, R.layout.layout_dialog_with_edittext, null);
 
-        final EditText editText = (EditText) view
-                .findViewById(R.id.et_dialog_with_edit_deal_pwd);
-        TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
+        String loginUid = MyApplication.getInstance().getLoginUid();
+        if (loginUid != null) {
+            HaiHeApi.userSendZfb(loginUid, lsh, "recharge",
+                    new AbSoapListener() {
+                        @Override
+                        public void onSuccess(int statusCode, String content) {
+                            AbDialogUtil.removeDialog(mContext);
+                            final UserLoansDetailInfo userLoansDetailInfo = HaiheReturnApi
+                                    .sendZfb(content);
+                            if (userLoansDetailInfo != null) {
+                                if ("000".equals(userLoansDetailInfo.getRespCode())) {
+                                    EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
 
-        tv_money.setText("支付 " + ze + " 元");
-        Button bt_cancel = (Button) view
-                .findViewById(R.id.bt_dialog_with_edit_cancel);
-        Button bt_confirm = (Button) view
-                .findViewById(R.id.bt_dialog_with_edit_confirm);
-        bt_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AbDialogUtil.removeDialog(view);
-            }
-        });
-        bt_confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ButtonUtils.isFastDoubleClick()) {
-                    return;
+                                    Runnable payRunnable = new Runnable() {
 
-                } else {
+                                        @Override
+                                        public void run() {
+                                            PayTask alipay = new PayTask(mContext);
+                                            Map<String, String> result = alipay.payV2(userLoansDetailInfo.getOrderInfo(), true);
+                                            AbLogUtil.d("ALIPay",result.toString());
 
-                    String payPws = editText.getText().toString().trim();
-
-                    if (!TextUtils.isEmpty(payPws)) {
-                        String loginUid = MyApplication.getInstance().getLoginUid();
-
-                        if (loginUid != null && !"".equals(loginUid)) {
-                            HaiHeApi.userLoansPayBackDao(loginUid, mxid, Md5Util.md5Diagest(payPws), ze, new AbSoapListener() {
-                                @Override
-                                public void onSuccess(int statusCode, String content) {
-                                    AbDialogUtil.removeDialog(mContext);
-                                    final UserLoansPayBackDaoInfo userLoansPayBackDaoInfo = HaiheReturnApi
-                                            .userLoansPayBackDao(content);
-                                    if (userLoansPayBackDaoInfo != null) {
-                                        if (userLoansPayBackDaoInfo.getRespCode().equals("000")) {
-                                            EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
-                                            EventBus.getDefault().post(AbConstant.JIEKUAN_DETAIL_REFRESH);
-                                            AbToastUtil.showToast(mContext,"还款成功");
-                                            AbDialogUtil.removeDialog(view);
-
-                                        } else {
-                                            AbToastUtil.showToastInThread(mContext,
-                                                    userLoansPayBackDaoInfo.getRespCodeDesc());
-                                            return;
+                                            Message msg = new Message();
+                                            msg.what = SDK_PAY_FLAG;
+                                            msg.obj = result;
+                                            mHandler.sendMessage(msg);
                                         }
-                                    } else {
-                                        AbToastUtil.showToast(mContext, "----------");
-                                        return;
-                                    }
+                                    };
 
+                                    Thread payThread = new Thread(payRunnable);
+                                    payThread.start();
+                                } else {
+                                    AbToastUtil.showToastInThread(mContext,
+                                            userLoansDetailInfo.getRespCodeDesc());
                                 }
+                            }
 
-                                @Override
-                                public void onFailure(int statusCode, String content,
-                                                      Throwable error) {
-                                    error.printStackTrace();
-                                    AbDialogUtil.removeDialog(mContext);
-                                    AbToastUtil.showToastInThread(mContext, error.getMessage());
-                                }
 
-                            });
                         }
 
-
-                    } else {
-                        AbToastUtil.showToast(mContext, "请输入交易密码");
-                        return;
-                    }
-
-
-                }
-            }
-        });
-
-
-        AbDialogUtil.showAlertDialog(view);
+                        @Override
+                        public void onFailure(int statusCode,
+                                              final String content, Throwable error) {
+                            error.printStackTrace();
+                            AbToastUtil.showToastInThread(mContext,
+                                    error.getMessage());
+                            AbDialogUtil.removeDialog(mContext);
+                        }
+                    });
+        }
 
     }
 
