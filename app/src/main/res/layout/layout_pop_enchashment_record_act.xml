@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_pop_enchashment_record_act_all"
+            style="@style/content_pop_item"
+            android:background="@drawable/list_item_selector"
+            android:text="全部" />
+
+        <include layout="@layout/diver_short" />
+
+        <TextView
+            android:id="@+id/tv_pop_enchashment_record_act_process"
+            style="@style/content_pop_item"
+            android:background="@drawable/list_item_selector"
+            android:text="处理中" />
+
+        <include layout="@layout/diver_short" />
+
+        <TextView
+            android:id="@+id/tv_pop_enchashment_record_act_success"
+            style="@style/content_pop_item"
+            android:background="@drawable/list_item_selector"
+            android:text="成功" />
+
+        <include layout="@layout/diver_short" />
+
+        <TextView
+            android:id="@+id/tv_pop_enchashment_record_act_fail"
+            style="@style/content_pop_item"
+            android:background="@drawable/list_item_selector"
+            android:text="失败" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pop_enchashment_record_act_touming"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:clickable="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

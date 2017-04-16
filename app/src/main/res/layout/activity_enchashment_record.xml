@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_btn_enchashment_record_act_popwindow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base39dp"
+        android:background="@color/content_background"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/tv_enchashment_record_act_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="全部"
+            android:textSize="@dimen/base14dp" />
+
+        <ImageView
+            android:id="@+id/iv_enchashment_record_act_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@drawable/pop_down" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base38dp"
+        android:background="#E9E9E9"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp"
+        android:weightSum="18" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="创建时间"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="提现(元)"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="状态"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="银行账号"
+            android:textColor="#333333"
+            android:textSize="@dimen/base12dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_enchashment_record_act_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</LinearLayout>
