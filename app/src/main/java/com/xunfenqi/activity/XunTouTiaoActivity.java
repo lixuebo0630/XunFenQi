@@ -8,6 +8,8 @@
 
 package com.xunfenqi.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -62,7 +64,14 @@ public class XunTouTiaoActivity extends BaseActivity {
 
                     QueryNewsInfo.QueryNews queryNews = list.get(position);
 
-                  //  ActivityUtil.startActivityForStringData(XunTouTiaoActivity.this, "jkid", JIeKuanDetailActivity.class, userMyJiekuan.getJkid());
+                    Intent intent2 = new Intent(XunTouTiaoActivity.this, H5Activity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putString("title", "讯头条");
+                    mBundle.putString("url",
+                            queryNews.getXwurl());
+                    intent2.putExtras(mBundle);
+                    XunTouTiaoActivity.this.startActivity(intent2);
+                    //  ActivityUtil.startActivityForStringData(XunTouTiaoActivity.this, "jkid", JIeKuanDetailActivity.class, userMyJiekuan.getJkid());
 
                 }
             }
@@ -125,44 +134,44 @@ public class XunTouTiaoActivity extends BaseActivity {
     }
 
     private void doNetWork() {
-            HaiHeApi.queryNews(currentPage + "", "5",
-                    new AbSoapListener() {
-                        @Override
-                        public void onSuccess(int statusCode, String content) {
-                            QueryNewsInfo queryNewsInfo = HaiheReturnApi
-                                    .queryNews(content);
-                            if (queryNewsInfo != null) {
-                                if ("000".equals(queryNewsInfo.getRespCode())) {
+        HaiHeApi.queryNews(currentPage + "", "5",
+                new AbSoapListener() {
+                    @Override
+                    public void onSuccess(int statusCode, String content) {
+                        QueryNewsInfo queryNewsInfo = HaiheReturnApi
+                                .queryNews(content);
+                        if (queryNewsInfo != null) {
+                            if ("000".equals(queryNewsInfo.getRespCode())) {
 
-                                    // 判断总页数和当前页
-                                    if (Integer.parseInt(queryNewsInfo
-                                            .getCurrentPage()) == Integer
-                                            .parseInt(queryNewsInfo.getPageCount())) {
-                                        ptrv.setLoadMoreEnable(false);
-                                        ptrv.getFooterView().hide();
-                                    } else {
-                                        ptrv.setLoadMoreEnable(true);
-                                    }
-                                    ptrv.onFooterLoadFinish();
-                                    processData(queryNewsInfo, currentPage);
+                                // 判断总页数和当前页
+                                if (Integer.parseInt(queryNewsInfo
+                                        .getCurrentPage()) == Integer
+                                        .parseInt(queryNewsInfo.getPageCount())) {
+                                    ptrv.setLoadMoreEnable(false);
+                                    ptrv.getFooterView().hide();
                                 } else {
-                                    loadingView.setStatus(LoadingLayout.Error);
-                                    AbToastUtil.showToastInThread(XunTouTiaoActivity.this,
-                                            queryNewsInfo.getRespCodeDesc());
+                                    ptrv.setLoadMoreEnable(true);
                                 }
+                                ptrv.onFooterLoadFinish();
+                                processData(queryNewsInfo, currentPage);
+                            } else {
+                                loadingView.setStatus(LoadingLayout.Error);
+                                AbToastUtil.showToastInThread(XunTouTiaoActivity.this,
+                                        queryNewsInfo.getRespCodeDesc());
                             }
                         }
+                    }
 
-                        @Override
-                        public void onFailure(int statusCode,
-                                              final String content, Throwable error) {
-                            error.printStackTrace();
-                            currentPage--;
-                            loadingView.setStatus(LoadingLayout.Error);
-                            AbToastUtil.showToastInThread(XunTouTiaoActivity.this,
-                                    error.getMessage());
-                        }
-                    });
+                    @Override
+                    public void onFailure(int statusCode,
+                                          final String content, Throwable error) {
+                        error.printStackTrace();
+                        currentPage--;
+                        loadingView.setStatus(LoadingLayout.Error);
+                        AbToastUtil.showToastInThread(XunTouTiaoActivity.this,
+                                error.getMessage());
+                    }
+                });
 
     }
 

@@ -4,7 +4,6 @@
  * Package Name:com.haihefinance.model.domain
  * Date:2015-8-31下午5:41:26
  * Copyright (c) 2015, haihejinrong.com All Rights Reserved.
- *
  */
 
 package com.xunfenqi.model.domain;
@@ -13,114 +12,123 @@ import java.util.List;
 
 
 public class QueryNewsInfo {
-	private String messageType;
+    private String messageType;
 
-	private String respCode;
-	private String respCodeDesc;
+    private String respCode;
+    private String respCodeDesc;
 
-	private String totalCount;
+    private String totalCount;
 
-	private String pageCount;
+    private String pageCount;
 
-	private String currentPage;
+    private String currentPage;
 
-	private List<QueryNews> newsList;
+    private List<QueryNews> newsList;
 
-	private String signValue;
+    private String signValue;
 
-	public class QueryNews {
-		private String id;
-
-		private String title;
-		private String nr;
-
-		public String getId() {
-			return id;
-		}
-
-		public void setId(String id) {
-			this.id = id;
-		}
-
-		public String getTitle() {
-			return title;
-		}
-
-		public void setTitle(String title) {
-			this.title = title;
-		}
-
-		public String getNr() {
-			return nr;
-		}
-
-		public void setNr(String nr) {
-			this.nr = nr;
-		}
-	}
+    public class QueryNews {
+        private String id;
+        private String xwurl;
+        private String title;
+        private String nr;
 
 
-	public String getMessageType() {
-		return messageType;
-	}
+        public String getXwurl() {
+            return xwurl;
+        }
 
-	public void setMessageType(String messageType) {
-		this.messageType = messageType;
-	}
+        public void setXwurl(String xwurl) {
+            this.xwurl = xwurl;
+        }
 
-	public String getRespCode() {
-		return respCode;
-	}
+        public String getId() {
+            return id;
+        }
 
-	public void setRespCode(String respCode) {
-		this.respCode = respCode;
-	}
+        public void setId(String id) {
+            this.id = id;
+        }
 
-	public String getRespCodeDesc() {
-		return respCodeDesc;
-	}
+        public String getTitle() {
+            return title;
+        }
 
-	public void setRespCodeDesc(String respCodeDesc) {
-		this.respCodeDesc = respCodeDesc;
-	}
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-	public String getTotalCount() {
-		return totalCount;
-	}
+        public String getNr() {
+            return nr;
+        }
 
-	public void setTotalCount(String totalCount) {
-		this.totalCount = totalCount;
-	}
+        public void setNr(String nr) {
+            this.nr = nr;
+        }
+    }
 
-	public String getPageCount() {
-		return pageCount;
-	}
 
-	public void setPageCount(String pageCount) {
-		this.pageCount = pageCount;
-	}
+    public String getMessageType() {
+        return messageType;
+    }
 
-	public String getCurrentPage() {
-		return currentPage;
-	}
+    public void setMessageType(String messageType) {
+        this.messageType = messageType;
+    }
 
-	public void setCurrentPage(String currentPage) {
-		this.currentPage = currentPage;
-	}
+    public String getRespCode() {
+        return respCode;
+    }
 
-	public List<QueryNews> getNewsList() {
-		return newsList;
-	}
+    public void setRespCode(String respCode) {
+        this.respCode = respCode;
+    }
 
-	public void setNewsList(List<QueryNews> newsList) {
-		this.newsList = newsList;
-	}
+    public String getRespCodeDesc() {
+        return respCodeDesc;
+    }
 
-	public String getSignValue() {
-		return signValue;
-	}
+    public void setRespCodeDesc(String respCodeDesc) {
+        this.respCodeDesc = respCodeDesc;
+    }
 
-	public void setSignValue(String signValue) {
-		this.signValue = signValue;
-	}
+    public String getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(String totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public String getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(String pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public String getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(String currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public List<QueryNews> getNewsList() {
+        return newsList;
+    }
+
+    public void setNewsList(List<QueryNews> newsList) {
+        this.newsList = newsList;
+    }
+
+    public String getSignValue() {
+        return signValue;
+    }
+
+    public void setSignValue(String signValue) {
+        this.signValue = signValue;
+    }
 }

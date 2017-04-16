@@ -29,9 +29,11 @@
         style="@style/content_button"
         android:layout_below="@id/tv_regist_success"
         android:layout_marginTop="@dimen/base46dp"
+        android:textColor="@color/white"
         android:text="进入首页" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/bt_regist_success_jump2home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

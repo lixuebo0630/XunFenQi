@@ -22,6 +22,7 @@ import com.alipay.sdk.app.PayTask;
 import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
+import com.xunfenqi.activity.HuanKuanSuccessActivity;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.model.domain.UserLoansDetailInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
@@ -30,6 +31,7 @@ import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbLogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewHolder;
+import com.xunfenqi.utils.ActivityUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -84,7 +86,9 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+
+                        ActivityUtil.startActivity(mContext, HuanKuanSuccessActivity.class);
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(mContext, "支付失败", Toast.LENGTH_SHORT).show();

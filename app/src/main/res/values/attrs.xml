@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <declare-styleable name="MarqueeViewStyle">
+        <attr name="mvInterval" format="integer|reference"/>
+        <attr name="mvAnimDuration" format="integer|reference"/>
+        <attr name="mvTextSize" format="dimension|reference"/>
+        <attr name="mvTextColor" format="color|reference"/>
+        <attr name="mvSingleLine" format="boolean"/>
+        <attr name="mvGravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="SegmentButton">
         <attr name="textSize" format="float" />
         <attr name="textPressColor" format="color" />
@@ -76,4 +89,5 @@
         <attr name="donutProgressStyle" format="reference" />
         <attr name="arcProgressStyle" format="reference" />
     </declare-styleable>
-</resources>
+
+</resources>

@@ -17,8 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -29,21 +29,21 @@ import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.activity.H5Activity;
+import com.xunfenqi.activity.WoDeZiLiaoActivity;
 import com.xunfenqi.activity.WoYaoJieKuanActivity;
 import com.xunfenqi.activity.XunTouTiaoActivity;
-import com.xunfenqi.adapter.HomeFragPaoMaAdapter;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.AbFragment;
+import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.model.domain.UserIntoIndex;
 import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.ActivityUtil;
-import com.xunfenqi.utils.TimeTaskScroll;
 import com.xunfenqi.utils.UIUtils;
 import com.xunfenqi.view.AbPullToRefreshView;
+import com.xunfenqi.view.MarqueeView;
 import com.xunfenqi.view.RollViewPager;
-import com.xunfenqi.view.ScrollDisabledListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +69,9 @@ public class HomeFragment extends AbFragment implements OnClickListener {
     // 轮播图布局
     private View layout_roll_view;
     private LinearLayout ll_top_news_viewpager, dots_ll;
-    private HomeFragPaoMaAdapter adapter;
     private List<UserIntoIndex.Hhdt> newsList;
     private AbPullToRefreshView ptrv;
-    private ScrollDisabledListView disLv;
+    private MarqueeView disLv;
 
     @Override
     protected void lazyLoad() {
@@ -101,11 +100,10 @@ public class HomeFragment extends AbFragment implements OnClickListener {
         layout_roll_view = view.findViewById(R.id.rl_home_play_view);
         dots_ll = (LinearLayout) view.findViewById(R.id.dots_ll);
         layout_roll_view = view.findViewById(R.id.rl_home_play_view);
-        disLv = (ScrollDisabledListView) view
+        disLv = (MarqueeView) view
                 .findViewById(R.id.lv_frag_home_paoma);
 
         view.findViewById(R.id.tv_home_frag_news_more).setOnClickListener(this);
-        timer = new Timer();
         ll_top_news_viewpager = (LinearLayout) view.findViewById(R.id.ll_top_news_viewpager);
         ptrv.setLoadMoreEnable(false);
         ptrv.setOnHeaderRefreshListener(new AbPullToRefreshView.OnHeaderRefreshListener() {
@@ -115,7 +113,20 @@ public class HomeFragment extends AbFragment implements OnClickListener {
             }
         });
 
+        disLv.setOnItemClickListener(new MarqueeView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, TextView textView) {
 
+                Intent intent2 = new Intent(mActivity, H5Activity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("title", "讯头条");
+                mBundle.putString("url",
+                        newsList.get(position)
+                                .getContenturl());
+                intent2.putExtras(mBundle);
+                mActivity.startActivity(intent2);
+            }
+        });
         this.setAbFragmentOnLoadListener(new AbFragmentOnLoadListener() {
             @Override
             public void onLoad() {
@@ -170,9 +181,14 @@ public class HomeFragment extends AbFragment implements OnClickListener {
 
                     if ("000".equals(userIntoIndexInfo.getRespCode())) {
                         urlImgList = userIntoIndexInfo.getLbUrlList();
-
+                        ArrayList<String> titles = new ArrayList<String>();
                         newsList = userIntoIndexInfo.getNewsList();
-                        startTimer(newsList);
+                        for (UserIntoIndex.Hhdt hhdt : newsList) {
+                            titles.add(hhdt.getTitle());
+                        }
+
+                        disLv.startWithList(titles);
+
                         initData();
                     } else {
                         AbToastUtil.showToastInThread(mActivity,
@@ -196,36 +212,14 @@ public class HomeFragment extends AbFragment implements OnClickListener {
     }
 
 
-    private void startTimer(final List<UserIntoIndex.Hhdt> list) {
-        if (list != null && list.size() > 0) {
-            adapter = new HomeFragPaoMaAdapter(list, mActivity);
-            disLv.setAdapter(adapter);
-
-            if (null != timer) {
-                timer.cancel();
-                timer = null;
-            }
-            timer = new Timer();
-            timer.schedule(new TimeTaskScroll(mActivity, disLv, list), 0, 4000);
-            disLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> arg0, View arg1,
-                                        int arg2, long arg3) {
-                    Intent intent2 = new Intent(mActivity, H5Activity.class);
-                    Bundle mBundle = new Bundle();
-                    mBundle.putString("title", "讯头条");
-                    mBundle.putString("url",
-                            newsList.get(arg2 % newsList.size())
-                                    .getContentUrl());
-                    intent2.putExtras(mBundle);
-                    mActivity.startActivity(intent2);
-
-                }
-
-            });
-        }
-    }
-
+//    Intent intent2 = new Intent(mActivity, H5Activity.class);
+//    Bundle mBundle = new Bundle();
+//                    mBundle.putString("title", "讯头条");
+//                    mBundle.putString("url",
+//                            newsList.get(arg2)
+//            .getContenturl());
+//                    intent2.putExtras(mBundle);
+//                    mActivity.startActivity(intent2);
 
     DisplayImageOptions options = new DisplayImageOptions.Builder()
             // .showImageOnLoading(R.drawable.ic_error_page)
@@ -260,7 +254,11 @@ public class HomeFragment extends AbFragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_home_frag_ljsq:
-
+                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
                 ActivityUtil.startActivity(mActivity, WoYaoJieKuanActivity.class);
 
 

@@ -23,6 +23,7 @@ import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.BaseActivity;
+import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.global.CallBackManager;
 import com.xunfenqi.model.domain.UserIdentityAffirmInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
@@ -35,6 +36,8 @@ import com.xunfenqi.view.titlebar.AbTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 
 /**
@@ -212,7 +215,7 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
 
                             AbToastUtil.showToastInThread(getApplicationContext(),"认证成功");
                              ActivityUtil.startActivity(ShenFenRZActivity.this,MainActivity.class);
-
+                            EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
                             CallBackManager.getInstance().sendSwitchRadio(2);
                         } else {
 

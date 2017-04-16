@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.xunfenqi.R;
+import com.xunfenqi.activity.DuiHuanActivity;
 import com.xunfenqi.activity.LoginActivity;
 import com.xunfenqi.activity.QianDaoActivity;
 import com.xunfenqi.application.MyApplication;
@@ -63,6 +64,18 @@ public class InviteFragment extends AbFragment implements OnClickListener {
 
         Button bt_qiandao = (Button) view.findViewById(R.id.bt_invite_frag_2qiandao);
         Button bt_share = (Button) view.findViewById(R.id.bt_invite_frag_2share);
+        Button bt_duihuan = (Button) view.findViewById(R.id.bt_invite_frag_2duihuan);
+
+        bt_duihuan.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MyApplication.getInstance().isLogin()) {
+                    ActivityUtil.startActivity(mActivity, DuiHuanActivity.class);
+                } else {
+                    ActivityUtil.startActivity(mActivity, LoginActivity.class);
+                }
+            }
+        });
 
 
 

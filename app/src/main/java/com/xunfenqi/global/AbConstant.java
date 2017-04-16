@@ -41,5 +41,10 @@ public class AbConstant {
     public static final int POINT_STATE_WRONG = 2; // 错误状态
     public static final String BANK_CARD_NUM = "bank_card_num"; // 银行卡号
     public static final String LIUSHUI_NUM = "liushui_num"; // 流水号
+
     public static final String RECHARGE_MONEY = "recharge_money"; // 充值金额
+
+
+    public static final String SF_NOTIFY = "请先完成身份认证";
 }
+

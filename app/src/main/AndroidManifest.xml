@@ -64,6 +64,12 @@
             android:name=".activity.SafeSettingActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.HuanKuanSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DuiHuanActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.ModifyDealPwdActivity"
             android:screenOrientation="portrait" />
         <activity

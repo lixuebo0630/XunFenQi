@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.weavey.loading.lib.LoadingLayout;
 import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
@@ -68,7 +67,6 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
     private Activity mActivity;
 
-    private ImageLoader imageLoader = ImageLoader.getInstance();
     private RelativeLayout rl_my_invite, rl_safe_setting;
     private AbPullToRefreshView ptrv;
     private RelativeLayout rl_unlogin;
@@ -328,6 +326,11 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 ActivityUtil.startActivity(mActivity, MyRedActivity.class);
                 break;
             case R.id.btn_my_frag_ljhk://立即还款
+                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    return;
+                }
                 if ("0".equals(sfyjk)) {//有借款
 
                     ActivityUtil.startActivity(mActivity, MyZhangDanActivity.class);
@@ -338,7 +341,11 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 }
                 break;
             case R.id.btn_myaccount_frag_bottom_tixian://提现
-
+                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    return;
+                }
                 ActivityUtil.startActivity(mActivity, EnchashmentActivity.class);
                 break;
             case R.id.rl_btn_myaccount_frag_wdzl://我的资料
@@ -384,18 +391,27 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
             case R.id.btn_myaccount_frag_bottom_recharge://充值
 
-              //  ActivityUtil.startActivity(mActivity, MessageActivity.class);
+                //  ActivityUtil.startActivity(mActivity, MessageActivity.class);
                 break;
 
             case R.id.rl_btn_myaccount_frag_bottom_money_detail://我的银行卡
 
-
+                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    return;
+                }
                 intent = new Intent(mActivity, BankCardActivity.class);
                 intent.putExtra("cardlast", cardlast);
                 intent.putExtra("imgPath", imgPath);
                 mActivity.startActivity(intent);
                 break;
             case R.id.rl_btn_myaccount_frag_bottom_wdjk://我的借款
+                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    return;
+                }
 
                 ActivityUtil.startActivity(mActivity, MyJieKuanActivity.class);
                 break;

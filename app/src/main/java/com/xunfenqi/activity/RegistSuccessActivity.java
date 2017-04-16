@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.xunfenqi.R;
 import com.xunfenqi.base.BaseActivity;
+import com.xunfenqi.global.CallBackManager;
 import com.xunfenqi.utils.AbViewUtil;
 import com.xunfenqi.utils.ActivityUtil;
 import com.xunfenqi.utils.UIUtils;
@@ -53,6 +54,7 @@ public class RegistSuccessActivity extends BaseActivity implements
 
                 ActivityUtil.startActivityAndFinish(RegistSuccessActivity.this,
                         MainActivity.class);
+                CallBackManager.getInstance().sendSwitchRadio(0);
                 break;
             case R.id.bt_regist_success_safesetting:// 跳转到安全设置
 //			EventBus.getDefault().post(new EventPost());

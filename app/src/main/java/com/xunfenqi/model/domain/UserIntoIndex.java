@@ -104,7 +104,7 @@ public class UserIntoIndex {
 
 	public class Hhdt {
 		private String content;
-		private String contentUrl;
+		private String contenturl;
 		private String title;
 
 		public String getTitle() {
@@ -123,14 +123,13 @@ public class UserIntoIndex {
 			this.content = content;
 		}
 
-		public String getContentUrl() {
-			return contentUrl;
+		public String getContenturl() {
+			return contenturl;
 		}
 
-		public void setContentUrl(String contentUrl) {
-			this.contentUrl = contentUrl;
+		public void setContenturl(String contenturl) {
+			this.contenturl = contenturl;
 		}
-
 	}
 
 	public String getSignValue() {

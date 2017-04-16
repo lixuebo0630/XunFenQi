@@ -76,26 +76,26 @@ public class WoDeZiLiaoActivity extends BaseActivity implements View.OnClickList
 
 
         if ("0".equals(jdrz)) {
-            rl_jdrz.setEnabled(false);
+           // rl_jdrz.setEnabled(false);
             tv_jdrz.setText("已认证");
             tv_jdrz.setBackgroundResource(R.drawable.shape_base_line_btn);
             tv_jdrz.setTextColor(getResources().getColor(R.color.content_base));
 
         }
         if ("0".equals(lxr)) {
-            rl_lxrrz.setEnabled(false);
+            //rl_lxrrz.setEnabled(false);
             tv_lxrxxrz.setText("已认证");
             tv_lxrxxrz.setBackgroundResource(R.drawable.shape_base_line_btn);
             tv_lxrxxrz.setTextColor(getResources().getColor(R.color.content_base));
         }
         if ("0".equals(wxwrz)) {
-            rl_xxwrz.setEnabled(false);
+          //  rl_xxwrz.setEnabled(false);
             tv_xxwrz.setText("已认证");
             tv_xxwrz.setBackgroundResource(R.drawable.shape_base_line_btn);
             tv_xxwrz.setTextColor(getResources().getColor(R.color.content_base));
         }
         if ("0".equals(sjfwm)) {
-            rl_sjfwmrz.setEnabled(false);
+           // rl_sjfwmrz.setEnabled(false);
             tv_sjfwmrz.setText("已认证");
             tv_sjfwmrz.setBackgroundResource(R.drawable.shape_base_line_btn);
             tv_sjfwmrz.setTextColor(getResources().getColor(R.color.content_base));

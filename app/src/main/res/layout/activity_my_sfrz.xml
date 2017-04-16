@@ -42,9 +42,9 @@
                 android:background="@null"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
+                android:singleLine="true"
                 android:hint="请输入姓名"
                 android:inputType="text"
-                android:maxLength="6"
                 android:textSize="@dimen/base15dp" />
 
         </RelativeLayout>
