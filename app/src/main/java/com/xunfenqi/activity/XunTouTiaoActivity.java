@@ -66,7 +66,7 @@ public class XunTouTiaoActivity extends BaseActivity {
 
                     Intent intent2 = new Intent(XunTouTiaoActivity.this, H5Activity.class);
                     Bundle mBundle = new Bundle();
-                    mBundle.putString("title", "讯头条");
+                    mBundle.putString("title", "迅头条");
                     mBundle.putString("url",
                             queryNews.getXwurl());
                     intent2.putExtras(mBundle);
@@ -203,7 +203,7 @@ public class XunTouTiaoActivity extends BaseActivity {
     @Override
     public void initActionBar() {
         // 初始化ActionBar
-        AbTitleBar tTitleBar = AbViewUtil.getTTitleBar(this, "讯头条");
+        AbTitleBar tTitleBar = AbViewUtil.getTTitleBar(this, "迅头条");
         tTitleBar.setLogo(R.drawable.titlebar_back);
         tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(58),
                 UIUtils.dip2px(14));

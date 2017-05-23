@@ -65,95 +65,99 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
         <include layout="@layout/diver"></include>
+
             <RelativeLayout
-                android:background="@drawable/home_frag_bg"
+                android:layout_width="@dimen/base247dp"
+                android:layout_height="@dimen/base247dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/base26dp"
-                android:layout_width="@dimen/base247dp"
-                android:layout_height="@dimen/base247dp">
+                android:background="@drawable/home_frag_bg">
 
                 <TextView
+                    style="@style/content_tv_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/base49dp"
-                    style="@style/content_tv_base"
                     android:text="最高可借"
-                    android:textSize="@dimen/base13dp"
                     android:textColor="#939393"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textSize="@dimen/base13dp" />
+
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/base68dp"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base30dp">
+                    android:layout_height="@dimen/base30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/base68dp">
+
                     <TextView
+                        android:id="@+id/tv_home_frag_zgkj"
                         style="@style/content_tv_base"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="23000"
-                        android:textSize="@dimen/base28dp"
-                      android:id="@+id/tv_home_frag_zgkj"
                         android:textColor="@color/content_base"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/base28dp" />
+
                     <TextView
-                        android:layout_toRightOf="@+id/tv_home_frag_zgkj"
-                        android:layout_alignBottom="@id/tv_home_frag_zgkj"
-                        android:textColor="#939393"
-                        android:textSize="@dimen/base13dp"
-                        android:text="元"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_home_frag_zgkj"
+                        android:layout_toRightOf="@+id/tv_home_frag_zgkj"
+                        android:text="元"
+                        android:textColor="#939393"
+                        android:textSize="@dimen/base13dp" />
                 </RelativeLayout>
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/base139dp"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="@dimen/base139dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            style="@style/content_tv_base"
-                            android:text="20000"
-                            android:textSize="@dimen/base17dp"
                             android:id="@+id/tv_home_frag_xyed"
+                            style="@style/content_tv_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20000"
                             android:textColor="@color/content_base"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_toRightOf="@+id/tv_home_frag_xyed"
-                            android:layout_alignBottom="@id/tv_home_frag_xyed"
-                            android:textColor="#939393"
-                            android:layout_marginBottom="@dimen/base3dp"
-                            android:textSize="@dimen/base11dp"
-                            android:text="元"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/base17dp" />
 
                         <TextView
-                            android:textColor="#939393"
-                            android:textSize="@dimen/base12dp"
-                            android:text="信用额度"
-                            android:layout_below="@id/tv_home_frag_xyed"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tv_home_frag_xyed"
+                            android:layout_marginBottom="@dimen/base3dp"
+                            android:layout_toRightOf="@+id/tv_home_frag_xyed"
+                            android:text="元"
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base11dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_home_frag_xyed"
+                            android:text="分期额度"
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base12dp" />
 
                     </RelativeLayout>
 
 
-
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/base18dp"
                         android:layout_marginRight="@dimen/base18dp"
                         android:text="+"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/base22dp"
                         android:textColor="#3f3f3f"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/base22dp" />
 
 
                     <RelativeLayout
@@ -161,34 +165,35 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            style="@style/content_tv_base"
-                            android:text="3000"
-                            android:textSize="@dimen/base17dp"
                             android:id="@+id/tv_home_frag_yjed"
-                            android:textColor="@color/content_base"
+                            style="@style/content_tv_base"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/textView"
                             android:layout_alignParentTop="true"
                             android:layout_alignRight="@+id/textView"
-                            android:layout_alignEnd="@+id/textView" />
-                        <TextView
-                            android:layout_toRightOf="@+id/tv_home_frag_yjed"
-                            android:layout_alignBottom="@id/tv_home_frag_yjed"
-                            android:textColor="#939393"
-                            android:layout_marginBottom="@dimen/base3dp"
-                            android:textSize="@dimen/base11dp"
-                            android:text="元"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:text="3000"
+                            android:textColor="@color/content_base"
+                            android:textSize="@dimen/base17dp" />
 
                         <TextView
-                            android:textColor="#939393"
-                            android:textSize="@dimen/base12dp"
-                            android:text="应急额度"
-                            android:layout_below="@id/tv_home_frag_yjed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView" />
+                            android:layout_alignBottom="@id/tv_home_frag_yjed"
+                            android:layout_marginBottom="@dimen/base3dp"
+                            android:layout_toRightOf="@+id/tv_home_frag_yjed"
+                            android:text="元"
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base11dp" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_home_frag_yjed"
+                            android:text="应急额度"
+                            android:textColor="#939393"
+                            android:textSize="@dimen/base12dp" />
 
                     </RelativeLayout>
 

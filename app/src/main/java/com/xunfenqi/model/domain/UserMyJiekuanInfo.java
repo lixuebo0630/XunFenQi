@@ -9,6 +9,9 @@
 
 package com.xunfenqi.model.domain;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -29,7 +32,7 @@ public class UserMyJiekuanInfo {
 
 	private String signValue;
 
-	public class UserMyJiekuan {
+	public class UserMyJiekuan  implements Serializable{
 		// 金额
 		private String yh;
 		private String ls;
@@ -40,8 +43,17 @@ public class UserMyJiekuanInfo {
 		private String sj;
 		private String lx;
 		private String sxf;
+		private String htbj;
 
 		private String jkid;
+
+		public String getHtbj() {
+			return htbj;
+		}
+
+		public void setHtbj(String htbj) {
+			this.htbj = htbj;
+		}
 
 		public String getJkid() {
 			return jkid;

@@ -76,6 +76,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/base15dp"
             android:orientation="horizontal" >
 
@@ -106,6 +107,7 @@
             android:id="@+id/btn_set_dealpwd_act_confirm"
             style="@style/content_button"
             android:layout_marginTop="@dimen/base30dp"
+            android:textColor="@color/white"
             android:text="提交" />
     </LinearLayout>
 

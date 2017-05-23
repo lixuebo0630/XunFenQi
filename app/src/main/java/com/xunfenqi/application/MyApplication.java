@@ -188,6 +188,8 @@ public class MyApplication extends Application {
         user.setYhkrz(SettingUtils.getInstance(instance).getValue("yhkrz", ""));
         user.setLxrrz(SettingUtils.getInstance(instance).getValue("lxr", ""));
         user.setSjfwmrz(SettingUtils.getInstance(instance).getValue("sjfwm", ""));
+        user.setSsqkh(SettingUtils.getInstance(instance).getValue("ssqkh", ""));
+        user.setYhlx(SettingUtils.getInstance(instance).getValue("yhlx", ""));
 
 
         return user;
@@ -238,6 +240,10 @@ public class MyApplication extends Application {
                 user.getLxrrz());
         SettingUtils.getInstance(instance).saveValue("sjfwm",
                 user.getSjfwmrz());
+        SettingUtils.getInstance(instance).saveValue("ssqkh",
+                user.getSsqkh());
+        SettingUtils.getInstance(instance).saveValue("yhlx",
+                user.getYhlx());
 
 
     }
@@ -272,6 +278,8 @@ public class MyApplication extends Application {
         SettingUtils.getInstance(instance).remove("yhkrz");
         SettingUtils.getInstance(instance).remove("lxr");
         SettingUtils.getInstance(instance).remove("sjfwm");
+        SettingUtils.getInstance(instance).remove("ssqkh");
+        SettingUtils.getInstance(instance).remove("yhlx");
 
     }
 

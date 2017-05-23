@@ -8,8 +8,11 @@
 
 package com.xunfenqi.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.weavey.loading.lib.LoadingLayout;
 import com.xunfenqi.HaiHeApi;
@@ -21,10 +24,12 @@ import com.xunfenqi.base.BaseActivity;
 import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.model.domain.UserLoansDetailInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
+import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewUtil;
 import com.xunfenqi.utils.UIUtils;
 import com.xunfenqi.view.AbPullToRefreshView;
+import com.xunfenqi.view.dialog.SweetAlertDialog;
 import com.xunfenqi.view.titlebar.AbTitleBar;
 
 import java.util.ArrayList;
@@ -51,6 +56,7 @@ public class JIeKuanDetailActivity extends BaseActivity {
 
     private int currentPage = 1;
     private String jkid = "";
+    private String zt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +68,14 @@ public class JIeKuanDetailActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        jkid = getIntent().getStringExtra("jkid");
 
-        AbToastUtil.showToast(this, jkid);
+        Bundle data = getIntent().getBundleExtra("data");
+
+        jkid = data.getString("jkid");
+
+        zt = data.getString("zt");
+
+
         setAbContentView(R.layout.activity_my_red);
         loadingView = (LoadingLayout) findViewById(R.id.loading_myred_act);
         ptrv = (AbPullToRefreshView) findViewById(R.id.ptrv_myred_act);
@@ -170,6 +181,93 @@ public class JIeKuanDetailActivity extends BaseActivity {
         tTitleBar.setLogo(R.drawable.titlebar_back);
         tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(58),
                 UIUtils.dip2px(14));
+        if ("还款中".equals(zt)) {
+            tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), 0,
+                    UIUtils.dip2px(14));
+            TextView tv = new TextView(this);
+            tv.setText("提前还款");
+            tv.setPadding(10, 10, 10, 10);
+            tv.setTextSize(14);
+            tv.setTextColor(Color.WHITE);
+            tTitleBar.getRightLayout().setPadding(0, 0, UIUtils.px2dip(60), 0);
+            tTitleBar.addRightView(tv);
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    new SweetAlertDialog(JIeKuanDetailActivity.this,
+                            SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                            .setTitleText("提示")
+                            .setContentText("确定申请提前还款吗?")
+                            .setCancelText("取消")
+                            .setConfirmText("确认")
+                            .showCancelButton(true)
+                            .setCancelClickListener(
+                                    new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            sDialog.dismiss();
+                                        }
+                                    })
+                            .setConfirmClickListener(
+                                    new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+
+
+                                            repayments();
+                                            sDialog.dismiss();
+
+                                        }
+                                    }).show();
+
+                }
+            });
+
+        }
+    }
+
+    private void repayments() {
+
+
+        String loginUid = MyApplication.getInstance().getLoginUid();
+        AbDialogUtil.getWaitDialog(this);
+        if (loginUid != null) {
+            HaiHeApi.userApplyRefund(loginUid, jkid,
+                    new AbSoapListener() {
+                        @Override
+                        public void onSuccess(int statusCode, String content) {
+                            AbDialogUtil.removeDialog(JIeKuanDetailActivity.this);
+                            UserLoansDetailInfo userLoansDetailInfo = HaiheReturnApi
+                                    .userApplyRefund(content);
+                            if (userLoansDetailInfo != null) {
+                                if ("000".equals(userLoansDetailInfo.getRespCode())) {
+                                    if ("1".equals(userLoansDetailInfo.getSqzt())) {
+                                        AbToastUtil.showToastInThread(JIeKuanDetailActivity.this,
+                                                "申请成功,请等待客服联系");
+                                        JIeKuanDetailActivity.this.finish();
+                                    } else {
+                                        AbToastUtil.showToastInThread(JIeKuanDetailActivity.this,
+                                                userLoansDetailInfo.getRespCodeDesc());
+                                    }
+                                } else {
+                                    AbToastUtil.showToastInThread(JIeKuanDetailActivity.this,
+                                            userLoansDetailInfo.getRespCodeDesc());
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode,
+                                              final String content, Throwable error) {
+                            AbDialogUtil.removeDialog(JIeKuanDetailActivity.this);
+                            error.printStackTrace();
+                            AbToastUtil.showToastInThread(JIeKuanDetailActivity.this,
+                                    error.getMessage());
+                        }
+                    });
+        }
     }
 
 

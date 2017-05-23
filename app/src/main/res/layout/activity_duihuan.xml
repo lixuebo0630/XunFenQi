@@ -1,8 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.weavey.loading.lib.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:id="@+id/loading_qiandao_act"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base250dp">
+
+            <TextView
+                android:id="@+id/z_kyjf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base23dp"
+                android:text="可用积分"
+                android:textColor="@color/content_text"
+                android:textSize="@dimen/base13dp" />
+
+            <TextView
+                android:id="@+id/tv_qiandao_act_kyjf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/z_kyjf"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base10dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+
+                android:text="0"
+                android:textColor="@color/content_base"
+                android:textSize="@dimen/base13dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base150dp"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/zzz_kyjf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/base23dp"
+                            android:text="可兑换积分"
+                            android:textColor="@color/content_text"
+                            android:textSize="@dimen/base13dp" />
+
+                        <TextView
+                            android:id="@+id/tv_qiandao_act_kyjf2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/zzz_kyjf"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/base10dp"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:paddingTop="2dp"
+                            android:text="0"
+                            android:textColor="@color/content_base"
+                            android:textSize="@dimen/base13dp" />
+
+
+                    </RelativeLayout>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/duihuan_jiantou"
+                        android:layout_height="match_parent" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/zzz_dhje"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/base23dp"
+                            android:text="兑换金额(元)"
+                            android:textColor="@color/content_text"
+                            android:textSize="@dimen/base13dp" />
+
+                        <TextView
+                            android:id="@+id/tv_qiandao_act_dhje"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/zzz_dhje"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/base10dp"
+                            android:paddingBottom="2dp"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:paddingTop="2dp"
+                            android:text="0"
+                            android:textColor="@color/content_base"
+                            android:textSize="@dimen/base13dp" />
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_duihuan_act_confirm"
+                    style="@style/content_button"
+                    android:layout_marginTop="@dimen/base15dp"
+                    android:text="兑换"
+                    android:layout_marginBottom="@dimen/base15dp"
+                    android:layout_marginLeft="@dimen/base30dp"
+                    android:layout_marginRight="@dimen/base30dp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/diver" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp">
+
+            <ImageView
+                android:layout_width="@dimen/base12dp"
+                android:layout_height="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base2dp"
+                android:src="@drawable/my_qiandao_jlsm" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:text="奖励说明"
+                android:textColor="@color/content_text"
+                android:textSize="@dimen/base14dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_qiandao_act_jlsm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base18dp"
+            android:layout_marginTop="@dimen/base12dp"
+            android:text="-" />
+    </LinearLayout>
 
 </com.weavey.loading.lib.LoadingLayout>

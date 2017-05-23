@@ -123,7 +123,6 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
     private View initView(LayoutInflater inflater) {
         View view = inflater.inflate(R.layout.frag_my, null);
 
-
         isPrepared = true;
         loadingView = (LoadingLayout) view.findViewById(loading);
         loadingView.setOnReloadListener(new LoadingLayout.OnReloadListener() {
@@ -234,17 +233,12 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
 
     private void doNetwork() {
-
         {
             String loginUid = MyApplication.getInstance().getLoginUid();
-
             if (loginUid != null) {
-
                 HaiHeApi.queryUseInfo(loginUid, new AbSoapListener() {
-
                     @Override
                     public void onSuccess(int statusCode, String content) {
-
                         mHasLoadedOnce = true;
                         UserCenterInfo info = HaiheReturnApi.
                                 queryUserRetur(content);
@@ -273,7 +267,12 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
                                 } else {
                                     bt_ljhk.setText("立即还款");
-                                    ll_hkrq.setVisibility(View.VISIBLE);
+
+                                    if (Double.parseDouble(info.getByyh()) == 0) {
+                                        ll_hkrq.setVisibility(View.GONE);
+                                    } else {
+                                        ll_hkrq.setVisibility(View.VISIBLE);
+                                    }
                                 }
 
                             } else {
@@ -328,34 +327,69 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
             case R.id.btn_my_frag_ljhk://立即还款
                 if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
                     AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
-                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                     return;
                 }
                 if ("0".equals(sfyjk)) {//有借款
-
                     ActivityUtil.startActivity(mActivity, MyZhangDanActivity.class);
                 } else {
 
-                    ActivityUtil.startActivity(mActivity, WoYaoJieKuanActivity.class);
+                    UserCenterInfo loginUser = MyApplication.getInstance().getLoginUser();
+                    String jdrz = loginUser.getJdrz();
+                    String lxr = loginUser.getLxrrz();
+                    String wxwrz = loginUser.getWxwrz();
+                    String sjfwm = loginUser.getSjfwmrz();
+                    String yhkrz = loginUser.getYhkrz();
+                    String yhlx = loginUser.getYhlx();
 
+                    if (!yhkrz.equals("0")) {
+                        AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    if (!lxr.equals("0")) {
+                        AbToastUtil.showToast(mActivity, AbConstant.LXR_NOTIFY);
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    if (!jdrz.equals("0")) {
+                        AbToastUtil.showToast(mActivity, AbConstant.JD_NOTIFY);
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    if (!wxwrz.equals("0") && yhlx.equals("0")) {
+                        AbToastUtil.showToast(mActivity, AbConstant.XXW_NOTIFY);
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    if (!sjfwm.equals("0")) {
+                        AbToastUtil.showToast(mActivity, AbConstant.SJFWM_NOTIFY);
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    String ssqkh = MyApplication.getInstance().getLoginUser().getSsqkh();
+                    if (!"1".equals(ssqkh)) {
+                        AbToastUtil.showToast(mActivity, "请先开通上上签账户");
+                        ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                        return;
+                    }
+                    ActivityUtil.startActivity(mActivity, WoYaoJieKuanActivity.class);
                 }
                 break;
             case R.id.btn_myaccount_frag_bottom_tixian://提现
                 if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
                     AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
-                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                     return;
                 }
                 ActivityUtil.startActivity(mActivity, EnchashmentActivity.class);
                 break;
             case R.id.rl_btn_myaccount_frag_wdzl://我的资料
-
                 ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                 break;
             case R.id.rl_btn_myaccount_frag_kefudianhua://客服电话
 
                 PermissionUtils.checkPermission(mActivity, "android.permission.CALL_PHONE");
-
 
                 new SweetAlertDialog(mActivity,
                         SweetAlertDialog.CUSTOM_IMAGE_TYPE)
@@ -390,7 +424,6 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 break;
 
             case R.id.btn_myaccount_frag_bottom_recharge://充值
-
                 //  ActivityUtil.startActivity(mActivity, MessageActivity.class);
                 break;
 
@@ -398,7 +431,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
 
                 if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
                     AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
-                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                     return;
                 }
                 intent = new Intent(mActivity, BankCardActivity.class);
@@ -409,7 +442,7 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
             case R.id.rl_btn_myaccount_frag_bottom_wdjk://我的借款
                 if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
                     AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
-                    ActivityUtil.startActivity(mActivity,WoDeZiLiaoActivity.class);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                     return;
                 }
 
@@ -420,7 +453,6 @@ public class MyFragment extends MyBaseFragment implements OnClickListener {
                 intent = new Intent(mActivity, H5Activity.class);
                 intent.putExtra("title", "帮助中心");
                 intent.putExtra("url", AbConstant.BASE_URL + "/app/qa.html");
-
                 mActivity.startActivity(intent);
                 break;
             default:

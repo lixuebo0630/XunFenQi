@@ -22,6 +22,8 @@ import com.xunfenqi.utils.ActivityUtil;
 import com.xunfenqi.utils.UIUtils;
 import com.xunfenqi.view.titlebar.AbTitleBar;
 
+import de.greenrobot.event.EventBus;
+
 
 /**
  *
@@ -64,12 +66,7 @@ public class EnchashmentSuccessActivity extends BaseActivity implements
                 finish();
                 ActivityUtil.startActivity(this,MainActivity.class);
                 CallBackManager.getInstance().sendSwitchRadio(2);
-                Intent intent = new Intent();
-            /* 设置Intent对象的action属性 */
-                intent.setAction(AbConstant.REFRESH_MYACCOUNT_ACTION);
-			/* 发布广播 */
-                sendBroadcast(intent);
-
+                EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
                 break;
             case R.id.bt_enchashment_act_to_invest:
                 finish();

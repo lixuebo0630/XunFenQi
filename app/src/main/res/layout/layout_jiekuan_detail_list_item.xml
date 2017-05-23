@@ -151,10 +151,9 @@
             android:layout_width="@dimen/base81dp"
             android:layout_height="@dimen/base38dp"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="@dimen/base15dp"
+            android:layout_marginBottom="@dimen/base25dp"
             android:layout_marginRight="@dimen/base20dp"
-
-            android:background="@color/content_base"
+            android:background="@drawable/my_jiekuan_detail_yihuanflag"
             android:visibility="gone" />
 
     </FrameLayout>

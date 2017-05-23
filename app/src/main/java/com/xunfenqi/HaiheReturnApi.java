@@ -29,6 +29,7 @@ import com.xunfenqi.model.domain.QueryNewsInfo;
 import com.xunfenqi.model.domain.QueryProductDetailInfo;
 import com.xunfenqi.model.domain.QueryProductList4zhaiquanInfo;
 import com.xunfenqi.model.domain.QueryProductListInfo;
+import com.xunfenqi.model.domain.QueryUserIntegralByChangeInfo;
 import com.xunfenqi.model.domain.QueryUserIntegralInfo;
 import com.xunfenqi.model.domain.QueryUserInviteInfo;
 import com.xunfenqi.model.domain.QueryUserRateInfo;
@@ -73,6 +74,7 @@ import com.xunfenqi.model.domain.UserSecurityInfomationEditInfo;
 import com.xunfenqi.model.domain.UserSecurityInfomationInfo;
 import com.xunfenqi.model.domain.UserSecuritySafeInfo;
 import com.xunfenqi.model.domain.UserTransferDetailInfo;
+import com.xunfenqi.model.domain.UserUpLoadAuthorInfo;
 import com.xunfenqi.model.domain.VerifyUserTelInfo;
 import com.xunfenqi.model.domain.VerifyUsernameInfo;
 import com.xunfenqi.net.network.RSAUtil;
@@ -1027,7 +1029,92 @@ public class HaiheReturnApi {
         }
         return null;
 
-    }  public static UserLoansDetailInfo sendZfb(String content) {
+    }
+
+    public static UserLoansDetailInfo userApplyRefund(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "提前还款返回数据:" + content);
+        UserLoansDetailInfo userLoansDetailInfo = (UserLoansDetailInfo) AbJsonUtil.fromJson(
+                content, UserLoansDetailInfo.class);
+        if (userLoansDetailInfo != null) {
+
+            String data = userLoansDetailInfo.getMessageType()
+                    + userLoansDetailInfo.getRespCode() + userLoansDetailInfo.getUserId()
+                    + userLoansDetailInfo.getSqzt();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    userLoansDetailInfo.getSignValue());
+
+            if (verifyResult) {
+                return userLoansDetailInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }
+
+    public static UserLoansDetailInfo userUpLoadImg(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "上传图片返回数据:" + content);
+        UserLoansDetailInfo userLoansDetailInfo = (UserLoansDetailInfo) AbJsonUtil.fromJson(
+                content, UserLoansDetailInfo.class);
+        if (userLoansDetailInfo != null) {
+
+            String data = userLoansDetailInfo.getMessageType()
+                    + userLoansDetailInfo.getRespCode() + userLoansDetailInfo.getUserId()
+                    + userLoansDetailInfo.getSczt();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    userLoansDetailInfo.getSignValue());
+
+            if (verifyResult) {
+                return userLoansDetailInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }
+
+    public static UserUpLoadAuthorInfo userUpLoadAuthor(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "进入上传照片返回数据:" + content);
+        UserUpLoadAuthorInfo userLoansDetailInfo = (UserUpLoadAuthorInfo) AbJsonUtil.fromJson(
+                content, UserUpLoadAuthorInfo.class);
+        if (userLoansDetailInfo != null) {
+
+            String data = userLoansDetailInfo.getMessageType()
+                    + userLoansDetailInfo.getRespCode() + userLoansDetailInfo.getUserId();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    userLoansDetailInfo.getSignValue());
+
+            if (verifyResult) {
+                return userLoansDetailInfo;
+
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+
+    }
+
+    public static UserLoansDetailInfo sendZfb(String content) {
         AbLogUtil.d(MyApplication.getInstance(), "还款调用支付宝返回数据:" + content);
         UserLoansDetailInfo userLoansDetailInfo = (UserLoansDetailInfo) AbJsonUtil.fromJson(
                 content, UserLoansDetailInfo.class);
@@ -1752,13 +1839,14 @@ public class HaiheReturnApi {
         return null;
 
     }// 找回密码2步
+
     public static LoginInfo userEditCredit(String content) {
         AbLogUtil.d(MyApplication.getInstance(), "认证信息:" + content);
         LoginInfo info = (LoginInfo) AbJsonUtil.fromJson(content,
                 LoginInfo.class);
         if (info != null) {
             String data = info.getmessageType() + info.getRespCode()
-                    + info.getUserId()+info.getFqlx();
+                    + info.getUserId() + info.getFqlx();
             boolean verifyResult = RSAUtil.verifyResult(data,
                     info.getSignValue());
             if (verifyResult) {
@@ -2567,9 +2655,78 @@ public class HaiheReturnApi {
         return null;
     }
 
+    public static QueryUserIntegralByChangeInfo queryUserIntegralByChange(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "进入我的兑换/上上签开户返回:" + content);
+        QueryUserIntegralByChangeInfo info = (QueryUserIntegralByChangeInfo) AbJsonUtil.fromJson(content,
+                QueryUserIntegralByChangeInfo.class);
+        if (info != null) {
+            String data = info.getMessageType() + info.getRespCode() + info.getUserId();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    info.getSignValue());
+
+            if (verifyResult) {
+                return info;
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+    }
+
 
     public static UserIntegralSignInInfo userIntegralSignIn(String content) {
         AbLogUtil.d(MyApplication.getInstance(), "签到返回:" + content);
+        UserIntegralSignInInfo info = (UserIntegralSignInInfo) AbJsonUtil.fromJson(content,
+                UserIntegralSignInInfo.class);
+        if (info != null) {
+            String data = info.getMessageType() + info.getRespCode() + info.getUserId();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    info.getSignValue());
+
+            if (verifyResult) {
+                return info;
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+    }
+
+    public static UserIntegralSignInInfo userInviteExchange(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "兑换积分返:" + content);
+        UserIntegralSignInInfo info = (UserIntegralSignInInfo) AbJsonUtil.fromJson(content,
+                UserIntegralSignInInfo.class);
+        if (info != null) {
+            String data = info.getMessageType() + info.getRespCode() + info.getUserId() + info.getDhzt();
+
+            boolean verifyResult = RSAUtil.verifyResult(data,
+                    info.getSignValue());
+
+            if (verifyResult) {
+                return info;
+            } else {
+                AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                        AbConstant.VERIFY_FAIL);
+            }
+        } else {
+            AbToastUtil.showToastInThread(MyApplication.getInstance(),
+                    AbConstant.JSON_ERROR);
+        }
+        return null;
+    }
+
+    public static UserIntegralSignInInfo queryContractUrl(String content) {
+        AbLogUtil.d(MyApplication.getInstance(), "查看合同返回:" + content);
         UserIntegralSignInInfo info = (UserIntegralSignInInfo) AbJsonUtil.fromJson(content,
                 UserIntegralSignInInfo.class);
         if (info != null) {

@@ -31,6 +31,15 @@ public class UserMonthLoansDetailInfo {
 		private String fqid;
 		private String jkid;
 		private String qs;
+		private String zt;
+
+		public String getZt() {
+			return zt;
+		}
+
+		public void setZt(String zt) {
+			this.zt = zt;
+		}
 
 		public String getHkrqr() {
 			return hkrqr;

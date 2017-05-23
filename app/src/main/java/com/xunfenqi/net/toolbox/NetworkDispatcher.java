@@ -16,11 +16,9 @@
 
 package com.xunfenqi.net.toolbox;
 
-import java.util.concurrent.BlockingQueue;
-
-import android.net.TrafficStats;
-import android.os.Build;
 import android.os.Process;
+
+import java.util.concurrent.BlockingQueue;
 
 /**
  * Provides a thread for performing network dispatch from a queue of requests.
@@ -97,9 +95,7 @@ public class NetworkDispatcher extends Thread {
                 }
 
                 // Tag the request (if API >= 14)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    TrafficStats.setThreadStatsTag(request.getTrafficStatsTag());
-                }
+
 
                 // Perform the network request.
                 NetworkResponse networkResponse = mNetwork.performRequest(request);

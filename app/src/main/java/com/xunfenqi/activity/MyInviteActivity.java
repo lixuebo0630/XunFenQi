@@ -11,6 +11,7 @@ import com.xunfenqi.R;
 import com.xunfenqi.adapter.MyInviteAdapter;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.BaseActivity;
+import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.model.domain.QueryUserInviteInfo;
 import com.xunfenqi.model.domain.UserCenterInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
@@ -26,11 +27,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
+import static com.xunfenqi.R.id.btn_myinvite_act_submit;
+
 /**
  * Created by lixuebo on 16/11/23.
  */
 
-public class MyInviteActivity extends BaseActivity {
+public class MyInviteActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView tv_yqm, tv_wdhy, tv_zqhb;
     private UserCenterInfo loginUser;
@@ -48,12 +53,15 @@ public class MyInviteActivity extends BaseActivity {
     private List<QueryUserInviteInfo.UserInvite> userInviteList;
     private QueryUserInviteInfo.UserInvite userInvite;
 
+    private static final String BASE_SHARE_URL ="http://47.92.72.98/shopping_web/index!intoReg.action?btsu=";
+
     @Override
     public void initView() {
         setAbContentView(R.layout.activity_myinvite);
         tv_yqm = (TextView) findViewById(R.id.tv_myinvite_act_my_innum);
         tv_wdhy = (TextView) findViewById(R.id.tv_myinvite_act_wdhy);
         tv_zqhb = (TextView) findViewById(R.id.tv_myinvite_act_zqhb);
+        findViewById(btn_myinvite_act_submit).setOnClickListener(this);
         loginUser = MyApplication.getInstance().getLoginUser();
         if (loginUser != null) {
             tv_yqm.setText(loginUser.getYqm());
@@ -209,5 +217,36 @@ public class MyInviteActivity extends BaseActivity {
         tTitleBar.setLogo(R.drawable.titlebar_back);
         tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(58),
                 UIUtils.dip2px(14));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case btn_myinvite_act_submit:
+
+                OnekeyShare oks = new OnekeyShare();
+                //关闭sso授权
+                oks.disableSSOWhenAuthorize();
+                oks.setTitle("迅分期——最快捷的年轻人信用借款消费分期平台");
+                oks.setTitleUrl(BASE_SHARE_URL+loginUser.getYqm());
+                oks.setText("额度2000—20000元，最快1分钟到账，注册即送免息大红包。");
+                oks.setImageUrl(AbConstant.BASE_URL+"/img/logo.png");
+                // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+                //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+                // url仅在微信（包括好友和朋友圈）中使用
+                oks.setUrl(BASE_SHARE_URL+loginUser.getYqm());
+//        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+//        oks.setComment("我是测试评论文本");
+//        // site是分享此内容的网站名称，仅在QQ空间使用
+//        oks.setSite("ShareSDK");
+//        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//        oks.setSiteUrl("http://sharesdk.cn");
+
+// 启动分享GUI
+                oks.show(this);
+
+                break;
+        }
+
     }
 }

@@ -1,12 +1,12 @@
 package com.xunfenqi.utils;
 
-import com.xunfenqi.global.AppManager;
-
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.widget.Toast;
+
+import com.xunfenqi.global.AppManager;
 
 /**
  * 
@@ -47,7 +47,7 @@ public class DoubleClickExitHelper {
 		} else {
 			isOnKeyBacking = true;
 			if (mBackToast == null) {
-				mBackToast = Toast.makeText(mActivity, "再次点击退出海河金融", 2000);
+				mBackToast = Toast.makeText(mActivity, "再次点击退出迅分期", Toast.LENGTH_LONG);
 			}
 			mBackToast.show();
 			mHandler.postDelayed(onBackTimeRunnable, 2000);

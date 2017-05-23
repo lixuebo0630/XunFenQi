@@ -8,6 +8,8 @@
 
 package com.xunfenqi.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,7 +25,6 @@ import com.xunfenqi.model.domain.UserMyJiekuanInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewUtil;
-import com.xunfenqi.utils.ActivityUtil;
 import com.xunfenqi.utils.UIUtils;
 import com.xunfenqi.view.AbPullToRefreshView;
 import com.xunfenqi.view.titlebar.AbTitleBar;
@@ -65,7 +66,15 @@ public class MyJieKuanActivity extends BaseActivity {
 
                     UserMyJiekuanInfo.UserMyJiekuan userMyJiekuan = list.get(position);
 
-                    ActivityUtil.startActivityForStringData(MyJieKuanActivity.this, "jkid", JIeKuanDetailActivity.class, userMyJiekuan.getJkid());
+
+                    Intent intent = new Intent(MyJieKuanActivity.this,JIeKuanDetailActivity.class);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("jkid",userMyJiekuan.getJkid());
+                    bundle.putString("zt",userMyJiekuan.getZt());
+                    intent.putExtra("data",bundle);
+
+                    MyJieKuanActivity.this.startActivity(intent);
 
                 }
             }
@@ -83,10 +92,10 @@ public class MyJieKuanActivity extends BaseActivity {
                 R.layout.list_item_my_jiekuan, new String[]{
                 "tv_myjiekuan_item_ddh", "tv_myjiekuan_item_fqze",
                 "tv_myjiekuan_item_jklx", "tv_myjiekuan_item_jksj",
-                "tv_myjiekuan_item_yhqs", "tv_myjiekuan_item_syyh", "bt_myjiekuan_opertation"}, new int[]{
+                "tv_myjiekuan_item_yhqs", "tv_myjiekuan_item_syyh", "bt_myjiekuan_opertation", "bt_myjiekuan_check_hetong"}, new int[]{
                 R.id.tv_myjiekuan_item_ddh, R.id.tv_myjiekuan_item_fqze,
                 R.id.tv_myjiekuan_item_jklx, R.id.tv_myjiekuan_item_jksj,
-                R.id.tv_myjiekuan_item_yhqs, R.id.tv_myjiekuan_item_syyh, R.id.bt_myjiekuan_opertation});
+                R.id.tv_myjiekuan_item_yhqs, R.id.tv_myjiekuan_item_syyh, R.id.bt_myjiekuan_opertation, R.id.bt_myjiekuan_check_hetong});
         listView.setAdapter(myJieKuanAdapter);
         ptrv.setOnFooterLoadListener(new AbPullToRefreshView.OnFooterLoadListener() {
             @Override

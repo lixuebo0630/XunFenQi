@@ -166,6 +166,7 @@ public class LoginActivity extends AbActivity implements OnClickListener {
 							EventBus.getDefault().post(new EventPost());
 
 							queryUserInfo(loginReturn.getUserId());
+							EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
 						} else {
 							AbToastUtil.showToastInThread(
 									getApplicationContext(), "用户名或密码错误,请重新输入");
@@ -245,7 +246,7 @@ public class LoginActivity extends AbActivity implements OnClickListener {
 							MyApplication.getInstance().setNineFlag(
 									MyApplication.LOGIN_SUCCESS);
 						}
-						EventBus.getDefault().post(AbConstant.REFRESH_MYACCOUNT_ACTION);
+
 						// 结束当前页面
 						finish();
 					} else {

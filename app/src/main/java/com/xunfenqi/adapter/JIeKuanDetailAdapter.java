@@ -191,7 +191,7 @@ public class JIeKuanDetailAdapter extends BaseAdapter {
         tv_hkr.setText(userLoansDetail.getHkrq());
         tv_qs.setText(userLoansDetail.getQs());
 
-        tv_sxf.setText(userLoansDetail.getZe() + "(包含手续费" + userLoansDetail.getSxf() + "元)");
+        tv_sxf.setText(userLoansDetail.getZe() + "(包含分期费用和服务费" + userLoansDetail.getSxf() + "元)");
 
         tv_sfyq.setText(userLoansDetail.getSfyq());
 

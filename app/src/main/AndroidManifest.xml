@@ -50,12 +50,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegistActivity"
+            android:screenOrientation="portrait" /> <activity
+            android:name=".activity.UpLoadOtherActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.H5Activity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UpLoadIDCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UpLoadPhotoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyInviteActivity"

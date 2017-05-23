@@ -22,8 +22,24 @@ public class UserLoansDetailInfo {
     private List<UserLoansDetail> dataList;
     private String loanId;
     private String signValue;
+    private String sqzt;
+    private String sczt;
 
+    public String getSczt() {
+        return sczt;
+    }
 
+    public void setSczt(String sczt) {
+        this.sczt = sczt;
+    }
+
+    public String getSqzt() {
+        return sqzt;
+    }
+
+    public void setSqzt(String sqzt) {
+        this.sqzt = sqzt;
+    }
 
     public String getOrderInfo() {
         return orderInfo;
@@ -54,7 +70,7 @@ public class UserLoansDetailInfo {
         private String sfhk;
         private String mxid;
         private String lsh;
-        private  String orderInfo;
+        private String orderInfo;
 
         public String getOrderInfo() {
             return orderInfo;

@@ -161,17 +161,37 @@
                 android:textColor="@color/content_text" />
         </LinearLayout>
 
-        <Button
-            android:text="-"
-            android:focusable="false"
-            android:textSize="@dimen/base15dp"
-            android:layout_gravity="right"
-            android:textColor="#1156a1"
-            android:layout_marginTop="@dimen/base17dp"
-            android:id="@+id/bt_myjiekuan_opertation"
-            android:background="@drawable/shape_blue_line_btn"
-            android:layout_width="@dimen/base107dp"
-            android:layout_height="@dimen/base38dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:text="-"
+                android:focusable="false"
+                android:textSize="@dimen/base15dp"
+                android:layout_gravity="right"
+                android:textColor="#1156a1"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/base17dp"
+                android:id="@+id/bt_myjiekuan_opertation"
+                android:background="@drawable/shape_blue_line_btn"
+                android:layout_width="@dimen/base107dp"
+                android:layout_height="@dimen/base38dp" />
+ <Button
+                android:text="查看合同"
+                android:focusable="false"
+                android:textSize="@dimen/base15dp"
+                android:layout_gravity="right"
+                android:textColor="#1156a1"
+                android:layout_marginTop="@dimen/base17dp"
+                android:id="@+id/bt_myjiekuan_check_hetong"
+                android:background="@drawable/shape_blue_line_btn"
+                android:layout_width="@dimen/base107dp"
+                android:layout_height="@dimen/base38dp" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 

@@ -8,6 +8,7 @@
 
 package com.xunfenqi.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
@@ -71,8 +72,6 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         et_phonenumber = (EditText) this
                 .findViewById(R.id.et_regist_act_phonenum);
 
-
-        // 初始化控件
         et_inputpassword = (EditText) this
                 .findViewById(R.id.et_regist_act_pwd);
         et_visitnumber = (EditText) this
@@ -83,6 +82,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
         tv_getVerifyNumber = (TextView) findViewById(R.id.tv_regist_act_getVerifyNumber);
 
+        findViewById(R.id.tv_regist_act_fwxy).setOnClickListener(this);
+        findViewById(R.id.tv_regist_act_yszc).setOnClickListener(this);
         findViewById(R.id.bt_regist_act_regist).setOnClickListener(this);
 
         tv_getVerifyNumber.setOnClickListener(this);
@@ -103,6 +104,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(RegistActivity.this, H5Activity.class);
         switch (v.getId()) {
             case R.id.bt_regist_act_regist:// 执行注册
                 if (ButtonUtils.isFastDoubleClick()) {
@@ -110,6 +112,18 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 } else {
                     doRegist();
                 }
+                break;
+            case R.id.tv_regist_act_fwxy:// 服务协议
+
+                intent.putExtra("title", "注册服务协议");
+                intent.putExtra("url", AbConstant.BASE_URL + "/app/zhuce.html");
+                this.startActivity(intent);
+                break;
+            case R.id.tv_regist_act_yszc:// 隐私政策
+
+                intent.putExtra("title", "隐私政策");
+                intent.putExtra("url", AbConstant.BASE_URL + "/app/yinsi.html");
+                this.startActivity(intent);
                 break;
             case R.id.tv_regist_act_getVerifyNumber:// 获取验证码
 
@@ -120,8 +134,6 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                     AbToastUtil.showToast(this, "请输入手机号");
                     return;
                 }
-               
-
                 // 开始计时
                 time.start();
                 // 获取验证码
@@ -140,12 +152,10 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         ljqd = et_ljqd.getText().toString().trim();
         // 邀请码
         inviteCode = et_visitnumber.getText().toString().trim();
-
         if (TextUtils.isEmpty(inputVerifyNumber)) {
             AbToastUtil.showToast(getApplicationContext(), "验证码不能为空");
             return;
         }
-
         if (password == null || TextUtils.isEmpty(password)) {
             AbToastUtil.showToast(getApplicationContext(), "密码不能为空");
             return;
@@ -171,7 +181,6 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             AbToastUtil.showToast(getApplicationContext(), "密码不能输入非法字符");
             return;
         }
-
         if (verifyCode != null) {
             if (!verifyCode.equals(inputVerifyNumber)) {
                 AbToastUtil.showToast(getApplicationContext(), "验证码输入错误");

@@ -36,6 +36,8 @@ import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.ActivityUtil;
 
+import java.text.DecimalFormat;
+
 import static java.lang.Double.parseDouble;
 
 /**
@@ -62,9 +64,10 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
     private double dYjje = 0;
 
     private String verifyCode = "";
-    private int sxf;
+    private double sxf;
     private int yj;
-    private int bj;
+    private double bj;
+    private DecimalFormat df;
 
     @Override
     protected void lazyLoad() {
@@ -83,9 +86,10 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
     private View initView(LayoutInflater inflater) {
 
         time = new TimeCount(120000, 1000);
+        df = new DecimalFormat("#.00");
 
         View view = inflater.inflate(R.layout.frag_fenqi_jiekuan, null);
-
+        view.findViewById(R.id.rl_yj_frag_sjdz).setVisibility(View.VISIBLE);
         tv_jkqx = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_jkqx);
         tv_jkfy = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_jkfy);
         tv_sjdz = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_sjdz);
@@ -96,7 +100,7 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
         view.findViewById(R.id.bt_fenqi_jiekuan_frag_ljsq).setOnClickListener(this);
 
         tv_jkqx.setText("7天");
-        tv_jkqx.setCompoundDrawables(null,null,null,null);
+        tv_jkqx.setCompoundDrawables(null, null, null, null);
         //tv_jkqx.setOnClickListener(this);
         tv_verify_num.setOnClickListener(this);
         initData();
@@ -112,7 +116,7 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 String jkje1 = et_jkje.getText().toString().trim();
-                if (!hasFocus&&!TextUtils.isEmpty(jkje1)) {
+                if (!hasFocus && !TextUtils.isEmpty(jkje1)) {
                     double d = parseDouble(jkje1);
                     double ss = d / 100;
                     int a = (int) Math.floor(ss);
@@ -123,8 +127,8 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
 
                     if (d > dYjje) {
                         et_jkje.setText("" + (int) dYjje);
-                    } else if (d < 1000) {
-                        et_jkje.setText("" + 1000);
+                    } else if (d < 500) {
+                        et_jkje.setText("" + 500);
 
                     }
                 }
@@ -149,20 +153,18 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
                 if (!TextUtils.isEmpty(sxfFv) && !TextUtils.isEmpty(yjFv)) {
 
 
-                    double sxffv = Double.parseDouble(sxfFv);
-
-                    double yjfv = Double.parseDouble(yjFv);
-
+                    int fq = Integer.parseInt(fqFv);
+                    int fwf = Integer.parseInt(fwfFv);
+                    String jkqx = tv_jkqx.getText().toString().substring(0, 1);
+                    double ts = Double.parseDouble(jkqx);
                     if (!TextUtils.isEmpty(s.toString())) {
+                        bj = Double.parseDouble(s.toString());
+                        sxf =  (bj * fq / 100) + ( (bj * fwf / 100 * ts / 30));
 
-                        bj = Integer.parseInt(s.toString());
-                        sxf = (int) (bj * sxffv / 100);
-
-
-                        int jkfy = sxf;
-                        int sjdz = bj - jkfy;
-                        tv_jkfy.setText("" + jkfy+"元" );
-                        tv_sjdz.setText(sjdz + "元");
+                        double jkfy = sxf;
+                        double sjdz = bj - jkfy;
+                        tv_jkfy.setText("" + df.format(sxf) + "元");
+                        tv_sjdz.setText(df.format(sjdz) + "元");
                     } else {
                         tv_jkfy.setText("0元");
                         tv_sjdz.setText("0元");
@@ -198,11 +200,11 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
 
                         dYjje = parseDouble(yjje);
 
-                        if (dYjje == 1000) {
-                            et_jkje.setText("1000");
+                        if (dYjje == 500) {
+                            et_jkje.setText("500");
                             et_jkje.setHint("");
-                        } else if (dYjje > 1000) {
-                            et_jkje.setHint("1000-" + dYjje + "的整数,100递增");
+                        } else if (dYjje > 500) {
+                            et_jkje.setHint("500-" + dYjje + "的整数,100递增");
                         }
 
 
@@ -210,6 +212,8 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
                         yjFv = info.getYj();
                         fqFv = info.getFq();
                         fwfFv = info.getFwf();
+
+
 
 
                         showContentView();
@@ -362,7 +366,7 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
         String jkqx = tv_jkqx.getText().toString().substring(0, 1);
         String jkje = et_jkje.getText().toString().trim();
         String jksm = et_xxsm.getText().toString().trim();
-        HaiHeApi.applyLoan("2", jkqx, "0", jkje, jksm, (bj - sxf ) + "", yj + "", sxf + "",
+        HaiHeApi.applyLoan("2", jkqx, "0", jkje, jksm, df.format(bj - sxf) + "", yj + "", df.format(sxf) + "",
                 MyApplication.getInstance().getLoginUid(), new AbSoapListener() {
                     @Override
                     public void onSuccess(int statusCode, String content) {
@@ -390,7 +394,6 @@ public class YingJiFragment extends AbFragment implements OnClickListener {
 
 
     }
-
 
 
 }

@@ -103,7 +103,7 @@ public class HaiHeApi {
         try {
 
             String data = AbConstant.VERSION + "userRegister" + inputUsername
-                    + Md5Util.md5Diagest(DES.encrypt(inputPassword)) + userTel
+                    + Md5Util.md5Diagest(inputPassword) + userTel
                     + AbConstant.PHONETYPE + inviteCode;
 
             JSONObject json = new JSONObject();
@@ -117,7 +117,7 @@ public class HaiHeApi {
             json.put("zcqd", ljqd);
 
             json.put(JsonConstant.LOGINPASSWORD,
-                    Md5Util.md5Diagest(DES.encrypt(inputPassword)));
+                    Md5Util.md5Diagest(inputPassword));
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
             AbLogUtil.d(TAG, "注册发送的数据:" + json.toString());
@@ -157,7 +157,7 @@ public class HaiHeApi {
     public static void userIdentityAffirm(String userId, String identity, String zsxm, String ykt, String yhkh, String ssyh,
 
 
-                                          String xxmc, String rxsj, String xl, String address, AbSoapListener listener) {
+                                          String xxmc, String rxsj, String xl, String address,String xxdz, AbSoapListener listener) {
         try {
             String data = AbConstant.VERSION + "userIdentityAffirm" + userId + identity + yhkh
                     + AbConstant.PHONETYPE;
@@ -175,7 +175,7 @@ public class HaiHeApi {
             json.put("rxsj", rxsj);
             json.put("xl", xl);
             json.put("address", address);
-            json.put("xxdz", "");
+            json.put("xxdz", xxdz);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
             NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
@@ -237,6 +237,57 @@ public class HaiHeApi {
     }
 
     /**
+     * @param listener
+     */
+    public static void userUploadImg(String userId, String photo, String photoType, String photo2, String photoType2,String photo3,String photoType3,
+                                     AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "userUploadImg" + userId
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put("version", AbConstant.VERSION);
+            json.put("phoneType", AbConstant.PHONETYPE);
+            json.put("messageType", "userUploadImg");
+            json.put("userId", userId);
+            json.put("photo", photo);
+            json.put("photoType", photoType);
+            json.put("photoType2", photoType2);
+            json.put("photoType3", photoType3);
+            json.put("photo2", photo);
+            json.put("photo3", photo);
+            json.put("signValue", RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+ /**
+     * @param listener
+     */
+    public static void userUploadAuthor(String userId,
+                                     AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "userUploadAuthor" + userId
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put("version", AbConstant.VERSION);
+            json.put("phoneType", AbConstant.PHONETYPE);
+            json.put("messageType", "userUploadAuthor");
+            json.put("userId", userId);
+            json.put("signValue", RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 验证手机号是否存在
      *
      * @param inputNumber 用户输入的手机号
@@ -265,8 +316,8 @@ public class HaiHeApi {
 
     public static void userEditConnectPeople(String userId,
                                              String lxrOneName, String lxrOneTel,
-                                             String lxrSecName, String lxrSecTel,
-                                             String sf1, String sf2,
+                                             String lxrSecName, String lxrThiName, String lxrSecTel,String lxrThiTel,
+                                             String sf1, String sf2,String sf3,
                                              AbSoapListener listener) {
         try {
             String data = AbConstant.VERSION + "userEditConnectPeople" + userId
@@ -278,10 +329,19 @@ public class HaiHeApi {
             json.put(JsonConstant.USERID, userId);
             json.put("lxrON", lxrOneName);
             json.put("lxrSN", lxrSecName);
+            json.put("lxrTN", lxrThiName);
+            json.put("lxrOA", "");
+            json.put("lxrOFA", "");
+            json.put("lxrSA", "");
+            json.put("lxrSFA", "");
+            json.put("lxrTA", "");
+            json.put("lxrTFA", "");
             json.put("lxrOS", sf1);
             json.put("lxrSS", sf2);
+            json.put("lxrTS", sf3);
             json.put("lxrOT", lxrOneTel);
             json.put("lxrST", lxrSecTel);
+            json.put("lxrTT", lxrThiTel);
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
@@ -847,6 +907,26 @@ public class HaiHeApi {
             json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void userApplyRefund(String userId, String loanId
+            , AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "userApplyRefund" + userId + loanId + AbConstant.PHONETYPE;
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.MESSAGETYPE, "userApplyRefund");
+            json.put(JsonConstant.USERID, userId);
+            json.put("loanId", loanId);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
             NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
                     listener);
 
@@ -2300,6 +2380,74 @@ public class HaiHeApi {
 
     }
 
+    public static void userInviteExchange(String userId, String dhjf, AbSoapListener listener) {
+
+        try {
+            String data = AbConstant.VERSION + "userInviteExchange" + userId + dhjf
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.USERID, userId);
+            json.put("dhjf", dhjf);
+            json.put(JsonConstant.MESSAGETYPE, "userInviteExchange");
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void userRegisterSsq(String userId, AbSoapListener listener) {
+
+        try {
+            String data = AbConstant.VERSION + "userRegisterSsq" + userId
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.USERID, userId);
+            json.put(JsonConstant.MESSAGETYPE, "userRegisterSsq");
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void queryContractUrl(String userId, String jkid, AbSoapListener listener) {
+
+        try {
+            String data = AbConstant.VERSION + "queryContractUrl" + userId + jkid
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.USERID, userId);
+            json.put("jkid", jkid);
+            json.put(JsonConstant.MESSAGETYPE, "queryContractUrl");
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     /**
      * 查询个人利率
      *
@@ -2415,6 +2563,33 @@ public class HaiHeApi {
             json.put("loanCost", loanCost);
             json.put("loanHanding", loanHanding);
             json.put(JsonConstant.MESSAGETYPE, "applyLoan");
+            json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
+
+            NetWorkUtils.call(MyApplication.getInstance(), json.toString(),
+                    listener);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询产品列表
+     *
+     * @param listener
+     */
+    public static void queryUserIntegralByChange(String userId, AbSoapListener listener) {
+        try {
+            String data = AbConstant.VERSION + "queryUserIntegralByChange" + userId
+                    + AbConstant.PHONETYPE;
+
+            JSONObject json = new JSONObject();
+
+            json.put(JsonConstant.VERSION, AbConstant.VERSION);
+            json.put(JsonConstant.PHONETYPE, AbConstant.PHONETYPE);
+            json.put(JsonConstant.USERID, userId);
+
+            json.put(JsonConstant.MESSAGETYPE, "queryUserIntegralByChange");
             json.put(JsonConstant.SIGNVALUE, RSAUtil.RSAEncodeSign(data));
 
             NetWorkUtils.call(MyApplication.getInstance(), json.toString(),

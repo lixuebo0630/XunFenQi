@@ -7,13 +7,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingLeft="@dimen/base27dp"
-        android:paddingRight="@dimen/base27dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:paddingRight="@dimen/base27dp">
 
         <com.xunfenqi.view.EditTextWithDelete
             android:id="@+id/et_regist_act_phonenum"
@@ -67,8 +67,8 @@
             android:id="@+id/et_regist_act_pwd"
             style="@style/content_editText"
             android:layout_toLeftOf="@id/ib_btn_login_show_pwd"
-            android:hint="请输入密码,6-12位字符或数字"
             android:background="@color/white"
+            android:hint="请输入密码,6-12位字符或数字"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="@dimen/base20dp"
@@ -108,13 +108,58 @@
 
         <include layout="@layout/diver_short" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_regist_act_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:singleLine="true"
+                android:text="点击注册表示同意"
+                android:textColor="@color/gray_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_regist_act_fwxy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="《注册服务协议》"
+                android:textColor="@color/content_base"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:singleLine="true"
+                android:text="和"
+                android:textColor="@color/gray_light"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_regist_act_yszc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="《隐私政策》"
+                android:textColor="@color/content_base"
+                android:textSize="12sp" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/bt_regist_act_regist"
             style="@style/content_button"
-    android:textColor="@color/white"
             android:layout_marginTop="@dimen/base19dp"
-            android:text="注册" />
-
+            android:text="注册"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

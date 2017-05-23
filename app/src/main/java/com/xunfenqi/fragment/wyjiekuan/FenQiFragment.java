@@ -39,6 +39,7 @@ import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.ActivityUtil;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
     private String fqFv;
     private String fwfFv;
     private double dFqje = 0;
-
+    DecimalFormat df;
     private String verifyCode = "";
     private int sxf;
     private int yj;
@@ -89,11 +90,14 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
     private View initView(LayoutInflater inflater) {
 
         time = new TimeCount(120000, 1000);
+        df = new DecimalFormat("#.00");
 
         View view = inflater.inflate(R.layout.frag_fenqi_jiekuan, null);
 
         tv_jkqx = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_jkqx);
         tv_jkfy = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_jkfy);
+        TextView tv_myyh = (TextView) view.findViewById(R.id.tv_fenqi_frag_myyh);
+        tv_myyh.setText("每月应还");
         tv_sjdz = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_sjdz);
         tv_verify_num = (TextView) view.findViewById(R.id.tv_fenqi_jiekuan_frag_verify_num);
         et_jkje = (EditText) view.findViewById(R.id.et_fenqi_jiekuan_frag_jkje);
@@ -111,13 +115,11 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
     }
 
     private void initData() {
-
-
         et_jkje.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 String jkje1 = et_jkje.getText().toString().trim();
-                if (!hasFocus&&!TextUtils.isEmpty(jkje1)) {
+                if (!hasFocus && !TextUtils.isEmpty(jkje1)) {
                     double d = parseDouble(jkje1);
                     double ss = d / 100;
                     int a = (int) Math.floor(ss);
@@ -149,7 +151,13 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
                 if (flag) {
                     return;
                 }
-
+                String qx = tv_jkqx.getText().toString().trim();
+                if ("请选择".equals(qx) || TextUtils.isEmpty(qx)) {
+                    AbToastUtil.showToast(mActivity, "请选择期限");
+                    return;
+                }
+                String mQx = qx.split("个月")[0];
+                int mIqx = Integer.parseInt(mQx);
                 flag = true;
                 if (!TextUtils.isEmpty(sxfFv) && !TextUtils.isEmpty(yjFv)) {
 
@@ -157,6 +165,8 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
                     double sxffv = Double.parseDouble(sxfFv);
 
                     double yjfv = Double.parseDouble(yjFv);
+                    double fqfv = Double.parseDouble(fqFv);
+                    double fwffv = Double.parseDouble(fwfFv);
 
                     if (!TextUtils.isEmpty(s.toString())) {
 
@@ -164,10 +174,11 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
                         sxf = (int) (bj * sxffv / 100);
                         yj = (int) (bj * yjfv / 100);
 
-
                         int jkfy = sxf + yj;
                         int sjdz = bj - jkfy;
-                        tv_jkfy.setText("" + jkfy + "元(押金:" + yj + "元  手续费:" + sxf + "元)");
+
+                        double yg = (bj * (fqfv + fwffv) / 100 * mIqx + bj) / mIqx;
+                        tv_jkfy.setText("" + df.format(yg) + "元");
                         tv_sjdz.setText(sjdz + "元");
                     } else {
                         tv_jkfy.setText("0元");
@@ -342,24 +353,18 @@ public class FenQiFragment extends AbFragment implements OnClickListener {
             AbToastUtil.showToast(mActivity, "请选择借款期限");
             return;
         }
-
         String jkje = et_jkje.getText().toString().trim();
 
         if (TextUtils.isEmpty(jkje)) {
             AbToastUtil.showToast(mActivity, "请输入借款金额");
-
             return;
-
         }
 
         String verifyNum = et_verfiy_num.getText().toString().trim();
-
         if (TextUtils.isEmpty(verifyNum)) {
             AbToastUtil.showToast(mActivity, "请输入验证码");
-
             return;
         }
-
 
         if (!verifyCode.equals(verifyNum)) {
             AbToastUtil.showToast(mActivity, "验证码输入错误");

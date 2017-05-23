@@ -15,15 +15,12 @@ package com.xunfenqi.net.network;
 
 public class RSAUtil {
 
-//	public static String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCOaSEKV1RhJFgJaEuiNZY6Wgt"
-//			+ "KsFosrS92tqBYi6UqYYMIgxzxBgvas822fU+N/c2SVwO38ZFl5nUxkbhRM+pjEjF"
-//			+ "KntWYXXlcM6/JNqgsOOdywtgFtffMcXrXKhKHorfpgIk1REzm4SIzdMZwLuXuukj"
-//			+ "nZiffwHMsyIbS1hDzwIDAQAB";
-	public static String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCS4vwj+2izd9WTKICiL9Ly4ohoX2uhLN6o1kKb"
-			+ "Cni/VoiWV4x0nf03rWvOJC5QwNr1omkowpm8Jj4LowSg1BD/yQiyVGBaoolsLtELnYHhqpNCKftW"
-			+ "IoJkSJ/Z4qMZ9X2f2CNTCmx5BATEy6/nCOcmeCAZ+aTPEzD5yunfeU5ufQIDAQAB";
+	public final static String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCOaSEKV1RhJFgJaEuiNZY6Wgt"
+			+ "KsFosrS92tqBYi6UqYYMIgxzxBgvas822fU+N/c2SVwO38ZFl5nUxkbhRM+pjEjF"
+			+ "KntWYXXlcM6/JNqgsOOdywtgFtffMcXrXKhKHorfpgIk1REzm4SIzdMZwLuXuukj"
+			+ "nZiffwHMsyIbS1hDzwIDAQAB";
 
-	public static String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALRmNW/DOFVkkfkT"
+	public  final static String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALRmNW/DOFVkkfkT"
 			+ "0UAfRDsI4NNjPpvBN5UQzTP32qeUr6cmkWB10E0nLcJO83zFRzpATYIdoSSi5Ih5"
 			+ "XKliEUP3+9U6OguP+gkJsHLH0Z4FdkaDMLNzWEp0zMeFVfmtOvMrOAQlKLk0j7Tx"
 			+ "fXZBCMeSeTyAUbjASikitrkizdqNAgMBAAECgYAKvleKW2b8duvWmJ6KohIPLf0t"
@@ -40,7 +37,7 @@ public class RSAUtil {
 
 	public static String RSAEncodeSign(String data) throws Exception {
 
-		String sign = RSACoder.sign(data.getBytes(), privateKey);
+		String sign = RSACoder.sign(data.getBytes("utf-8"), privateKey);
 
 		return NetWorkUtils.string2Json(sign);
 
@@ -49,9 +46,6 @@ public class RSAUtil {
 	/**
 	 * 对结果进行验签
 	 * 
-	 * @param <T>
-	 * 
-	 * @param <T>
 	 * @param data
 	 * @return
 	 */
@@ -59,7 +53,7 @@ public class RSAUtil {
 
 		try {
 
-			return RSACoder.verify(data.getBytes(), publicKey, signvalue);
+			return RSACoder.verify(data.getBytes("utf-8"), publicKey, signvalue);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

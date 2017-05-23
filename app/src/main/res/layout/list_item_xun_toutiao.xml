@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base9dp"
-            android:text="什么是讯分期?"
+            android:text="什么是迅分期?"
             android:textColor="@color/black"
             android:textSize="@dimen/base16dp" />
 

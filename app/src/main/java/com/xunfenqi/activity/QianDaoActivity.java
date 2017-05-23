@@ -240,7 +240,6 @@ public class QianDaoActivity extends BaseActivity {
     private void qianDaoSubmit() {
 
         {
-
             String loginUid = MyApplication.getInstance().getLoginUid();
             if (loginUid != null && !"".equals(loginUid)) {
                 HaiHeApi.userIntegralSignIn(loginUid,  new AbSoapListener() {

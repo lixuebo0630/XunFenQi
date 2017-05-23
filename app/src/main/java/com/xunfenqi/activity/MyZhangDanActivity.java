@@ -1,5 +1,6 @@
 package com.xunfenqi.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,6 @@ import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewUtil;
-import com.xunfenqi.utils.ActivityUtil;
 import com.xunfenqi.utils.UIUtils;
 import com.xunfenqi.view.AbPullToRefreshView;
 import com.xunfenqi.view.titlebar.AbTitleBar;
@@ -86,18 +86,20 @@ public class MyZhangDanActivity extends BaseActivity {
         });
 
         lv = (ListView) findViewById(R.id.lv_myinvite_act);
-
-
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(userMonthLoansDetailList!= null){
+                if (userMonthLoansDetailList != null) {
                     String jkid = userMonthLoansDetailList.get(position).getJkid();
+                    String zt = userMonthLoansDetailList.get(position).getZt();
+                    Intent intent = new Intent(MyZhangDanActivity.this,JIeKuanDetailActivity.class);
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("jkid",jkid);
+                    bundle.putString("zt",zt);
+                    intent.putExtra("data",bundle);
 
-                    ActivityUtil.startActivityForStringData(MyZhangDanActivity.this, "jkid", JIeKuanDetailActivity.class, jkid);
-
+                    MyZhangDanActivity.this.startActivity(intent);
                 }
             }
         });
@@ -107,7 +109,6 @@ public class MyZhangDanActivity extends BaseActivity {
     public void initData() {
 
         list = new ArrayList<Map<String, Object>>();
-
 
         myZhangDanAdapter = new MyZhangDanAdapter(MyZhangDanActivity.this, list,
                 R.layout.list_item_my_zhangdan, new String[]{"tv_my_zhangdan_item_je",

@@ -29,7 +29,7 @@ public class MarqueeView extends ViewFlipper {
     private OnItemClickListener onItemClickListener;
 
     private int interval = 2000;
-    private int animDuration = 500;
+    private int animDuration = 800;
     private int textSize = 14;
     private int textColor = 0xffffffff;
 

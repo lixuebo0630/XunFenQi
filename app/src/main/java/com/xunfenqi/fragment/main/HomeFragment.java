@@ -29,12 +29,14 @@ import com.xunfenqi.HaiHeApi;
 import com.xunfenqi.HaiheReturnApi;
 import com.xunfenqi.R;
 import com.xunfenqi.activity.H5Activity;
+import com.xunfenqi.activity.LoginActivity;
 import com.xunfenqi.activity.WoDeZiLiaoActivity;
 import com.xunfenqi.activity.WoYaoJieKuanActivity;
 import com.xunfenqi.activity.XunTouTiaoActivity;
 import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.AbFragment;
 import com.xunfenqi.global.AbConstant;
+import com.xunfenqi.model.domain.UserCenterInfo;
 import com.xunfenqi.model.domain.UserIntoIndex;
 import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbDialogUtil;
@@ -86,7 +88,6 @@ public class HomeFragment extends AbFragment implements OnClickListener {
         newsList = new ArrayList<UserIntoIndex.Hhdt>();
         urlImgList = new ArrayList<UserIntoIndex.ImageUrl>();
         View view = initView(inflater);
-
         return view;
     }
 
@@ -119,7 +120,7 @@ public class HomeFragment extends AbFragment implements OnClickListener {
 
                 Intent intent2 = new Intent(mActivity, H5Activity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putString("title", "讯头条");
+                mBundle.putString("title", "迅头条");
                 mBundle.putString("url",
                         newsList.get(position)
                                 .getContenturl());
@@ -170,6 +171,7 @@ public class HomeFragment extends AbFragment implements OnClickListener {
     }
 
     private void doNetwork() {
+
         // AbDialogUtil.getWaitDialog(mActivity);
         HaiHeApi.userIntoIndexTwo(MyApplication.getInstance().getLoginUid(), new AbSoapListener() {
             @Override
@@ -186,7 +188,6 @@ public class HomeFragment extends AbFragment implements OnClickListener {
                         for (UserIntoIndex.Hhdt hhdt : newsList) {
                             titles.add(hhdt.getTitle());
                         }
-
                         disLv.startWithList(titles);
 
                         initData();
@@ -209,17 +210,9 @@ public class HomeFragment extends AbFragment implements OnClickListener {
             }
         });
 
+
     }
 
-
-//    Intent intent2 = new Intent(mActivity, H5Activity.class);
-//    Bundle mBundle = new Bundle();
-//                    mBundle.putString("title", "讯头条");
-//                    mBundle.putString("url",
-//                            newsList.get(arg2)
-//            .getContenturl());
-//                    intent2.putExtras(mBundle);
-//                    mActivity.startActivity(intent2);
 
     DisplayImageOptions options = new DisplayImageOptions.Builder()
             // .showImageOnLoading(R.drawable.ic_error_page)
@@ -254,8 +247,50 @@ public class HomeFragment extends AbFragment implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_home_frag_ljsq:
-                if (!MyApplication.getInstance().getLoginUser().getYhkrz().equals("0")) {
+
+                if (!MyApplication.getInstance().isLogin()) {
+                    ActivityUtil.startActivity(mActivity, LoginActivity.class);
+                    return;
+                }
+
+
+                UserCenterInfo loginUser = MyApplication.getInstance().getLoginUser();
+                String jdrz = loginUser.getJdrz();
+                String lxr = loginUser.getLxrrz();
+                String wxwrz = loginUser.getWxwrz();
+                String sjfwm = loginUser.getSjfwmrz();
+                String yhkrz = loginUser.getYhkrz();
+                String yhlx = loginUser.getYhlx();
+
+                if (!yhkrz.equals("0")) {
                     AbToastUtil.showToast(mActivity, AbConstant.SF_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
+                if (!lxr.equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.LXR_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
+                if (!jdrz.equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.JD_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
+                if (!wxwrz.equals("0") && yhlx.equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.XXW_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
+                if (!sjfwm.equals("0")) {
+                    AbToastUtil.showToast(mActivity, AbConstant.SJFWM_NOTIFY);
+                    ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
+                    return;
+                }
+
+                String ssqkh = MyApplication.getInstance().getLoginUser().getSsqkh();
+                if (!"1".equals(ssqkh)) {
+                    AbToastUtil.showToast(mActivity, "请先开通上上签账户");
                     ActivityUtil.startActivity(mActivity, WoDeZiLiaoActivity.class);
                     return;
                 }

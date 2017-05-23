@@ -310,6 +310,7 @@
             android:paddingRight="@dimen/base14dp">
 
             <TextView
+                android:id="@+id/tv_my_sfrz_act_xxdz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -328,6 +329,40 @@
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
                 android:hint="详细地址"
+                android:inputType="text"
+                android:textSize="@dimen/base15dp" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/white"
+            android:id="@+id/rl_my_sfrz_act_jtzz"
+            android:paddingLeft="@dimen/base14dp"
+            android:paddingRight="@dimen/base14dp">
+
+            <TextView
+                android:id="@+id/tv_my_sfrz_act_jtzz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="家庭住址"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/base15dp" />
+
+            <EditText
+                android:id="@+id/et_my_sfrz_act_jtzz"
+                android:layout_width="@dimen/base190dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="请输入家庭住址(具体到门牌号)"
                 android:inputType="text"
                 android:textSize="@dimen/base15dp" />
 

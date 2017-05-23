@@ -1,137 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/content_background"
-    android:orientation="vertical" >
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="@dimen/base15dp"
-        android:background="#E1E1E1" />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="wrap_content">
-
-
-        <com.xunfenqi.view.EditTextWithDelete
-            android:id="@+id/et_lianxiren_act_name1"
-            style="@style/content_editText"
-            android:background="@color/white"
-            android:hint="联系人一姓名"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:maxLength="4"
-            android:singleLine="true" >
-        </com.xunfenqi.view.EditTextWithDelete>
-
+        android:layout_height="match_parent"
+        android:background="@color/content_background"
+        android:orientation="vertical">
 
         <View
-            android:background="@color/content_base"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:background="#E1E1E1" />
 
-        <TextView
-
-            android:id="@+id/tv_btn_lianxiren_act_select1"
-            android:layout_width="@dimen/base130dp"
-            android:gravity="center"
-            android:textColor="@color/content_base"
-            android:text="选择通讯录联系人"
-            android:background="@color/white"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
- <include layout="@layout/diver_short" />
-    <com.xunfenqi.view.EditTextWithDelete
-        android:id="@+id/et_lianxirenact_phonenum1"
-        style="@style/content_editText"
-        android:background="@color/white"
-        android:hint="联系人一手机号"
-        android:inputType="number"
-        android:singleLine="true" >
-    </com.xunfenqi.view.EditTextWithDelete>
-
-<include layout="@layout/diver_short" />
-    <com.xunfenqi.view.EditTextWithDelete
-        android:id="@+id/et_lianxirenact_sf1"
-        style="@style/content_editText"
-        android:background="@color/white"
-        android:hint="与本人关系"
-        android:inputType="text"
-        android:singleLine="true" >
-    </com.xunfenqi.view.EditTextWithDelete>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
 
+            <com.xunfenqi.view.EditTextWithDelete
+                android:id="@+id/et_lianxiren_act_name1"
+                style="@style/content_editText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="联系人一姓名"
+                android:maxLength="4"
+                android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/base10dp"
-        android:background="@color/white"
-        android:layout_height="wrap_content">
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/content_base" />
 
+            <TextView
+
+                android:id="@+id/tv_btn_lianxiren_act_select1"
+                android:layout_width="@dimen/base130dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="选择通讯录联系人"
+                android:textColor="@color/content_base" />
+        </LinearLayout>
+
+        <include layout="@layout/diver_short" />
 
         <com.xunfenqi.view.EditTextWithDelete
-            android:id="@+id/et_lianxiren_act_name2"
+            android:id="@+id/et_lianxirenact_phonenum1"
             style="@style/content_editText"
             android:background="@color/white"
-            android:hint="联系人二姓名"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:maxLength="4"
-            android:singleLine="true" >
-        </com.xunfenqi.view.EditTextWithDelete>
+            android:hint="联系人一手机号"
+            android:inputType="number"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
 
+        <include layout="@layout/diver_short" />
 
-        <View
-            android:background="@color/content_base"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-
-        <TextView
-
-            android:id="@+id/tv_btn_lianxiren_act_select2"
-            android:layout_width="@dimen/base130dp"
-            android:gravity="center"
-            android:textColor="@color/content_base"
-            android:text="选择通讯录联系人"
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_lianxirenact_sf1"
+            style="@style/content_editText"
             android:background="@color/white"
-            android:layout_height="match_parent" />
+            android:hint="请输入联系人关系: 父母/配偶"
+            android:inputType="text"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:background="@color/white">
+
+
+            <com.xunfenqi.view.EditTextWithDelete
+                android:id="@+id/et_lianxiren_act_name2"
+                style="@style/content_editText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="联系人二姓名"
+                android:maxLength="4"
+                android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/content_base" />
+
+            <TextView
+
+                android:id="@+id/tv_btn_lianxiren_act_select2"
+                android:layout_width="@dimen/base130dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="选择通讯录联系人"
+                android:textColor="@color/content_base" />
+        </LinearLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_lianxirenact_phonenum2"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="联系人二手机号"
+            android:inputType="number"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_lianxirenact_sf2"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="请输入联系人关系: 兄弟姐妹/亲属"
+            android:inputType="text"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+
+        <include layout="@layout/diver" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:background="@color/white">
+
+
+            <com.xunfenqi.view.EditTextWithDelete
+                android:id="@+id/et_lianxiren_act_name3"
+                style="@style/content_editText"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:hint="联系人三姓名"
+                android:maxLength="4"
+                android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/content_base" />
+
+            <TextView
+
+                android:id="@+id/tv_btn_lianxiren_act_select3"
+                android:layout_width="@dimen/base130dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="选择通讯录联系人"
+                android:textColor="@color/content_base" />
+        </LinearLayout>
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_lianxirenact_phonenum3"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="联系人三手机号"
+            android:inputType="number"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+        <include layout="@layout/diver_short" />
+
+        <com.xunfenqi.view.EditTextWithDelete
+            android:id="@+id/et_lianxirenact_sf3"
+            style="@style/content_editText"
+            android:background="@color/white"
+            android:hint="请输入联系人关系: 朋友/同学/同事"
+            android:inputType="text"
+            android:singleLine="true"></com.xunfenqi.view.EditTextWithDelete>
+
+
+        <include layout="@layout/diver" />
+
+        <Button
+            android:id="@+id/btn_forget_pwd2_act_confirm"
+            style="@style/content_button"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="确认"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 
-    <include layout="@layout/diver_short" />
-    <com.xunfenqi.view.EditTextWithDelete
-        android:id="@+id/et_lianxirenact_phonenum2"
-        style="@style/content_editText"
-        android:background="@color/white"
-        android:hint="联系人二手机号"
-        android:inputType="number"
-        android:singleLine="true" >
-    </com.xunfenqi.view.EditTextWithDelete>
-
-    <include layout="@layout/diver_short" />
-    <com.xunfenqi.view.EditTextWithDelete
-        android:id="@+id/et_lianxirenact_sf2"
-        style="@style/content_editText"
-        android:background="@color/white"
-        android:hint="与本人关系"
-        android:inputType="text"
-        android:singleLine="true" >
-    </com.xunfenqi.view.EditTextWithDelete>
-
-
-    <include layout="@layout/diver" />
-
-    <Button
-        android:id="@+id/btn_forget_pwd2_act_confirm"
-        style="@style/content_button"
-        android:layout_marginTop="@dimen/base15dp"
-        android:text="确认"
-        android:textColor="@color/white" />
-
-</LinearLayout>
+</ScrollView>

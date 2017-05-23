@@ -43,7 +43,7 @@ public class RegistSuccessActivity extends BaseActivity implements
     @Override
     public void initActionBar() {
         AbTitleBar tTitleBar = AbViewUtil.getTTitleBar(this, "注册成功");
-        tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(45),
+        tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(35),
                 UIUtils.dip2px(14));
     }
 
@@ -51,10 +51,9 @@ public class RegistSuccessActivity extends BaseActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_regist_success_jump2home:// 跳转到首页
-
+                CallBackManager.getInstance().sendSwitchRadio(0);
                 ActivityUtil.startActivityAndFinish(RegistSuccessActivity.this,
                         MainActivity.class);
-                CallBackManager.getInstance().sendSwitchRadio(0);
                 break;
             case R.id.bt_regist_success_safesetting:// 跳转到安全设置
 //			EventBus.getDefault().post(new EventPost());

@@ -64,9 +64,17 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
     EditTextWithDelete etLianxirenactSf1;
     @BindView(R.id.et_lianxirenact_sf2)
     EditTextWithDelete etLianxirenactSf2;
+    @BindView(R.id.et_lianxiren_act_name3)
+    EditTextWithDelete etLianxirenActName3;
+    @BindView(R.id.tv_btn_lianxiren_act_select3)
+    TextView tvBtnLianxirenActSelect3;
+    @BindView(R.id.et_lianxirenact_phonenum3)
+    EditTextWithDelete etLianxirenactPhonenum3;
+    @BindView(R.id.et_lianxirenact_sf3)
+    EditTextWithDelete etLianxirenactSf3;
 
     // 声明姓名，电话
-    private String username1, usernumber1, username2, usernumber2;
+    private String username1, usernumber1, username2, usernumber2,username3,usernumber3;
 
     @Override
     public void initView() {
@@ -75,6 +83,7 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
         ButterKnife.bind(this);
         tvBtnLianxirenActSelect1.setOnClickListener(this);
         tvBtnLianxirenActSelect2.setOnClickListener(this);
+        tvBtnLianxirenActSelect3.setOnClickListener(this);
         btnForgetPwd2ActConfirm.setOnClickListener(this);
     }
 
@@ -87,7 +96,7 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void initActionBar() {
         // 初始化ActionBar
-        AbTitleBar tTitleBar = AbViewUtil.getTTitleBar(this, "联系人信息");
+        AbTitleBar tTitleBar = AbViewUtil.getTTitleBar(this, "联系人信息认证");
         tTitleBar.setLogo(R.drawable.titlebar_back);
         tTitleBar.setTitleTextMargin(0, UIUtils.dip2px(14), UIUtils.dip2px(58),
                 UIUtils.dip2px(14));
@@ -108,6 +117,13 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
                         ContactsContract.Contacts.CONTENT_URI), 1);
 
                 break;
+            case R.id.tv_btn_lianxiren_act_select3:
+
+                PermissionUtils.checkPermission(this, "android.permission.READ_CONTACTS");
+                startActivityForResult(new Intent(Intent.ACTION_PICK,
+                        ContactsContract.Contacts.CONTENT_URI), 2);
+
+                break;
             case R.id.btn_forget_pwd2_act_confirm:
                 doSubmit();
                 break;
@@ -121,10 +137,13 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
 
         String name1 = etLianxirenActName1.getText().toString().trim();
         String name2 = etLianxirenActName2.getText().toString().trim();
+        String name3 = etLianxirenActName2.getText().toString().trim();
         String num1 = etLianxirenactPhonenum1.getText().toString().trim();
         String num2 = etLianxirenactPhonenum2.getText().toString().trim();
+        String num3 = etLianxirenactPhonenum2.getText().toString().trim();
         String sf1 = etLianxirenactSf1.getText().toString().trim();
         String sf2 = etLianxirenactSf2.getText().toString().trim();
+        String sf3 = etLianxirenactSf2.getText().toString().trim();
 
 
         if (TextUtils.isEmpty(name1)) {
@@ -151,6 +170,18 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
         if (TextUtils.isEmpty(sf2)) {
             AbToastUtil.showToast(this, "请输入联系人二与本人关系");
             return;
+        }    if (TextUtils.isEmpty(name3)) {
+            AbToastUtil.showToast(this, "请输入联系人二姓名");
+            return;
+        }
+        if (TextUtils.isEmpty(num3)) {
+            AbToastUtil.showToast(this, "请输入联系人二手机号");
+            return;
+        }
+
+        if (TextUtils.isEmpty(sf3)) {
+            AbToastUtil.showToast(this, "请输入联系人二与本人关系");
+            return;
         }
         if (name1.equals(name2) && num1.equals(num2)) {
             AbToastUtil.showToast(this, "不能选择同一个联系人");
@@ -160,7 +191,7 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
 
         AbDialogUtil.getWaitDialog(LianXiRenActivity.this);
         HaiHeApi.userEditConnectPeople(MyApplication.getInstance().getLoginUid(),
-                name1, num1, name2, num2, sf1, sf2, new AbSoapListener() {
+                name1, num1, name2,name3, num2,num2, sf1, sf2,sf3, new AbSoapListener() {
 
                     @Override
                     public void onSuccess(int statusCode, String content) {
@@ -170,7 +201,7 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
                             if (verifyUserTelInfo.getRespCode().equals("000")
                                     ) {
 
-                                SettingUtils.getInstance(LianXiRenActivity.this ).saveValue("lxr","0");
+                                SettingUtils.getInstance(LianXiRenActivity.this).saveValue("lxr", "0");
                                 AbToastUtil.showToastInThread(getApplicationContext(),
                                         "添加联系人信息成功");
                                 LianXiRenActivity.this.finish();
@@ -216,8 +247,12 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
 
                 username1 = cursor.getString(cursor
                         .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-            } else {
+            } else if(requestCode == 1){
+
                 username2 = cursor.getString(cursor
+                        .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            }else  {
+                username3 = cursor.getString(cursor
                         .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 
             }
@@ -238,12 +273,18 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
                     etLianxirenActName1.setText(username1);
                     etLianxirenactPhonenum1.setText(usernumber1);
 
-                } else {
+                } else if(requestCode == 1){
                     usernumber2 = phone
                             .getString(phone
                                     .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                     etLianxirenActName2.setText(username2);
                     etLianxirenactPhonenum2.setText(usernumber2);
+                }else {
+                    usernumber3 = phone
+                            .getString(phone
+                                    .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                    etLianxirenActName3.setText(username3);
+                    etLianxirenactPhonenum3.setText(usernumber3);
                 }
             }
 
@@ -253,7 +294,6 @@ public class LianXiRenActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
 }

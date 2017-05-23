@@ -24,6 +24,24 @@ public class UserIntegralSignInInfo {
 	private String qdzt;
 	private String signValue;
 
+	private String dhzt;
+	private String ckdz;
+
+	public String getCkdz() {
+		return ckdz;
+	}
+
+	public void setCkdz(String ckdz) {
+		this.ckdz = ckdz;
+	}
+
+	public String getDhzt() {
+		return dhzt;
+	}
+
+	public void setDhzt(String dhzt) {
+		this.dhzt = dhzt;
+	}
 
 	public String getMessageType() {
 		return messageType;

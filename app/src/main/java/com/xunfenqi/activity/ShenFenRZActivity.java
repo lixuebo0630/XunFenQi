@@ -25,13 +25,16 @@ import com.xunfenqi.application.MyApplication;
 import com.xunfenqi.base.BaseActivity;
 import com.xunfenqi.global.AbConstant;
 import com.xunfenqi.global.CallBackManager;
+import com.xunfenqi.model.domain.QueryUserIntegralByChangeInfo;
 import com.xunfenqi.model.domain.UserIdentityAffirmInfo;
 import com.xunfenqi.net.soap.AbSoapListener;
 import com.xunfenqi.utils.AbDialogUtil;
 import com.xunfenqi.utils.AbToastUtil;
 import com.xunfenqi.utils.AbViewUtil;
 import com.xunfenqi.utils.ActivityUtil;
+import com.xunfenqi.utils.SettingUtils;
 import com.xunfenqi.utils.UIUtils;
+import com.xunfenqi.view.dialog.SweetAlertDialog;
 import com.xunfenqi.view.titlebar.AbTitleBar;
 
 import java.util.ArrayList;
@@ -46,13 +49,13 @@ import de.greenrobot.event.EventBus;
 public class ShenFenRZActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private EditText et_name, et_bank_num, et_bank_name;
+    private EditText et_name, et_bank_num, et_bank_name,et_jtdz;
     private EditText et_id_num;
     private EditText et_rxsj;
     private EditText et_xxdz;
     private EditText et_xxmc;
     private EditText et_ykt;
-    private TextView tv_xl;
+    private TextView tv_xl,tv_xxdz;
     private String qx;
     private LinearLayout ll_stu_flag;
     private Button bt_commit;
@@ -62,7 +65,7 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
     private String ykt;
     private String xxmc;
     private String rxsj;
-    private String xxdz;
+    private String xxdz,jtdz;
     private String bankName;
     private String bankNum;
     private String xl;
@@ -78,20 +81,28 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
         et_id_num = (EditText) findViewById(R.id.et_my_sfrz_act_id_num);
         et_rxsj = (EditText) findViewById(R.id.et_my_sfrz_act_rxsj);
         et_xxdz = (EditText) findViewById(R.id.et_my_sfrz_act_xxdz);
+        et_jtdz = (EditText) findViewById(R.id.et_my_sfrz_act_jtzz);
         et_xxmc = (EditText) findViewById(R.id.et_my_sfrz_act_xxmc);
         et_bank_num = (EditText) findViewById(R.id.et_my_sfrz_act_bank_num);
         et_bank_name = (EditText) findViewById(R.id.et_my_sfrz_act_bank_name);
         et_ykt = (EditText) findViewById(R.id.et_my_sfrz_act_ykt);
         tv_xl = (TextView) findViewById(R.id.tv_my_sfrz_act_xl);
+        tv_xxdz = (TextView) findViewById(R.id.tv_my_sfrz_act_xxdz);
         ll_stu_flag = (LinearLayout) findViewById(R.id.ll_sfrz_act_stu_flag);
         bt_commit = (Button) findViewById(R.id.bt_sfrz_act_commit);
 
 
-        if ("成人".equals(flag)) {
+        if ("上班族".equals(flag)) {
             ll_stu_flag.setVisibility(View.GONE);
-        } else if ("学生".equals(flag)) {
+            findViewById(R.id.rl_my_sfrz_act_jtzz).setVisibility(View.GONE);
+            tv_xxdz.setText("居住住址");
+
+            et_xxdz.setHint("请输入居住住址(具体到门牌号)");
+        } else if ("大学生".equals(flag)) {
             ll_stu_flag.setVisibility(View.VISIBLE);
-            et_xxdz.setHint("请输入学校详细地址");
+            tv_xxdz.setText("学校住址");
+
+            et_xxdz.setHint("请输入学校住址(具体到宿舍号)");
 
         }
         tv_xl.setOnClickListener(this);
@@ -140,6 +151,7 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
         xxmc = et_xxmc.getText().toString().trim();
         rxsj = et_rxsj.getText().toString().trim();
         xxdz = et_xxdz.getText().toString().trim();
+       jtdz = et_jtdz.getText().toString().trim();
         xl = tv_xl.getText().toString();
 
 
@@ -170,6 +182,7 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
         }
 
         if ("学生".equals(flag)) {
+
             if (TextUtils.isEmpty(ykt)) {
                 AbToastUtil.showToast(getApplicationContext(), "请输入一卡通或学号");
                 return;
@@ -178,6 +191,9 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
 
             if (TextUtils.isEmpty(xxmc)) {
                 AbToastUtil.showToast(getApplicationContext(), "请输入学校名称");
+                return;
+            }  if (TextUtils.isEmpty(jtdz)) {
+                AbToastUtil.showToast(getApplicationContext(), "请输入家庭住址(具体到门牌号)");
                 return;
             }
             if (TextUtils.isEmpty(rxsj)) {
@@ -188,7 +204,6 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
             if ("请选择".equals(xl)) {
                 AbToastUtil.showToast(getApplicationContext(), "请选择学历");
                 return;
-
             }
 
         }
@@ -203,7 +218,7 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
 
         if (loginUid != null) {
             AbDialogUtil.getWaitDialog(this);
-            HaiHeApi.userIdentityAffirm(loginUid, id_num, userName, ykt, bankNum, bankName, xxmc, rxsj, xl, xxdz, new AbSoapListener() {
+            HaiHeApi.userIdentityAffirm(loginUid, id_num, userName, ykt, bankNum, bankName, xxmc, rxsj, xl,jtdz, xxdz, new AbSoapListener() {
 
                 @Override
                 public void onSuccess(int statusCode, String content) {
@@ -213,10 +228,24 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
                     if (info != null) {
                         if ("000".equals(info.getRespCode())) {
 
-                            AbToastUtil.showToastInThread(getApplicationContext(),"认证成功");
-                             ActivityUtil.startActivity(ShenFenRZActivity.this,MainActivity.class);
-                            EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
-                            CallBackManager.getInstance().sendSwitchRadio(2);
+                            AbToastUtil.showToastInThread(getApplicationContext(), "认证成功");
+
+                            new SweetAlertDialog(ShenFenRZActivity.this,
+                                    SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                                    .setTitleText("开通电子签约功能")
+                                    .setContentText("此功能用于借款申请成功后，签约电子合同，免去线下签约减少客户时间成本。")
+                                    .setConfirmText("确认")
+                                    .setConfirmClickListener(
+                                            new SweetAlertDialog.OnSweetClickListener() {
+                                                @Override
+                                                public void onClick(
+                                                        SweetAlertDialog sDialog) {
+
+                                                    sDialog.dismiss();
+                                                    doRegistSSq();
+                                                }
+                                            }).show();
+
                         } else {
 
                             AbToastUtil.showToastInThread(
@@ -236,6 +265,48 @@ public class ShenFenRZActivity extends BaseActivity implements View.OnClickListe
 
                             error.getMessage());
                 }
+            });
+        }
+    }
+
+
+    private void doRegistSSq() {
+        AbDialogUtil.getWaitDialog(this);
+        String loginUid = MyApplication.getInstance().getLoginUid();
+        if (loginUid != null && !"".equals(loginUid)) {
+            HaiHeApi.userRegisterSsq(loginUid, new AbSoapListener() {
+                @Override
+                public void onSuccess(int statusCode, String content) {
+                    final QueryUserIntegralByChangeInfo info = HaiheReturnApi
+                            .queryUserIntegralByChange(content);
+                    if (info != null) {
+                        if (info.getRespCode().equals("000")) {
+                            AbToastUtil.showToastInThread(ShenFenRZActivity.this,
+                                    info.getRespCodeDesc());
+                            SettingUtils.getInstance(ShenFenRZActivity.this).saveValue("ssqkh", "1");
+                            EventBus.getDefault().post(AbConstant.MY_ACCOUNT_REFRESH);
+                            ActivityUtil.startActivity(ShenFenRZActivity.this, MainActivity.class);
+                            CallBackManager.getInstance().sendSwitchRadio(2);
+
+                        } else {
+                            AbToastUtil.showToastInThread(ShenFenRZActivity.this,
+                                    info.getRespCodeDesc());
+                            AbDialogUtil.removeDialog(ShenFenRZActivity.this);
+                            return;
+                        }
+                    }
+                    AbDialogUtil.removeDialog(ShenFenRZActivity.this);
+
+                }
+
+                @Override
+                public void onFailure(int statusCode, String content,
+                                      Throwable error) {
+                    error.printStackTrace();
+                    AbDialogUtil.removeDialog(ShenFenRZActivity.this);
+                    AbToastUtil.showToastInThread(ShenFenRZActivity.this, error.getMessage());
+                }
+
             });
         }
     }

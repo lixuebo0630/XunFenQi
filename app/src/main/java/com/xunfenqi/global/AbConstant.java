@@ -33,6 +33,7 @@ public class AbConstant {
     public static final String NINE_WRONG_COUNT = "NINE_WRONG_COUNT";
 
     public static final String MY_ACCOUNT_REFRESH = "my_account_refresh";
+    public static final String UP_LOAD_PHOTO_REFRESH = "UP_LOAD_PHOTO_REFRESH";
     public static final String SAFE_SETTING_REFRESH = "safe_setting_refresh";
     public static final String JIEKUAN_DETAIL_REFRESH = "jiekuan_refresh";
     // */ 手势密码点的状态
@@ -46,5 +47,9 @@ public class AbConstant {
 
 
     public static final String SF_NOTIFY = "请先完成身份认证";
+    public static final String LXR_NOTIFY = "请先完成联系人信息认证";
+    public static final String JD_NOTIFY = "请先完成京东商城认证";
+    public static final String XXW_NOTIFY = "请先完成学信网认证";
+    public static final String SJFWM_NOTIFY = "请先完成手机服务密码认证";
 }
 

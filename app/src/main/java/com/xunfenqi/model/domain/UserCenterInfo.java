@@ -34,6 +34,7 @@ public class UserCenterInfo {
     private String zhhkry;
     private String sfzh;
     private String yhkh;
+    private String ssqkh;
 
     private String cardlast;
     private String yhktb;
@@ -42,6 +43,23 @@ public class UserCenterInfo {
     private String sjfwmrz;
     private String jdrz;
     private String wxwrz;
+    private String yhlx;//0大学生//1工薪层
+
+    public String getYhlx() {
+        return yhlx;
+    }
+
+    public void setYhlx(String yhlx) {
+        this.yhlx = yhlx;
+    }
+
+    public String getSsqkh() {
+        return ssqkh;
+    }
+
+    public void setSsqkh(String ssqkh) {
+        this.ssqkh = ssqkh;
+    }
 
     public String getLxrrz() {
         return lxrrz;

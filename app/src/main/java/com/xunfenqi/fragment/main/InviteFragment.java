@@ -78,7 +78,6 @@ public class InviteFragment extends AbFragment implements OnClickListener {
         });
 
 
-
         bt_share.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +96,6 @@ public class InviteFragment extends AbFragment implements OnClickListener {
                 }
             }
         });
-
 
 
         this.setAbFragmentOnLoadListener(new AbFragmentOnLoadListener() {
@@ -154,12 +152,12 @@ public class InviteFragment extends AbFragment implements OnClickListener {
         //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
         oks.setUrl("http://sharesdk.cn");
-        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment("我是测试评论文本");
-        // site是分享此内容的网站名称，仅在QQ空间使用
-        oks.setSite("ShareSDK");
-        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl("http://sharesdk.cn");
+//        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+//        oks.setComment("我是测试评论文本");
+//        // site是分享此内容的网站名称，仅在QQ空间使用
+//        oks.setSite("ShareSDK");
+//        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//        oks.setSiteUrl("http://sharesdk.cn");
 
 // 启动分享GUI
         oks.show(mActivity);
