@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_background"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_upload_act_id_card_state"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base6dp"
+            android:background="@drawable/list_item_selector"
+            android:clickable="true">
+
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base18dp"
+                android:text="上传身份证"
+                android:textColor="#3b3b3b"
+                android:textSize="@dimen/base15dp" />
+
+            <ImageView
+                android:id="@+id/iv___h"
+                android:layout_width="@dimen/base8dp"
+                android:layout_height="@dimen/base16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base10dp"
+                android:background="@drawable/list_item_sanjiao" />
+
+            <TextView
+                android:id="@+id/tv_upload_act_id_card_state"
+                style="@style/content_tv_base"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base8dp"
+                android:layout_toLeftOf="@id/iv___h"
+                android:text="-"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/base13dp" />
+        </RelativeLayout>
+
+        <include layout="@layout/diver" />
+
+        <RelativeLayout
+            android:id="@+id/rl_upload_act_other_state"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base6dp"
+            android:background="@drawable/list_item_selector"
+            android:clickable="true">
+
+
+            <TextView
+                style="@style/content_tv_base"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base18dp"
+                android:text="上传其他证件"
+                android:textColor="#3b3b3b"
+                android:textSize="@dimen/base15dp" />
+
+            <ImageView
+                android:id="@+id/iv___hx"
+                android:layout_width="@dimen/base8dp"
+                android:layout_height="@dimen/base16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base10dp"
+                android:background="@drawable/list_item_sanjiao" />
+
+            <TextView
+                android:id="@+id/tv_upload_act_other_state"
+                style="@style/content_tv_base"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base8dp"
+                android:layout_toLeftOf="@id/iv___hx"
+                android:text="-"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/base13dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>
